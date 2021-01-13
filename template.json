@@ -1,0 +1,8 @@
+{
+    "Actor":{
+        "types":["adept","npc","creature","spirit"]
+    },
+    "Item":{
+        "types":["weapon","armor","talent","skill","spell"]
+    }
+}

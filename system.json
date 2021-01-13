@@ -1,0 +1,30 @@
+{
+    "name": "ed4e",
+    "title": "Earthdawn 4E (Unofficial)",
+    "description": "Earthdawn 4E RPG System (Unofficial)",
+    "version": "0.1.0",
+    "author": "Cannyjack (Chris Clouser)",
+    "esmodules": [
+        "module/ed4e.js"
+    ],
+    "scripts": [],
+    "styles": [
+        "styles/ed4e.css"
+    ],
+    "languages": [
+        {
+          "lang": "en",
+          "name": "English",
+          "path": "lang/en.json"
+        }
+      ],
+    
+    "initiative":"@atts.dexterity.value+@atts.initiative.value - @init_penalty.value",
+    "gridDistance": 2,
+    "gridUnits": "yd",
+    "primaryTokenAttribute": "@atts.deathrating.value",
+    "secondaryTokenAttribute": "@atts.uncrating.value",
+    "minimumCoreVersion": "0.7.7",
+    "compatibleCoreVersion": "0.7.8"
+
+}
