@@ -1,0 +1,135 @@
+{
+    "ED4E":{
+        "attributes": {
+            "dexterity": "Dexterity",
+            "strength": "Strength",
+            "toughness": "Toughness",
+            "perception": "Perception",
+            "willpower": "Willpower",
+            "charisma": "Charisma"
+        },
+        "attributes_short": {
+            "dexterity": "DEX",
+            "strength": "STR",
+            "toughness": "TOU",
+            "perception": "PER",
+            "willpower": "WIL",
+            "charisma": "CHA"
+        },
+        "defenses": {
+            "physical": "Physical Defense",
+            "mystic": "Mystic Defense",
+            "social": "Social Defense",
+            "phys_brief": "Physical",
+            "myst_brief": "Mystic",
+            "soc_brief": "Social"
+        },
+        "armor":{
+            "physical": "Physical Armor",
+            "phys_brief": "Physical",
+            "mystical": "Mystical Armor",
+            "myst_brief": "Mystical"
+        },
+        "health": {
+            "current_damage": "Current Damage",
+            "current_damage_brief": "Curr. Dmg",
+            "blood_magic": "Blood Magic",
+            "uncon": "Unconsciousness",
+            "death": "Death",
+            "wound": "Wound",
+            "wounds": "Wounds",
+            "recov_avail": "Recovery Tests",
+            "recov_step": "Recovery Dice"
+        },
+        "initiative":{
+            "init_base": "Base Dex",
+            "init_armor_mod": "Armor Mod",
+            "init_step": "Final Initiative",
+            "init_short": "Init"
+        },
+        "karma":{
+            "karma_avail": "Available Karma",
+            "karma_mod": "Karma Modifier",
+            "karma_max": "Max Karma"
+        },
+        "legend":{
+            "legend_curernt": "Current Legend Points",
+            "legend_total": "Total Legend Points"
+        },
+        "discipline": {
+            "air_sailor": "Air Sailor",
+            "archer": "Archer",
+            "beastmaster": "Beastmaster",
+            "cavalryman": "Cavalryman",
+            "elementalist": "Elementalist",
+            "illusionist": "Illusionist",
+            "nethermancer": "Nethermancer",
+            "scout": "Scout",
+            "sky_raider": "Sky Raider",
+            "swordmaster": "Swordmaster",
+            "thief": "Thief",
+            "troubadour": "Troubadour",
+            "warrior": "Warrior",
+            "weaponsmith": "Weaponsmith",
+            "wizard": "Wizard"
+        },
+        "jargon": {
+            "race": "Race",
+            "discipline": "Discipline",
+            "circle": "Circle",
+            "talent": "Talent",
+            "skill": "Skill",
+            "attribute": "Attribute",
+            "initiative": "Initiative",
+            "damage": "Damage",
+            "wound": "Wound",
+            "wounds": "Wounds",
+            "death": "Death",
+            "threshold": "Threshold",
+            "karma": "Karma",
+            "step": "Step",
+            "recov_test": "Recovery Test",
+            "dice": "Dice",
+            "value": "Value",
+            "action": "Action",
+            "strain": "Strain",
+            "thread": "Thread",
+            "threads": "Threads",
+            "weaving": "Weaving",
+            "artisan": "Artisan",
+            "pattern": "Pattern",
+            "pattern_item": "Pattern Item",
+            "minor_pattern_item": "Minor Pattern Item",
+            "major_pattern_item": "Major Pattern Item",
+            "minor_pattern": "Minor Pattern",
+            "major_pattern": "Major Pattern",
+            "true_pattern": "True Pattern",
+            "horror": "Horror",
+            "horror_mark": "Horror Mark",
+            "creature": "Creature",
+            "passion": "Passion",
+            "questor": "Questor",
+            "spirit": "Spirit",
+            "elemental": "Elemental"
+        },
+        "race": {
+            "dwarf": "Dwarf",
+            "elf": "Elf",
+            "human": "Human",
+            "obsidiman": "Obsidiman",
+            "ork": "Ork",
+            "troll": "Troll",
+            "tskrang": "T'Skrang",
+            "windling": "Windling"
+        },
+        "vitals": {
+            "character_name": "Character Name",
+            "race": "Race",
+            "sex": "Sex",
+            "age": "Age",
+            "hair": "Hair",
+            "eyes": "Eyes",
+            "skin": "Skin"
+        }
+    }
+}

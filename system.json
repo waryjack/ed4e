@@ -19,11 +19,11 @@
         }
       ],
     
-    "initiative":"@atts.dexterity.value+@atts.initiative.value - @init_penalty.value",
+    "initiative":"@initiative.dice + @initiative.misc_mod - @init_penalty.value",
     "gridDistance": 2,
     "gridUnits": "yd",
-    "primaryTokenAttribute": "@atts.deathrating.value",
-    "secondaryTokenAttribute": "@atts.uncrating.value",
+    "primaryTokenAttribute": "@health.damage.value",
+    "secondaryTokenAttribute": "@karma.value",
     "minimumCoreVersion": "0.7.7",
     "compatibleCoreVersion": "0.7.8"
 
