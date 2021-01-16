@@ -3,21 +3,46 @@
         <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
-
-
     
     <section class="sheet-body">
         <div class="s7 flexcol">
             <div class="s7 flexrow">
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.type"}}</th>
+                        <th>{{localize "ED4E.jargon.rank"}}</th>
+                        <th>{{localize "ED4E.jargon.attribute"}}</th>
+                        <th>{{localize "ED4E.jargon.action"}}</th>
+                        <th>{{localize "ED4E.jargon.strain"}}</th>
+                        <th>{{localize "ED4E.jargon.as_skill"}}?</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="data.subtype" id="atype-select">
+                                {{#select data.subtype}}
+                                <option value="talent">{{localize "ED4E.jargon.talent"}}</option>
+                                <option value="skill">{{localize "ED4E.jargon.skill"}}</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.rank" value="{{data.rank}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            {{> "systems/ed4e/templates/item/partials/attribute_select.hbs"}}
+                        </td>
+                        <td>
+                            {{> "systems/ed4e/templates/item/partials/action_select.hbs"}}
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.strain" value="{{data.strain}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="checkbox" name="data.asSkill" {{checked data.asSkill}}/>
+                        </td>
+                    </tr>
+                </table>
             </div>
-        </div>
-        <div class="s7 flexcol">
-            <div class="s7 flexrow">
-                <div class="s7 flex-item">
-                    
-                </div>
-            </div>
-
         </div>
     </section>
 </form>

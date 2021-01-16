@@ -80,8 +80,10 @@
             "circle": "Circle",
             "talent": "Talent",
             "skill": "Skill",
+            "rank": "Rank",
             "attribute": "Attribute",
             "attributes": "Attributes",
+            "attr": "Attr",
             "initiative": "Initiative",
             "defense": "Defense",
             "defenses": "Defenses",
@@ -119,7 +121,16 @@
             "moverate": "Movement Rate",
             "carry": "Carry Capacity",
             "encumbrance": "Encumbrance",
-            "armor":"Armor"
+            "armor":"Armor",
+            "weapon":"Weapon",
+            "minstr":"Min Str",
+            "rangeshortlong": "Range (S/L)",
+            "type": "Type",
+            "as_skill": "Usable as Skill",
+            "size": "Size",
+            "weight": "Weight",
+            "availability": "Availability",
+            "cost": "Cost"
         },
         "race": {
             "dwarf": "Dwarf",
@@ -139,6 +150,20 @@
             "hair": "Hair",
             "eyes": "Eyes",
             "skin": "Skin"
+        },
+        "actions": {
+            "movement": "Movement",
+            "standard": "Standard",
+            "sustained": "Sustained",
+            "simple": "Simple",
+            "free": "Free"
+        },
+        "availability":{
+            "everyday": "Everyday",
+            "average": "Average",
+            "unusual": "Unusual",
+            "rare": "Rare",
+            "exotic": "Very Rare"
         }
     }
 }

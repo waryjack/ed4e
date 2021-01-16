@@ -5,6 +5,14 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/attributes.hbs",
      "systems/ed4e/templates/actor/partials/defenses.hbs",
      "systems/ed4e/templates/actor/partials/initiative.hbs",
-     "systems/ed4e/templates/actor/partials/init-move-karma.hbs"
+     "systems/ed4e/templates/actor/partials/init-move-karma.hbs",
+
+     "systems/ed4e/templates/actor/partials/skills.hbs",
+     "systems/ed4e/templates/actor/partials/talents.hbs",
+     "systems/ed4e/templates/actor/partials/weapons.hbs",
+
+     // Item Partials
+     "systems/ed4e/templates/item/partials/attribute_select.hbs",
+     "systems/ed4e/templates/item/partials/action_select.hbs"
     ]);
   };

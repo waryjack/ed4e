@@ -154,7 +154,7 @@
             "movement":0,
             "carry":0,
             "load":0,
-            "encumb_penalty":0
+            "load_penalty":0
         }
     },
     "Item":{
@@ -173,8 +173,13 @@
         "weapon":{
             "templates":["common"],
             "type":"",
-            "damage_step":0,
-            "damage_attr":"strength",
+            "base_dmg":0,
+            "attribute":"strength",
+            "full_dmg":{
+                "step":0,
+                "dice":"",
+                "expr":""
+            },
             "str_min":0,
             "dex_min":0,
             "size":1,
@@ -196,14 +201,15 @@
             "templates":["common"]
         },
         "ability":{
-            "type":"",
+            "subtype":"",
             "rank":0,
             "attribute":"",
             "step":0,
             "dice":"",
             "expr":"",
             "action":"",
-            "strain":0
+            "strain":0,
+            "asSkill":false
         },
         "thread_item":{
             "rank":0,

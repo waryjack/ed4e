@@ -143,5 +143,12 @@ export const ED4E = {
             warrior: "ED4E.discipline.warrior",
             weaponsmith: "ED4E.discipline.weaponsmith",
             wizard: "ED4E.discipline.wizard"
+        },
+        actions: {
+            movement: "ED4E.actions.movement",
+            standard: "ED4E.actions.standard",
+            sustained: "ED4E.actions.sustained",
+            simple: "ED4E.actions.simple",
+            free: "ED4E.actions.free"
         }
 }

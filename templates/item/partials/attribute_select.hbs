@@ -1,0 +1,7 @@
+<select name="data.attribute" id="att-select">
+    {{#select data.attribute}}
+        {{#each config.attributes as |locstring attr|}}
+            <option value="{{attr}}">{{localize locstring}}</option>
+        {{/each}}
+    {{/select}}
+</select>

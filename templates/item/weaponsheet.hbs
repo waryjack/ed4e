@@ -3,4 +3,63 @@
         <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
     </header>
+
+
+     <section class="sheet-body">
+        <div class="s7 flexcol">
+            <div class="s7 flexrow">
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.minstr"}}</th>
+                        <th>Base {{localize "ED4E.jargon.damage"}} {{localize "ED4E.jargon.step"}}</th>
+                        <th>{{localize "ED4E.jargon.size"}}</th>
+                        <th>{{localize "ED4E.jargon.cost"}}</th>
+                        <th>{{localize "ED4E.jargon.weight"}} (lbs)</th>
+                        <th>{{localize "ED4E.jargon.availability"}}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.str_min" value="{{data.str_min}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.base_dmg" value="{{data.base_dmg}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.size" value="{{data.size}}" data-dtype="Number" />
+                        </td>
+                        
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.value" value="{{data.value}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.weight" value="{{data.weight}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <select name="data.availability" id="avtype-select">
+                                {{#select data.availability}}
+                                <option value="everyday">{{localize "ED4E.availability.everyday"}}</option>
+                                <option value="average">{{localize "ED4E.availability.average"}}</option>
+                                <option value="unusual">{{localize "ED4E.availability.unusual"}}</option>
+                                <option value="rare">{{localize "ED4E.availability.rare"}}</option>
+                                <option value="exotic">{{localize "ED4E.availability.exotic"}}</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Short Range</td>
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.range.short" value="{{data.range.short}}" data-dtype="Number" />
+                        </td>
+                        <td>Long Range</td>
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.range.long" value="{{data.range.long}}" data-dtype="Number" />
+                        </td>
+                        <td colspan=2></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
 </form>

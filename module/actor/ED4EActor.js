@@ -61,6 +61,11 @@ export class ED4EActor extends Actor {
             atts[att].expr = StepUtil.getDiceExpr(newStep);       
         }
 
+        data.carry = (atts.strength.step * 5) + 10;
+        if (data.load > data.carry) {
+           // use active effect here...in the future
+        }
+
         console.log("revised atts", atts);
     
         setProperty(this, "data.data.attributes", atts);

@@ -1,0 +1,31 @@
+<div class="ed4e flex-item inset">
+     <h3 class="inv-header"><div>{{localize "ED4E.jargon.weapon"}}s</div>
+                        <a class="add-item" title="Add Armor" data-type="armor">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+    </h3>
+    <table class="item-table">
+        <tr>
+            <th style="text-align:left;">{{localize "ED4E.jargon.weapon"}}</th>
+            <th>{{localize "ED4E.jargon.minstr"}}</th>
+            <th>Base {{localize "ED4E.jargon.damage"}} {{localize "ED4E.jargon.step"}}</th>
+            <th>{{localize "ED4E.jargon.step"}}/{{localize "ED4E.jargon.dice"}}</th>
+            <th>{{localize "ED4E.jargon.rangeshortlong"}}</th>
+            <th></th>
+        </tr>
+            {{#each weapons as |weapon wepName|}}
+            <tr style="text-align:center">
+                <td style="text-align:left">{{weapon.name}}</td>
+                <td>{{weapon.data.str_min}}</td>
+                <td>{{weapon.data.base_dmg}}</td>
+                <td>{{weapon.data.full_dmg.step}} / {{weapon.data.full_dmg.dice}}</td>
+                <td>{{#if (lt weapon.data.range.short 1)}}
+                     -- 
+                    {{else}}
+                    {{weapon.data.range.short}} / {{weapon.data.range.long}}
+                    {{/if}}</td>
+                <td><a class="item-edit item" data-item-id="{{weapon._id}}"><i class="fas fa-edit"></i></a> <a class="item-delete item" data-item-id="{{weapon._id}}"><i class='fas fa-trash'></i></a></td>
+            </tr>
+            {{/each}}
+    </table>
+</div>

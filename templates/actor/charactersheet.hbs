@@ -22,8 +22,16 @@
     </nav>
     
     {{!--Body Divs--}}
-    <section class="sheet-body">
-        <div class="tab main" data-group="primary" data-tab="main">Main Stuff</div>
+    <section class="sheetbody">
+        <div class="tab main" data-group="primary" data-tab="main">
+            <div class="ed4e flexrow">
+                {{> "systems/ed4e/templates/actor/partials/talents.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/skills.hbs"}}
+            </div>
+            <div class="ed4e flexrow">
+                {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}
+            </div>
+        </div>
         <div class="tab magic" data-group="primary" data-tab="magic">Magic Stuff</div>
         <div class="tab gear" data-group="primary" data-tab="gear">Equipment Stuff</div>
         <div class="tab legend" data-group="primary" data-tab="legend">Legend Stuff</div>

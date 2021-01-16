@@ -1,0 +1,7 @@
+<select name="data.action" id="act-select">
+    {{#select data.action}}
+        {{#each config.actions as |locstring act|}}
+            <option value="{{act}}">{{localize locstring}}</option>
+        {{/each}}
+    {{/select}}
+</select>
