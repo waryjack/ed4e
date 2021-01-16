@@ -62,23 +62,74 @@ export default class ED4EActorSheet extends ActorSheet {
         }
 
         _onInlineEdit(e){
+            e.preventDefault();
 
+            let element = e.currentTarget;
+    
+            let itemId = element.closest(".item").dataset.itemId;
+    
+            let item = this.actor.getOwnedItem(itemId);
+    
+            let field = element.dataset.field;
+            
+            return item.update({ [field]: element.value}); 
         }
 
         _onAddItem(e) {
-
+            e.preventDefault();
+                
+            let element = e.currentTarget;
+        
+            let itemData  = {
+                name: "New Item",
+                type: element.dataset.type
+            }
+            return this.actor.createOwnedItem(itemData, {renderSheet:true});
         }
 
         _onEditItem(e) {
+            e.preventDefault();
 
+            let element = e.currentTarget;
+    
+            let itemId = element.closest(".item").dataset.itemId;
+    
+            let item = this.actor.getOwnedItem(itemId);
+    
+            item.sheet.render(true);
         }
 
         _onDeleteItem(e) {
-
+            e.preventDefault();
+            let element = e.currentTarget;
+            let itemId = element.closest(".item").dataset.itemId;
+    
+            let d = new Dialog({
+              title: "Delete This Item?",
+              content: "<p>Are you sure you want to delete this item?</p>",
+              buttons: {
+               one: {
+                icon: '<i class="fas fa-check"></i>',
+                label: "Yes",
+                callback: () => { this.actor.deleteOwnedItem(itemId) }
+               },
+               two: {
+                icon: '<i class="fas fa-times"></i>',
+                label: "Cancel",
+                callback: () => { return; }
+               }
+              },
+              default: "two",
+              render: html => console.log("Register interactivity in the rendered dialog"),
+              close: html => console.log("This always is logged no matter which option is chosen")
+             });
+             d.render(true);
         }
 
         _toggleEffectLine(e) {
-
+            e.preventDefault();
+        
+            $(e.currentTarget).next('.effect-info').slideToggle("fast");
         }
 
         _equipItem(e) {

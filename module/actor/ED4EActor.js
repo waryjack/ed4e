@@ -32,6 +32,7 @@ export class ED4EActor extends Actor {
         this._prepareArmor(data);
         this._prepareHealth(data);
         this._prepareInit(data);
+        this._prepareItems(actorData);
         
         
     }
@@ -139,4 +140,25 @@ export class ED4EActor extends Actor {
         setProperty(this, "data.data.initiative", init);
     }
 
+    _prepareItems(data) {
+        const items = data.items;
+        console.warn("items before: ", items);
+
+        items.forEach((item) => {
+            if(item.type == "ability") {
+                let comstep = item.data.rank + data.data.attributes[item.data.attribute].step;
+                item.data.step = comstep;
+                item.data.dice = StepUtil.getDiceText(comstep);
+                item.data.expr = StepUtil.getDiceExpr(comstep);
+            } else if (item.type == "weapon") {
+                let comstep = item.data.base_dmg + data.data.attributes[item.data.attribute].step;
+                item.data.full_dmg.step = comstep;
+                item.data.full_dmg.dice = StepUtil.getDiceText(comstep);
+                item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
+            }
+        });
+
+        console.warn("items after: ", items);
+        // setProperty(this, "data.items", items);
+    }
 }

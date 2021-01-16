@@ -5,6 +5,7 @@ import ED4EActorSheet from "./sheets/actor/ED4EActorSheet.js";
 import ED4EItemSheet from "./sheets/item/ED4EItemSheet.js";
 import { ED4EActor } from "./actor/ED4EActor.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
+import { StepUtil } from "./utility/steps.js";
 
 
 Hooks.once("init", () => {
@@ -20,7 +21,7 @@ Hooks.once("init", () => {
        ED4EActor
     };
 
-    //CONFIG.debug.hooks = true;
+    CONFIG.debug.hooks = true;
     CONFIG.Actor.entityClass = ED4EActor;
     // CONFIG.Item.entityClass = ED4EItem; 
     
@@ -108,6 +109,33 @@ Hooks.once("init", () => {
  * Todo - consolidate and move to method(s) in EWActor?
  */
 
+/**
+ * Hooks for setting the Step value of an item when it's added
+ */
 
+Hooks.on("updateOwnedItem", (actor, item, changed) => {
+
+    if(item.type == "ability") {
+        let totalStep = actor.data.data.attributes[item.data.attribute] + item.data.rank;
+        item.data.step = totalStep;
+        item.data.dice = StepUtil.getDiceText(item.data.step);
+        item.data.expr = StepUtil.getDiceExpr(item.data.step);
+    }
+});
 
  
+Hooks.on('renderChatMessage', (app, html) => {
+
+    html.on('click', '.taskroll-msg', event => {
+        event.preventDefault();
+        // NOTE: This depends on the exact card template HTML structure.
+        $(event.currentTarget).siblings('.taskroll-tt').slideToggle("fast");
+     });
+ 
+     html.on('click', '.taskroll-info', event => {
+        event.preventDefault();
+        // NOTE: This depends on the exact card template HTML structure.
+        $(event.currentTarget).siblings('.taskroll-tt').slideToggle("fast");
+     });
+
+});
