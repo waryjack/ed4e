@@ -5,13 +5,14 @@
     </header>
 
     {{!-- Attributes / Defenses / Initiative --}}
-    <div class="ed4e flexrow">
-        {{!--Attributes partial--}}
-            {{> "systems/ed4e/templates/actor/partials/attributes.hbs"}}
-        {{!--Defenses Partial--}}
-            {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
-        {{!--Initiative Partial--}}
-    </div>
+   
+        <div class="ed4e flexrow">
+    
+                {{> "systems/ed4e/templates/actor/partials/attributes.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
+            {{!--Initiative Partial--}}
+        </div>
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="ed4e item" data-tab="main">Essentials</a>

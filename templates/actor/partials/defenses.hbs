@@ -1,51 +1,50 @@
-<div class="ed4e flex-item">
-    <table>
+<div class="ed4e flex-item inset">
+       <h4 class="table-title">Defense / Health</h4>
+        <table class="item-table">
         <tr>
             <td><strong>{{localize "ED4E.defenses.physical"}}</strong></td>
             <td>{{data.defenses.physical.value}}</td>
+            <td><strong>/ {{localize "ED4E.jargon.armor"}}</strong></td>
+            <td>{{data.armor.physical.value}}</td>
         </tr>
         <tr>
             <td><strong>{{localize "ED4E.defenses.mystic"}}</strong></td>
             <td>{{data.defenses.mystic.value}}</td>
+            <td><strong>/ {{localize "ED4E.jargon.armor"}}</strong></td>
+            <td>{{data.armor.mystic.value}}</td>
         </tr>
         <tr>
             <td><strong>{{localize "ED4E.defenses.social"}}</strong></td>
             <td>{{data.defenses.mystic.value}}</td>
+            <td colspan=2></td>
         </tr>
     </table>
-    <table>
+    <table class="item-table">
         <tr>
-            <td><strong>{{localize "ED4E.armor.physical"}}</strong></td>
-            <td>{{data.armor.physical.value}}</td>
-        </tr>
-        <tr>
-            <td><strong>{{localize "ED4E.armor.mystic"}}</strong></td>
-            <td>{{data.armor.mystic.value}}</td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td><strong>{{localize "ED4E.health.current_damage"}}</strong></td>
+            <td><strong>{{localize "ED4E.health.current_damage_brief"}}</strong></td>
             <td><input type="text" class="ed4e value-input" name="data.health.damage.value" value="{{data.health.damage.value}}" data-dtype="Number" /></td>
+            <td align="right"><strong>{{localize "ED4E.health.uncon"}}</strong></td>
+            <td align="center">{{data.health.thresholds.uncon}}</td>
+            
         </tr>
         <tr>
-            <td><strong>{{localize "ED4E.health.blood_magic"}}</strong></td>
+            <td><strong>{{localize "ED4E.health.blood_magic_brief"}}</strong></td>
             <td><input type="text" class="ed4e value-input" name="data.health.damage.blood" value="{{data.health.damage.blood}}" data-dtype="Number" /></td>
+            <td align="right"><strong>{{localize "ED4E.health.death"}}</strong></td>
+            <td align="center">{{data.health.thresholds.death}}</td>
         </tr>
         <tr>
-            <td><strong>{{localize "ED4E.health.uncon"}}</strong></td>
-            <td>{{data.health.thresholds.uncon}}</td>
+            
+            <td><strong>{{localize "ED4E.health.wounds"}}</strong></td>
+            <td><input type="text" class="ed4e value-input" name="data.health.damage.wounds" value="{{data.health.damage.wounds}}" data-dtype="Number" /></td>
+            <td align="right"><strong>{{localize "ED4E.health.wound"}}</strong></td>
+            <td align="center">{{data.health.thresholds.wound}}</td>
         </tr>
         <tr>
-            <td><strong>{{localize "ED4E.health.death"}}</strong></td>
-            <td>{{data.health.thresholds.death}}</td>
-        </tr>
-        <tr>
-            <td><strong>{{localize "ED4E.health.wound"}}</strong></td>
-            <td>{{data.health.thresholds.wound}}</td>
-        </tr>
-        <tr>
-            <td colspan="2"><strong>Recov. Tests: {{data.health.recovery.avail}}/{{data.health.recovery.max}} ({{data.attributes.toughness.dice}})</td>
+            <td><strong>Recov. Tests</strong></td>
+            <td>{{data.health.recovery.avail}}/{{data.health.recovery.max}}</td>
+            <td align="right"><strong>Recov. {{localize "ED4E.jargon.dice"}}</strong></td>
+            <td align="center">{{data.attributes.toughness.dice}}</td>
         </tr>
     </table>
 </div>

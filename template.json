@@ -114,6 +114,7 @@
                 "initiative":{
                     "base":0,
                     "armor_mod":0,
+                    "value":0,
                     "step":1,
                     "dice":"",
                     "expr":"",
@@ -151,7 +152,9 @@
                 "reputation":0
             },
             "movement":0,
-            "carry":0
+            "carry":0,
+            "load":0,
+            "encumb_penalty":0
         }
     },
     "Item":{

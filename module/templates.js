@@ -4,6 +4,7 @@ export const preloadHandlebarsTemplates = async function() {
      // Actor Partials
      "systems/ed4e/templates/actor/partials/attributes.hbs",
      "systems/ed4e/templates/actor/partials/defenses.hbs",
-     "systems/ed4e/templates/actor/partials/initiative.hbs"
+     "systems/ed4e/templates/actor/partials/initiative.hbs",
+     "systems/ed4e/templates/actor/partials/init-move-karma.hbs"
     ]);
   };

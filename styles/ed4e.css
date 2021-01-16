@@ -23,7 +23,6 @@ table tr:nth-child(even) {
     display:flex;
     flex-flow:row nowrap;
     justify-content:space-between;
-
 }
 
 .ed4e input[type='checkbox'] {
@@ -35,14 +34,13 @@ table tr:nth-child(even) {
     justify-content:stretch;
 }
 .ed4e .flex-item {
-    overflow-y: auto;
-    height:100%;
-    width:auto;
     margin-left:2px;
     margin-right:2px;
     flex:1;
-    align-items:flex-start;
-    overflow-x:hidden;
+}
+
+.ed4e .flex-item table {
+    flex:1;
 }
 
 .inset {
@@ -153,4 +151,10 @@ flex-direction:row;
 
 .ed4e .tabs .item.active {
     text-shadow:  0 0 8px gold;
+}
+
+.table-title {
+    text-transform:uppercase;
+    font-weight:bold;
+    text-align: center;
 }

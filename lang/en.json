@@ -34,9 +34,10 @@
             "current_damage": "Current Damage",
             "current_damage_brief": "Curr. Dmg",
             "blood_magic": "Blood Magic",
-            "uncon": "Unconscious",
-            "death": "Death",
-            "wound": "Wound",
+            "blood_magic_brief": "Bld. Mag.",
+            "uncon": "Uncon. Thr.",
+            "death": "Death Thr.",
+            "wound": "Wound Thr.",
             "wounds": "Wounds",
             "recov_avail": "Recovery Tests",
             "recov_step": "Recovery Dice"
@@ -114,7 +115,11 @@
             "passion": "Passion",
             "questor": "Questor",
             "spirit": "Spirit",
-            "elemental": "Elemental"
+            "elemental": "Elemental",
+            "moverate": "Movement Rate",
+            "carry": "Carry Capacity",
+            "encumbrance": "Encumbrance",
+            "armor":"Armor"
         },
         "race": {
             "dwarf": "Dwarf",

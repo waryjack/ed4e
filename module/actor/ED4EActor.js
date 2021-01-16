@@ -31,6 +31,7 @@ export class ED4EActor extends Actor {
         this._prepareDefenses(data);
         this._prepareArmor(data);
         this._prepareHealth(data);
+        this._prepareInit(data);
         
         
     }
@@ -121,6 +122,16 @@ export class ED4EActor extends Actor {
         health.damage.max = deathTh;
 
         setProperty(this, "data.data.health", health);
+    }
+
+    _prepareInit(data) {
+        let init = data.initiative;
+        let initStep = data.attributes.dexterity.step + init.armor_mod;
+        init.step = initStep;
+        init.dice = StepUtil.getDiceText(initStep);
+        init.expr = StepUtil.getDiceExpr(initStep);
+
+        setProperty(this, "data.data.initiative", init);
     }
 
 }
