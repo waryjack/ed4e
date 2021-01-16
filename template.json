@@ -201,6 +201,7 @@
             "templates":["common"]
         },
         "ability":{
+            "templates":["common"],
             "subtype":"",
             "rank":0,
             "attribute":"",
@@ -212,10 +213,12 @@
             "asSkill":false
         },
         "thread_item":{
+            "templates":["common"],
             "rank":0,
             "effect":0
         },
         "spell":{
+            "templates":["common"],
             "circle":0,
             "threads":0,
             "weave_prior":0,

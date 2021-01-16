@@ -144,8 +144,13 @@ export class ED4EActor extends Actor {
     _prepareItems(data) {
         const items = data.items;
        //  console.warn("items before: ", items);
-
+        let totalWeight = 0;
         items.forEach((item) => {
+            
+            console.warn("item: ", item);
+            let itemWeight = item.data.common.weight;
+            totalWeight += itemWeight;
+            
             if(item.type == "ability") {
                 let comstep = item.data.rank + data.data.attributes[item.data.attribute].step;
                 item.data.step = comstep;
@@ -158,6 +163,9 @@ export class ED4EActor extends Actor {
                 item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
             }
         });
+
+        console.warn("Total Weight: ", totalWeight);
+        setProperty(this, "data.data.load", totalWeight);
 
         // console.warn("items after: ", items);
         // setProperty(this, "data.items", items);

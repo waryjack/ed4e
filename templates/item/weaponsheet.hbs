@@ -29,14 +29,14 @@
                         </td>
                         
                         <td>
-                            <input type="text" class="ed4e value-input-wide" name="data.value" value="{{data.value}}" data-dtype="Number" />
+                            <input type="text" class="ed4e value-input-wide" name="data.common.value" value="{{data.common.value}}" data-dtype="Number" />
                         </td>
                         <td>
-                            <input type="text" class="ed4e value-input" name="data.weight" value="{{data.weight}}" data-dtype="Number" />
+                            <input type="text" class="ed4e value-input" name="data.common.weight" value="{{data.common.weight}}" data-dtype="Number" />
                         </td>
                         <td>
-                            <select name="data.availability" id="avtype-select">
-                                {{#select data.availability}}
+                            <select name="data.common.availability" id="avtype-select">
+                                {{#select data.common.availability}}
                                 <option value="everyday">{{localize "ED4E.availability.everyday"}}</option>
                                 <option value="average">{{localize "ED4E.availability.average"}}</option>
                                 <option value="unusual">{{localize "ED4E.availability.unusual"}}</option>
