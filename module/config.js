@@ -1,8 +1,8 @@
 export const ED4E = {
 
         steps : {
-            s1: "1d1",
-            s2: "1d2",
+            s1: "1d4-2",
+            s2: "1d4-1",
             s3: "1d4",
             s4: "1d6",
             s5: "1d8",

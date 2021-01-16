@@ -4,6 +4,7 @@ import { ED4E } from "./config.js";
 import ED4EActorSheet from "./sheets/actor/ED4EActorSheet.js";
 import ED4EItemSheet from "./sheets/item/ED4EItemSheet.js";
 import { ED4EActor } from "./actor/ED4EActor.js";
+import { preloadHandlebarsTemplates } from "./templates.js";
 
 
 Hooks.once("init", () => {
@@ -19,9 +20,9 @@ Hooks.once("init", () => {
        ED4EActor
     };
 
-    CONFIG.debug.hooks = true;
+    //CONFIG.debug.hooks = true;
     CONFIG.Actor.entityClass = ED4EActor;
-    // CONFIG.Item.entityClass = ED4EItem;
+    // CONFIG.Item.entityClass = ED4EItem; 
     
     // Unregister core sheets
     Actors.unregisterSheet("core", ActorSheet);
@@ -37,7 +38,7 @@ Hooks.once("init", () => {
     //  registerSettings();
     
     // Register partials templates
-    // preloadHandlebarsTemplates();
+    preloadHandlebarsTemplates();
    
     // Register handlebar helpers
     Handlebars.registerHelper('ife', function(arg1, arg2, options) {
@@ -81,13 +82,14 @@ Hooks.once("init", () => {
         return game.settings.get('ewhen', arg); 
     });
 
-    Handlebars.registerHelper("concat", function(...args){
-        let result = "";
-        for (let a of args) {
-            result += a;
+    Handlebars.registerHelper('concat', function() {
+        var outStr = '';
+        for(var arg in arguments){
+            if(typeof arguments[arg]!='object'){
+                outStr += arguments[arg];
+            }
         }
-
-        return result;
+        return outStr;
     });
 
     Handlebars.registerHelper("and", function(a, b){

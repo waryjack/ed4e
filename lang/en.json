@@ -27,14 +27,14 @@
         "armor":{
             "physical": "Physical Armor",
             "phys_brief": "Physical",
-            "mystical": "Mystical Armor",
-            "myst_brief": "Mystical"
+            "mystic": "Mystic Armor",
+            "myst_brief": "Mystic"
         },
         "health": {
             "current_damage": "Current Damage",
             "current_damage_brief": "Curr. Dmg",
             "blood_magic": "Blood Magic",
-            "uncon": "Unconsciousness",
+            "uncon": "Unconscious",
             "death": "Death",
             "wound": "Wound",
             "wounds": "Wounds",
@@ -80,7 +80,11 @@
             "talent": "Talent",
             "skill": "Skill",
             "attribute": "Attribute",
+            "attributes": "Attributes",
             "initiative": "Initiative",
+            "defense": "Defense",
+            "defenses": "Defenses",
+            "physdef": "Physical Defense",
             "damage": "Damage",
             "wound": "Wound",
             "wounds": "Wounds",

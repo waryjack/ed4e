@@ -1,3 +1,5 @@
+import { StepUtil } from "../utility/steps.js";
+
 export class ED4EActor extends Actor {
 
   
@@ -44,14 +46,18 @@ export class ED4EActor extends Actor {
     */
 
     _prepareAttributes(data) {
-        const atts = data.data.attributes;
+        console.warn("data: ", data);   
+        const atts = data.attributes;
 
+        console.warn("Atts: ", atts);
         for (let att in atts) {
             let newStep = 0;
-            let rating = att.value;
-            newStep = Math.ceiling(rating/3) + 1;
-
+            let rating = atts[att].value;
+            newStep = Math.ceil(rating/3) + 1;
+            console.warn("att, value, new step: ", att, rating, newStep);
             atts[att].step = newStep;
+            atts[att].dice = StepUtil.getDiceText(newStep);
+            atts[att].expr = StepUtil.getDiceExpr(newStep);       
         }
 
         console.log("revised atts", atts);
@@ -61,8 +67,8 @@ export class ED4EActor extends Actor {
     }
 
     _prepareDefenses(data) {
-        let atts = data.data.attributes;
-        let defs = data.data.defenses;
+        let atts = data.attributes;
+        let defs = data.defenses;
         let socDef = 0;
         let physDef = 0;
         let mystDef = 0;
@@ -71,21 +77,26 @@ export class ED4EActor extends Actor {
         mystDef = Math.ceil(atts.perception.value/2) + 1;
         socDef = Math.ceil(atts.charisma.value/2) + 1;
 
-        defs.physical.value = physDef;
-        defs.mystic.value = mystDef;
-        defs.social.value = socDef;
+        defs.physical.base = physDef;
+        defs.mystic.base = mystDef;
+        defs.social.base = socDef;
+
+        defs.physical.value = defs.physical.mod + defs.physical.base;
+        defs.social.value = defs.social.mod + defs.physical.base;
+        defs.mystic.value = defs.mystic.mod + defs.mystic.base;
 
         setProperty(this, "data.data.defenses", defs);
 
     }
 
     _prepareArmor(data) {
-        let atts = data.data.attributes;
-        let armor = data.data.armor;
+        let atts = data.attributes;
+        let armor = data.armor;
 
         let mysticArmor = Math.ceil(atts.willpower.value/5);
 
-        armor.mystic = mysticArmor;
+        armor.mystic.base = mysticArmor;
+        armor.mystic.value = armor.mystic.base + armor.mystic.mod;
 
         setProperty(this, "data.data.armor", armor);
 
@@ -93,8 +104,8 @@ export class ED4EActor extends Actor {
     }
 
     _prepareHealth(data) {
-        let atts = data.data.attributes;
-        let health = data.data.health;
+        let atts = data.attributes;
+        let health = data.health;
 
         let unconTh = atts.toughness.value * 2;
         let deathTh = unconTh + atts.toughness.step;
@@ -104,7 +115,8 @@ export class ED4EActor extends Actor {
         health.thresholds.uncon = unconTh;
         health.thresholds.death = deathTh;
         health.thresholds.wound = woundTh;
-        health.recovery.max = recovTotal - health.recovery.used;
+        health.recovery.max = recovTotal;
+        health.recovery.avail = health.recovery.max - health.recovery.used;
         health.recovery.step = atts.toughness.step;
         health.damage.max = deathTh;
 

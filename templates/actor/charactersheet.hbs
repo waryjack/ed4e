@@ -4,22 +4,29 @@
         <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
     </header>
 
-    <section class="items">
-        <h3>Owned Items</h3>
-        <ol class="actor-items">
-        {{#each actor.items as |item id|}}
-            <li class="actor-item" data-item-id="{{id}}">
-                <div class="item-name">
-                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                    <h4>{{item.name}}</h4>
-                </div>
-                <div class="item-controls">
-                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-                </div>
-            </li>
-        {{/each}}
-        </ol>
+    {{!-- Attributes / Defenses / Initiative --}}
+    <div class="ed4e flexrow">
+        {{!--Attributes partial--}}
+            {{> "systems/ed4e/templates/actor/partials/attributes.hbs"}}
+        {{!--Defenses Partial--}}
+            {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
+        {{!--Initiative Partial--}}
+    </div>
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="ed4e item" data-tab="main">Essentials</a>
+        <a class="ed4e item" data-tab="magic">Magic</a>
+        <a class="ed4e item" data-tab="matrix">Equipment</a>
+        <a class="ed4e item" data-tab="legend">Legend</a>
+    </nav>
+    
+    {{!--Body Divs--}}
+    <section class="sheet-body">
+        <div class="tab main" data-group="primary" data-tab="main">Main Stuff</div>
+        <div class="tab magic" data-group="primary" data-tab="magic">Magic Stuff</div>
+        <div class="tab gear" data-group="primary" data-tab="gear">Equipment Stuff</div>
+        <div class="tab legend" data-group="primary" data-tab="legend">Legend Stuff</div>
     </section>
+    
 </form>
 

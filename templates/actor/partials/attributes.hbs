@@ -1,0 +1,19 @@
+<div class="ed4e flex-item">
+    <table>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+            <th>Step</th>
+            <th>Dice</th>
+        </tr>
+        {{#each data.attributes as |att name|}}
+        {{log (concat "ED4E.attributes." name)}}
+        <tr>
+        <td>{{localize (concat "ED4E.attributes." name)}}</td>
+        <td><input type="text" class="ed4e value-input" name="data.attributes.{{name}}.value" value="{{att.value}}" data-dtype="Number" /></td>
+        <td><input type="text" class="ed4e value-input" name="data.attributes.{{name}}.step" value="{{att.step}}" data-dtype="Number" /></td>
+        <td>{{att.dice}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
