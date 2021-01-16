@@ -140,9 +140,10 @@ export class ED4EActor extends Actor {
         setProperty(this, "data.data.initiative", init);
     }
 
+    // Iterate through items and calculate full step for items what need it
     _prepareItems(data) {
         const items = data.items;
-        console.warn("items before: ", items);
+       //  console.warn("items before: ", items);
 
         items.forEach((item) => {
             if(item.type == "ability") {
@@ -158,7 +159,7 @@ export class ED4EActor extends Actor {
             }
         });
 
-        console.warn("items after: ", items);
+        // console.warn("items after: ", items);
         // setProperty(this, "data.items", items);
     }
 }
