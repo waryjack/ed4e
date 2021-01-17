@@ -5,17 +5,38 @@
 
 <div class="ed4e roll-dialog">
     <h3><strong>{{proper name}} Roll ({{localize "ED4E.jargon.step"}} {{step}} / {{localize "ED4E.jargon.dice"}} {{dice}})</strong></h3>
-    <div class="ed4e flexrow">
+    <div class="ed4e flexcol">
         <div class="ed4e flex-item">
-            <label for="rollmod">Modifier</label>
-            <input class="ed4e value-input-wide" type="text" id="rollmod" name="rollmod" value="0" data-dtype="Number" /> 
+            <table>
+                <tr>
+                    <td>Step Modifier</td>
+                    <td><input class="ed4e value-input-wide" type="text" id="stepmod" name="stepmod" value="0" data-dtype="Number"/></td>
+                </tr>
+                <tr>
+                    <td>Result Modifier</td>
+                    <td><input class="ed4e value-input-wide" type="text" id="rollmod" name="rollmod" value="0" data-dtype="Number" /> </td>
+                </tr>
+                {{#if karma}}
+                <tr>
+                    <td>Add Karma Die</td>
+                    <td>
+                        <select name="karmadie" id="karmadie">
+                            {{#select karmadie}}
+                            <option value=""></option>
+                            <option value="1d4">1d4</option>
+                            <option value="1d6">1d6</option>
+                            <option value="1d8">1d8</option>
+                            <option value="1d10">1d10</option>
+                            <option value="1d12">1d12</option>
+                            <option value="1d20">1d20</option>
+                            {{/select}}
+                        </select>
+
+                    </td>
+                </tr>
+                {{/if}}
+            </table>
         </div>
-        {{#if karma}}
-        <div class="ed4e flex-item">
-            <label for="useKarma">Spend Karma</label>
-            <input type="checkbox" name="useKarma" id="useKarma" />
-        </div>
-        {{/if}}
     </div>
     <p></p>
     <p></p>

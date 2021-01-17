@@ -31,7 +31,7 @@ export class StepRoll {
                             let finalDiceText = "";
                             
                             let pickedStep = html.find("#pickStep").val();
-                            let useKarma = html.find("#useKarma")[0].checked;
+                            let useKarma = false;
                             let miscmod = "+" + html.find("#rollmod").val();
 
                             let pickedDice = StepUtil.getDiceText(pickedStep);

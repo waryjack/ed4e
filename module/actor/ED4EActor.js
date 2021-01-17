@@ -53,7 +53,7 @@ export class ED4EActor extends Actor {
         console.warn("data: ", data);   
         const atts = data.attributes;
 
-        console.warn("Atts: ", atts);
+        // console.warn("Atts: ", atts);
         for (let att in atts) {
             let newStep = 0;
             let rating = atts[att].value;
@@ -69,7 +69,7 @@ export class ED4EActor extends Actor {
            // use active effect here...in the future
         }
 
-        console.log("revised atts", atts);
+       // console.log("revised atts", atts);
     
         setProperty(this, "data.data.attributes", atts);
 
@@ -181,7 +181,7 @@ export class ED4EActor extends Actor {
         //Armor calcs
         let activeArmor = this.data.items.filter(function(item) {return item.type == "armor" && item.data.equipped});
 
-        console.warn("Active Armor: ", activeArmor);
+        // console.warn("Active Armor: ", activeArmor);
         
         activeArmor.forEach((i) => {
             paBonus += i.data.physical_armor;
@@ -245,7 +245,7 @@ export class ED4EActor extends Actor {
         let totalWeight = 0;
         items.forEach((item) => {
             
-            console.warn("item: ", item);
+            // console.warn("item: ", item);
             let itemWeight = item.data.common.weight;
             totalWeight += itemWeight;
             
@@ -288,6 +288,8 @@ export class ED4EActor extends Actor {
             actorData: actorData,
             karma: showKarma
         }
+
+        console.warn("Dialog Data pre-processing: ", dialogData);
       
         this.processRoll(template, dialogData);
     }
@@ -318,7 +320,7 @@ export class ED4EActor extends Actor {
             showKarma = true;
         }
 
-        console.warn("dice info: ", diceText, diceExpr, diceStep);
+        // console.warn("dice info: ", diceText, diceExpr, diceStep);
 
         let dialogData = {
             isItem: true,
@@ -345,23 +347,35 @@ export class ED4EActor extends Actor {
                         icon: "<i class='fa fa-check'></i>",
                         label: "Roll",
                         callback: (html) => {
+                            
                             let karmaDie = "";
                             let karmaDieText = "";
-                            let useKarma = false;
+                            let adjustedExpr = dialogData.expr;
+                            let adjustedDice = dialogData.dice;
+                            let adjustedStep = dialogData.step;
                             let miscMod = "+" + html.find("#rollmod").val();
-                            dialogData.isItem ? useKarma = false : useKarma = html.find("#useKarma")[0].checked;
-                            console.warn("useKarma: ", useKarma);
-                            if(useKarma) {
-                                karmaDie = "+1d6x6";
-                                karmaDieText = "+1d6";
+                            let stepMod = Number(html.find("#stepmod").val());
+                            let myKarmaDie = html.find("#karmadie").val();
+                            
+                            // console.warn("Adj Step pre, stepMod", adjustedStep, stepMod);
+                            
+                            if(dialogData.karma && myKarmaDie != "") {
+                                let karmaDieType = myKarmaDie.substring(myKarmaDie.indexOf("d")+1);
+                                karmaDie = "+"+myKarmaDie+"x"+karmaDieType;
+                                karmaDieText = "+"+myKarmaDie;
                             }
-                            let finalExpr = dialogData.expr + karmaDie + miscMod;
-                            let finalDiceText = dialogData.dice + karmaDieText + miscMod;
+
+                            if(stepMod != 0) {
+                                adjustedStep = Math.max(1, adjustedStep + stepMod);
+                                adjustedDice = StepUtil.getDiceText(adjustedStep);
+                                adjustedExpr = StepUtil.getDiceText(adjustedStep);
+                            }
+
+                            let finalExpr = adjustedExpr + karmaDie + miscMod;
+                            let finalDiceText = adjustedDice + karmaDieText + miscMod;
                             let msgTemplate = "systems/ed4e/templates/chat/rollmessage.hbs";
                             let roll = new Roll(finalExpr).evaluate();
                             let result = roll.total;
-
-                            console.warn("dialogdata", dialogData);
 
                             let msgData = {
                                 roll:roll,
@@ -370,7 +384,7 @@ export class ED4EActor extends Actor {
                                 mods: miscMod,
                                 karmadie: karmaDie,
                                 dice: finalDiceText,
-                                step: dialogData.step
+                                step: adjustedStep
                             }
 
                             roll.getTooltip().then(tt => Messenger.createChatMessage(tt, msgData, msgTemplate));
