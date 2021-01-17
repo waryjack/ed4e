@@ -19,11 +19,11 @@
         }
       ],
     
-    "initiative":"@initiative.dice + @initiative.misc_mod - @init_penalty.value",
+    "initiative":"@initiative.expr",
     "gridDistance": 2,
     "gridUnits": "yd",
     "primaryTokenAttribute": "@health.damage.value",
-    "secondaryTokenAttribute": "@karma.value",
+    "secondaryTokenAttribute": null,
     "minimumCoreVersion": "0.7.7",
     "compatibleCoreVersion": "0.7.8"
 
