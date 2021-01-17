@@ -1,4 +1,5 @@
 import { StepUtil } from "../utility/steps.js";
+import { Messenger } from "../utility/messenger.js";
 
 export class ED4EActor extends Actor {
 
@@ -62,7 +63,7 @@ export class ED4EActor extends Actor {
             atts[att].expr = StepUtil.getDiceExpr(newStep);       
         }
 
-        data.carry = (atts.strength.step * 5) + 10;
+        data.carry = (atts.strength.value * 10) - 5;
         if (data.load > data.carry) {
            // use active effect here...in the future
         }
@@ -169,5 +170,126 @@ export class ED4EActor extends Actor {
 
         // console.warn("items after: ", items);
         // setProperty(this, "data.items", items);
+    }
+
+    attributeRoll(attr) {
+        const actorData = duplicate(this.data);
+        let template = "systems/ed4e/templates/roll/rolldialog.hbs";
+        let diceText = StepUtil.getDiceText(actorData.data.attributes[attr].step);
+        let diceExpr = StepUtil.getDiceExpr(actorData.data.attributes[attr].step);
+        let showKarma = true;
+        let dialogTitle = "Attribute Roll";
+
+
+        let dialogData = {
+            isItem: false,
+            dlgTitle: dialogTitle,
+            name: attr,
+            step: actorData.data.attributes[attr].step,
+            dice: diceText,
+            expr: diceExpr,
+            actorData: actorData,
+            karma: showKarma
+        }
+      
+        this.processRoll(template, dialogData);
+    }
+
+    itemRoll(id){
+        const actorData = duplicate(this.data);
+        let item = this.getOwnedItem(id);
+        let template = "systems/ed4e/templates/roll/rolldialog.hbs";
+        let diceText = "";
+        let diceExpr = "";
+        let diceStep = 0;
+        let dialogTitle = "";
+        let showKarma = false;
+
+        console.warn(item);
+        // Get item dice info
+        if(item.type == "weapon") {
+            diceText = item.data.data.full_dmg.dice;
+            diceExpr = item.data.data.full_dmg.expr;
+            diceStep = item.data.data.full_dmg.step;
+            dialogTitle = "Damage Roll";
+
+        } else {
+            diceText = item.data.data.dice;
+            diceExpr = item.data.data.expr;
+            diceStep = item.data.data.step;
+            dialogTitle = item.data.data.subtype + " Roll";
+            showKarma = true;
+        }
+
+        console.warn("dice info: ", diceText, diceExpr, diceStep);
+
+        let dialogData = {
+            isItem: true,
+            dlgTitle: dialogTitle,
+            name: item.name,
+            step: diceStep,
+            dice: diceText,
+            expr: diceExpr,
+            actorData: actorData,
+            karma: showKarma
+        }
+
+        this.processRoll(template, dialogData);
+    }
+
+    processRoll(template, dialogData) {
+
+        renderTemplate(template, dialogData).then((dlg) => {
+            new Dialog({
+                title:dialogData.dlgTitle,
+                content:dlg,
+                buttons:{
+                    roll: {
+                        icon: "<i class='fa fa-check'></i>",
+                        label: "Roll",
+                        callback: (html) => {
+                            let karmaDie = "";
+                            let karmaDieText = "";
+                            let useKarma = false;
+                            let miscMod = "+" + html.find("#rollmod").val();
+                            dialogData.isItem ? useKarma = false : useKarma = html.find("#useKarma")[0].checked;
+                            console.warn("useKarma: ", useKarma);
+                            if(useKarma) {
+                                karmaDie = "+1d6x6";
+                                karmaDieText = "+1d6";
+                            }
+                            let finalExpr = dialogData.expr + karmaDie + miscMod;
+                            let finalDiceText = dialogData.dice + karmaDieText + miscMod;
+                            let msgTemplate = "systems/ed4e/templates/chat/rollmessage.hbs";
+                            let roll = new Roll(finalExpr).evaluate();
+                            let result = roll.total;
+
+                            console.warn("dialogdata", dialogData);
+
+                            let msgData = {
+                                roll:roll,
+                                result:result,
+                                name: dialogData.name,
+                                mods: miscMod,
+                                karmadie: karmaDie,
+                                dice: finalDiceText,
+                                step: dialogData.step
+                            }
+
+                            roll.getTooltip().then(tt => Messenger.createChatMessage(tt, msgData, msgTemplate));
+
+                        }
+                    },
+                    close: {
+                        icon: "<i class='fa fa-times'></i>",
+                        label: "Cancel",
+                        callback: () => { return; }
+                    }
+                },
+                default:"close",
+
+            },{width:300}).render(true);
+        });
+
     }
 }

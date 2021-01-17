@@ -1,22 +1,21 @@
-<div class="ed4e flex-item inset">
-    <h3 class="inv-header"><div>{{localize "ED4E.jargon.skill"}}s</div>
-                        <a class="add-item" title="Add Talent" data-type="ability" data-subtype="skill">
-                            <i class="fas fa-plus-square"></i>
-                        </a>
-    </h3>
+<div class="ed4e flex-item">
     <table class="item-table">
         <tr>
-            <th style="text-align:left;">{{localize "ED4E.jargon.skill"}}</th>
+            <th><a class="add-item" title="Add Talent" data-type="ability" data-subtype="skill">
+                            <i class="fas fa-plus-square"></i>
+                        </a></th>
+            <th style="text-align:left">{{localize "ED4E.jargon.skill"}}</th>
             <th>{{localize "ED4E.jargon.rank"}}</th>
             <th>{{localize "ED4E.jargon.attr"}}</th>
             <th>{{localize "ED4E.jargon.step"}}</th>
             <th>{{localize "ED4E.jargon.dice"}}</th>
             <th>{{localize "ED4E.jargon.strain"}}</th>
-            <th>Edit</th>
+            <th></th>
         </tr>
             {{#each skills as |skill skillName|}}
             <tr style="text-align:center">
-                <td style="text-align:left !important">{{skill.name}}</td>
+                 <td><a title="Roll" class="item-roll weapon-image" data-item-id="{{skill._id}}"><img src="{{skill.img}}" height="24px" width="24px"/></td>
+                <td style="text-align:left">{{skill.name}}</td>
                 <td>{{skill.data.rank}}</td>
                 <td>{{localize (concat "ED4E.attributes_short." skill.data.attribute)}}</td>
                 <td>{{skill.data.step}}</td>

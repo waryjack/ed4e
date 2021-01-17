@@ -1,20 +1,19 @@
-<div class="ed4e flex-item inset">
-     <h3 class="inv-header"><div>{{localize "ED4E.jargon.weapon"}}s</div>
-                        <a class="add-item" title="Add Armor" data-type="armor">
-                            <i class="fas fa-plus-square"></i>
-                        </a>
-    </h3>
+<div class="ed4e flex-item">
     <table class="item-table">
         <tr>
+            <th><a class="add-item" title="Add Weapon" data-type="weapon">
+                            <i class="fas fa-plus-square"></i>
+                        </a></th>
             <th style="text-align:left;">{{localize "ED4E.jargon.weapon"}}</th>
             <th>{{localize "ED4E.jargon.minstr"}}</th>
             <th>Base {{localize "ED4E.jargon.damage"}} {{localize "ED4E.jargon.step"}}</th>
-            <th>{{localize "ED4E.jargon.step"}}/{{localize "ED4E.jargon.dice"}}</th>
+            <th>Dmg. {{localize "ED4E.jargon.step"}}/{{localize "ED4E.jargon.dice"}}</th>
             <th>{{localize "ED4E.jargon.rangeshortlong"}}</th>
             <th></th>
         </tr>
             {{#each weapons as |weapon wepName|}}
             <tr style="text-align:center">
+                <td><a title="Roll Damage" class="item-roll weapon-image" data-item-id="{{weapon._id}}"><img src="{{weapon.img}}" height="24px" width="24px"/></td>
                 <td style="text-align:left">{{weapon.name}}</td>
                 <td>{{weapon.data.str_min}}</td>
                 <td>{{weapon.data.base_dmg}}</td>

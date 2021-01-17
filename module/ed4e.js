@@ -6,6 +6,7 @@ import ED4EItemSheet from "./sheets/item/ED4EItemSheet.js";
 import { ED4EActor } from "./actor/ED4EActor.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { StepUtil } from "./utility/steps.js";
+import { StepRoll } from "./utility/steproll.js";
 
 
 Hooks.once("init", () => {
@@ -40,7 +41,7 @@ Hooks.once("init", () => {
     
     // Register partials templates
     preloadHandlebarsTemplates();
-   
+
     // Register handlebar helpers
     Handlebars.registerHelper('ife', function(arg1, arg2, options) {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
@@ -112,6 +113,14 @@ Hooks.once("init", () => {
 /**
  * Hooks for setting the Step value of an item when it's added
  */
+
+Hooks.once("ready", () => {
+    // Listen for dice icon click
+    const diceIconSelector = '#chat-controls';
+    $(document).on('click', diceIconSelector, () => { 
+        StepRoll.prompt();
+    });
+});
 
 Hooks.on("updateOwnedItem", (actor, item, changed) => {
 

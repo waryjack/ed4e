@@ -1,23 +1,22 @@
-<div class="ed4e flex-item inset">
-    <h3 class="inv-header"><div>{{localize "ED4E.jargon.talent"}}s</div>
-                        <a class="add-item" title="Add Talent" data-type="ability" data-subtype="talent">
-                            <i class="fas fa-plus-square"></i>
-                        </a>
-    </h3>
+<div class="ed4e flex-item">
     <table class="item-table">
         <tr>
+            <th><a class="add-item" title="Add Talent" data-type="ability" data-subtype="talent">
+                            <i class="fas fa-plus-square"></i>
+                        </a></th>
             <th style="text-align:left;">{{localize "ED4E.jargon.talent"}}</th>
             <th>{{localize "ED4E.jargon.rank"}}</th>
             <th>{{localize "ED4E.jargon.attr"}}</th>
             <th>{{localize "ED4E.jargon.step"}}</th>
             <th>{{localize "ED4E.jargon.dice"}}</th>
             <th>{{localize "ED4E.jargon.strain"}}</th>
-            <th>Edit</th>
+            <th></th>
         </tr>
             {{#each talents as |talent talName|}}
             {{log "TALENT: " talent}}
             <tr style="text-align:center">
-                <td style="text-align:left !important;">{{talent.name}} {{#if talent.data.asSkill}}*{{/if}}</td>
+                <td style="text-align:left !important;"><a title="Roll" class="item-roll weapon-image" data-item-id="{{talent._id}}"><img src="{{talent.img}}" height="24px" width="24px"/></td>
+                <td style="text-align:left">{{talent.name}} {{#if talent.data.asSkill}}*{{/if}}</td>
                 <td>{{talent.data.rank}}</td>
                 <td>{{localize (concat "ED4E.attributes_short." talent.data.attribute)}}</td>
                 <td>{{talent.data.step}}</td>

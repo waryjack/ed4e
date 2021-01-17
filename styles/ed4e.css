@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&display=swap');
+
 .ed4e table, th {
     border:none;
 }
@@ -8,6 +11,11 @@
 
 .ed4e select {
     width:100%;
+}
+
+.ed4e .window-content {
+    background:url("../assets/seamless_parch2.jpg");
+    background-repeat:repeat;
 }
 
 .item-table tr {
@@ -47,6 +55,7 @@ table tr:nth-child(even) {
     padding:6px;
     margin-top:6px;
     margin-bottom:6px;
+    border:1px solid black;
     box-shadow: inset 0px 0px 10px rgba(0,0,0,0.75);
 }
 
@@ -58,6 +67,7 @@ table tr:nth-child(even) {
     width:auto;
     margin-left:2px;
     margin-right:2px;
+    font-family: 'IM Fell Double Pica SC', serif;
     flex:1;
     align-items:flex-start;
     text-align:center;
@@ -90,7 +100,7 @@ flex-direction:row;
     margin-left:auto;
     margin-bottom:2px;
     margin-right:2px;
-    background:rgb(46, 41, 41); 
+    background:rgb(255, 188, 44); 
     border:1px solid rgb(0, 0, 0);
     -webkit-border-radius: 4px; 
     -moz-border-radius: 4px; 
@@ -128,9 +138,10 @@ flex-direction:row;
     border-bottom:none !important;
 }
 
+
 .weapon-image:hover img {
     content: url('../assets/dice-target.svg');
-    /* filter:invert(1); */
+    filter:invert(1);
   
   }
 
@@ -157,4 +168,5 @@ flex-direction:row;
     text-transform:uppercase;
     font-weight:bold;
     text-align: center;
+    font-family: 'IM Fell Double Pica SC', serif;
 }

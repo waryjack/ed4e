@@ -1,0 +1,27 @@
+<form class="s7 roll-dialog norm-color">
+ <header class="roll-header">
+        <h1>{{dialogName}}</h1>
+    </header>
+
+<div class="ed4e roll-dialog">
+    <h3><strong>General Roll</strong></h3>
+    <div class="ed4e flexrow">
+    <select name="pickStep" id="pickStep">
+        {{#each stepData as |data index|}}
+            <option value="{{index}}">Step {{index}} / {{data.dice}}</option>
+        {{/each}}
+    </select>
+        <div class="ed4e flex-item">
+            <label for="rollmod">Modifier</label>
+            <input class="ed4e value-input-wide" type="text" id="rollmod" name="rollmod" value="0" data-dtype="Number" /> 
+        </div>
+        {{#if karma}}
+        <div class="ed4e flex-item">
+            <label for="useKarma">Spend Karma</label>
+            <input type="checkbox" name="useKarma" id="useKarma" />
+        </div>
+        {{/if}}
+    </div>
+    <p></p>
+    <p></p>
+</div>

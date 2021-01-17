@@ -58,7 +58,7 @@ export default class ED4EActorSheet extends ActorSheet {
             html.find('.effect-toggle').click(this._toggleEffectLine.bind(this));
             html.find('.equip-item').change(this._equipItem.bind(this));
             html.find('.item-roll').click(this._onRollItem.bind(this));
-            html.find('.spec-roll').click(this._onRollSpecial.bind(this));
+            html.find('.attr-roll').click(this._onAttributeRoll.bind(this));
         }
 
         _onInlineEdit(e){
@@ -137,10 +137,16 @@ export default class ED4EActorSheet extends ActorSheet {
         }
 
         _onRollItem(e) {
-
+            e.preventDefault();
+            let element=e.currentTarget;
+            let itemId = element.dataset.itemId;
+            return this.actor.itemRoll(itemId);
         }
 
-        _onRollSpecial(e) {
-
+        _onAttributeRoll(e) {
+            e.preventDefault();
+            let element = e.currentTarget;
+            let attr = element.dataset.attrName;
+            return this.actor.attributeRoll(attr);
         }
 }

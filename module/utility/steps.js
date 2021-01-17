@@ -24,6 +24,10 @@ export class StepUtil {
             {dice:"1d20+1d8+1d6", expr:"1d20x20+1d8x8+1d6x6"}
         ]   
 
+    static getStepTable() {
+        return this.steps;
+    }
+    
     static getDiceData(step) {
         return this.steps[step];
     }
