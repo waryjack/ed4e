@@ -1,0 +1,7 @@
+<select name="data.discipline" id="data.discipline">
+    {{#select data.discipline}}
+    {{#each config.discipline as |locstring disc|}}
+    <option value="{{disc}}" {{#if (eq data.discpline disc)}}selected{{/if}}>{{localize locstring}}</option>
+    {{/each}}
+    {{/select}}
+</select>

@@ -1,0 +1,42 @@
+<div class="ed4e flex-item">
+    <table class="item-table">
+        <tr>
+            <th><a class="add-item" title="Add Armor" data-type="armor">
+                            <i class="fas fa-plus-square"></i>
+                        </a></th>
+            <th>Equip</th>
+            <th style="text-align:left;">{{localize "ED4E.jargon.armor"}}</th>
+            <th>{{localize "ED4E.jargon.type"}}</th>
+            <th>{{localize "ED4E.jargon.physical"}}</th>
+            <th>{{localize "ED4E.jargon.mystic"}}</th>
+            <th>{{localize "ED4E.jargon.initiative_penalty"}}</th>
+            <th>Shatter</th>
+            <th>{{localize "ED4E.jargon.value"}}</th>
+            <th>{{localize "ED4E.jargon.weight"}}</th>
+            <th>{{localize "ED4E.jargon.availability"}}</th>
+            <th></th>
+        </tr>
+            {{#each armor as |item itemName|}}
+            <tr style="text-align:center">
+                <td></td>
+                <td class="item-name item" data-item-id="{{item._id}}"><input type="checkbox" class="equip-item" name="item.data.equipped" {{checked item.data.equipped}}/></td>
+                <td style="text-align:left">{{item.name}}</td>
+                <td>{{item.data.type}}</td>
+                {{#if (eq item.data.type "armor")}}
+                <td>{{item.data.physical_armor}}</td>
+                <td>{{item.data.mystic_armor}}</td>
+                {{/if}}
+                {{#if (eq item.data.type "shield")}}
+                <td>{{item.data.physical_defense}}</td>
+                <td>{{item.data.mystic_defense}}</td>
+                {{/if}}
+                <td>{{item.data.init_mod}}</td>
+                <td>{{#if (eq item.data.type "armor")}}N/A{{else}}{{item.data.shatter}}{{/if}}</td>
+                <td>{{item.data.common.value}}</td>
+                <td>{{item.data.common.weight}}</td>
+                <td>{{item.data.common.availability}}</td>
+                <td><a class="item-edit item" data-item-id="{{item._id}}"><i class="fas fa-edit"></i></a> <a class="item-delete item" data-item-id="{{item._id}}"><i class='fas fa-trash'></i></a></td>
+            </tr>
+            {{/each}}
+    </table>
+</div>

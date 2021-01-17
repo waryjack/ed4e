@@ -32,8 +32,14 @@ export default class ED4EActorSheet extends ActorSheet {
             data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
             data.skills = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "skill"});
             data.talents = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "talent"});
+            data.equipment = data.items.filter(function(item) {return item.type == "equipment"});
+            data.armor = data.items.filter(function(item) {return item.type == "armor"});
+            data.spells = data.items.filter(function(item) { return item.type == "spell"});
+            data.threaditems = data.items.filter(function(item) { return item.type == "thread_item"});
             
-            console.warn(data.talents);
+
+
+
             return data;
 
         }
@@ -59,6 +65,7 @@ export default class ED4EActorSheet extends ActorSheet {
             html.find('.equip-item').change(this._equipItem.bind(this));
             html.find('.item-roll').click(this._onRollItem.bind(this));
             html.find('.attr-roll').click(this._onAttributeRoll.bind(this));
+            html.find('.select-race').change(this._onSelectRace.bind(this));
         }
 
         _onInlineEdit(e){
@@ -133,6 +140,24 @@ export default class ED4EActorSheet extends ActorSheet {
         }
 
         _equipItem(e) {
+            e.preventDefault();
+            let element = e.currentTarget;
+            let itemId = element.closest(".item").dataset.itemId;
+            let item = this.actor.getOwnedItem(itemId);
+            
+            let subType = item.data.data.type;
+
+            console.warn("Subtype: ", subType);
+
+            let itemList = this.actor.items.filter((item) => {return item.data.data.type == subType});
+
+            itemList.forEach((i) => {
+                i.update({"data.equipped": false});
+            });
+
+            let val = element.checked;
+            return item.update({"data.equipped":val});
+
 
         }
 
@@ -148,5 +173,10 @@ export default class ED4EActorSheet extends ActorSheet {
             let element = e.currentTarget;
             let attr = element.dataset.attrName;
             return this.actor.attributeRoll(attr);
+        }
+
+        _onSelectRace(e) {
+            e.preventDefault();
+            
         }
 }

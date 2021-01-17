@@ -125,14 +125,15 @@
                 "copper":0,
                 "silver":0,
                 "gold":0,
-                "orichalcum":0
+                "orichalcum":0,
+                "other":""
             }
         },
         "character":{
             "templates":["attributes","health","defenses","armor","initiative", "wealth"],
             "discipline":"",
             "circle":"",
-            "race":"",
+            "race":"human",
             "sex":"",
             "age":"",
             "height":"",
@@ -154,7 +155,11 @@
             "movement":0,
             "carry":0,
             "load":0,
-            "load_penalty":0
+            "load_penalty":0,
+            "r_armor_bonus":0,
+            "r_def_bonus":0,
+            "r_wound_bonus":0,
+            "r_traits":""
         }
     },
     "Item":{
@@ -189,13 +194,16 @@
             }
         },
         "armor":{
+            "type":"armor",
             "templates":["common"],
-            "type":"",
-            "physical_rating":0,
-            "mystic_rating":0,
+            "physical_armor":0,
+            "mystic_armor":0,
+            "physical_defense":0,
+            "mystic_defense":0,
+            "shatter":0,
             "init_mod":0,
             "living":false,
-            "shield":false
+            "equipped":false
         },
         "equipment":{
             "templates":["common"]
@@ -215,7 +223,7 @@
         "thread_item":{
             "templates":["common"],
             "rank":0,
-            "effect":0
+            "effect":""
         },
         "spell":{
             "templates":["common"],

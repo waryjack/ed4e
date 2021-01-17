@@ -1,0 +1,45 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+
+
+     <section class="sheet-body">
+        <div class="s7 flexcol">
+            
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.cost"}}</th>
+                        <th>{{localize "ED4E.jargon.weight"}} (lbs)</th>
+                        <th>{{localize "ED4E.jargon.availability"}}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.common.value" value="{{data.common.value}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.common.weight" value="{{data.common.weight}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <select name="data.common.availability" id="avtype-select">
+                                {{#select data.common.availability}}
+                                <option value="everyday">{{localize "ED4E.availability.everyday"}}</option>
+                                <option value="average">{{localize "ED4E.availability.average"}}</option>
+                                <option value="unusual">{{localize "ED4E.availability.unusual"}}</option>
+                                <option value="rare">{{localize "ED4E.availability.rare"}}</option>
+                                <option value="exotic">{{localize "ED4E.availability.exotic"}}</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                        
+                    </tr>
+                </table>
+                 <div class="ed4e flex-item">
+                    <h4>Description</h4>
+                    <textarea name="data.common.description">{{data.common.description}}</textarea>
+                </div>
+            
+        </div>
+    </section>
+</form>

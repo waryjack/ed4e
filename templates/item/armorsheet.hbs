@@ -1,0 +1,92 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+
+
+     <section class="sheet-body">
+        <div class="s7 flexcol">
+        
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.type"}}?</th>
+                        <th>{{localize "ED4E.jargon.living_armor"}}?</th>
+                        {{#if (eq data.type "armor")}}
+                        <th>{{localize "ED4E.armor.physical"}}</th>
+                        <th>{{localize "ED4E.armor.mystic"}}</th>
+                        {{/if}}
+                        {{#if (eq data.type "shield")}}
+                        <th>{{localize "ED4E.defenses.physical"}}</th>
+                        <th>{{localize "ED4E.defenses.mystic"}}</th>
+                        <th>Shatter</th>
+                        {{/if}}
+                        <th>{{localize "ED4E.jargon.initiative_penalty"}}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="data.type" id="data.type">
+                                {{#select data.type}}
+                                <option value="armor">{{localize "ED4E.jargon.armor"}}</option>
+                                <option value="shield">{{localize "ED4E.jargon.shield"}}</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="data.living" {{checked data.living}} />
+                        </td>
+                        {{#if (eq data.type "armor")}}
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.physical_armor" value="{{data.physical_armor}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.mystic_armor" value="{{data.mystic_armor}}" data-dtype="Number" />
+                        </td>
+                        {{/if}}
+                        {{#if (eq data.type "shield")}}
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.physical_defense" value="{{data.physical_defense}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.mystic_defense" value="{{data.mystic_defense}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.shatter" value="{{data.shatter}}" data-dtype="Number" />
+                        </td>
+                        {{/if}}
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.init_mod" value="{{data.init_mod}}" data-dtype="Number" />
+                        </td>
+                    </tr>
+                </table>
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.cost"}}</th>
+                        <th>{{localize "ED4E.jargon.weight"}} (lbs)</th>
+                        <th>{{localize "ED4E.jargon.availability"}}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.common.value" value="{{data.common.value}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.common.weight" value="{{data.common.weight}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <select name="data.common.availability" id="avtype-select">
+                                {{#select data.common.availability}}
+                                <option value="everyday">{{localize "ED4E.availability.everyday"}}</option>
+                                <option value="average">{{localize "ED4E.availability.average"}}</option>
+                                <option value="unusual">{{localize "ED4E.availability.unusual"}}</option>
+                                <option value="rare">{{localize "ED4E.availability.rare"}}</option>
+                                <option value="exotic">{{localize "ED4E.availability.exotic"}}</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                        
+                    </tr>
+                </table>
+            
+        </div>
+    </section>
+</form>

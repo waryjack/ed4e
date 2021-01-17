@@ -1,0 +1,7 @@
+<select name="data.race" id="data.race">
+    {{#select data.race}}
+    {{#each config.race as |locstring race|}}
+    <option value="{{race}}" {{#if (eq data.race race)}}selected{{/if}}>{{localize locstring}}</option>
+    {{/each}}
+    {{/select}}
+</select>

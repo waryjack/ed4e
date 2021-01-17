@@ -1,7 +1,34 @@
 <form class="actor-sheet {{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
-        <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5)" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        <div class="ed4e flexrow">
+            <div class="ed4e flex-item" style="flex:1; max-width:72px">
+                <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+            </div>
+            <div class="ed4e flex-item" style="flex:1">
+                <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+            </div>
+            <div class="ed4e flex-item form-group">
+                <table style="background:none;">
+                    <tr>
+                    <th class="table-title">Race</th>
+                    <th class="table-title">Discipline</th>
+                    <th class="table-title">Circle</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td>{{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}</td>
+                        <td> {{> "systems/ed4e/templates/actor/partials/discipline_select.hbs"}}</td>
+                        <td><input id="circ"type="text" class="ed4e value-input-wide" name="data.circle" value="{{data.circle}}" data-dtype="Number"/></td>
+                    </tr>
+                </table>
+                <!--label class="table-title" for="data.race">Race</label>
+                {{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}
+                <label for="data.discipline">Discipline</label>
+                {{> "systems/ed4e/templates/actor/partials/discipline_select.hbs"}}
+                <label for="circ">Circle</label>
+                <input id="circ"type="text" class="ed4e value-input" name="data.circle" value="{{data.circle}}" data-dtype="Number"/-->
+                
+            </div>
+        </div>
     </header>
 
     {{!-- Attributes / Defenses / Initiative --}}
@@ -20,7 +47,7 @@
         <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'IM Fell Double Pica SC', serif; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
             <a class="ed4e item" data-tab="main">Essentials</a>
             <a class="ed4e item" data-tab="magic">Magic</a>
-            <a class="ed4e item" data-tab="matrix">Equipment</a>
+            <a class="ed4e item" data-tab="gear">Equipment</a>
             <a class="ed4e item" data-tab="legend">Legend</a>
         </nav>
         
@@ -35,9 +62,21 @@
                     {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}
                 </div>
             </div>
-            <div class="tab magic" data-group="primary" data-tab="magic">Magic Stuff</div>
-            <div class="tab gear" data-group="primary" data-tab="gear">Equipment Stuff</div>
-            <div class="tab legend" data-group="primary" data-tab="legend">Legend Stuff</div>
+            <div class="tab magic" data-group="primary" data-tab="magic">
+                {{> "systems/ed4e/templates/actor/partials/spells.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/thread-items.hbs"}}
+            </div>
+            <div class="tab gear" data-group="primary" data-tab="gear">
+                {{> "systems/ed4e/templates/actor/partials/armor.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/equipment.hbs"}}
+            </div>
+            <div class="tab legend" data-group="primary" data-tab="legend">
+                <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/bio.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/wealth.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/legend.hbs"}}
+                </div>
+            </div>
         </section>
     
 </form>

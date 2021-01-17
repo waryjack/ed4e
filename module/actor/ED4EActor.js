@@ -29,6 +29,7 @@ export class ED4EActor extends Actor {
         const data = actorData.data;
 
         this._prepareAttributes(data);
+        this._prepareNamegiverRace(data);
         this._prepareDefenses(data);
         this._prepareArmor(data);
         this._prepareHealth(data);
@@ -74,12 +75,73 @@ export class ED4EActor extends Actor {
 
     }
 
+    _prepareNamegiverRace(data) {
+        const racialMods = {
+            dwarf: {
+                move:10,
+                km:4,
+                traits:"Heat sight, strong back"
+            },
+            elf: {
+                move:14,
+                km:4,
+                traits:"Low-light vision"
+            },
+            human: {
+                move:12,
+                km:5,
+                traits:"Versatility"
+            },
+            obsidiman: {
+                move:10,
+                km:3,
+                traits:"Increased Wound Threshold (+3), Natural Armor (+3)"
+            },
+            ork: {
+                move:12,
+                km:5,
+                traits:"Gahad, Low-light vision"
+            },
+            troll: {
+                move:14,
+                km:3,
+                traits:"Heat sight"
+            },
+            tskrang: {
+                move:12,
+                km:4,
+                traits:"Tail combat"
+            },
+            windling:{
+                move:6,
+                km:6,
+                traits:"Astral sight, Flight, Increased Physical Defense (+2), +10 movement when flying"
+            }
+        }
+
+        setProperty(this, "data.data.movement", racialMods[data.race].move);
+        setProperty(this, "data.data.karma.mod", racialMods[data.race].km);
+        setProperty(this, "data.data.r_traits", racialMods[data.race].traits);
+
+        if(data.race == "windling") {
+            setProperty(this, "data.data.r_def_bonus", 2);
+        }
+
+        if(data.race == "obsidiman") {
+            setProperty(this, "data.data.r_wound_bonus", 3);
+            setProperty(this, "data.data.r_armor_bonus", 3);
+        }
+
+    }
+
     _prepareDefenses(data) {
         let atts = data.attributes;
         let defs = data.defenses;
         let socDef = 0;
         let physDef = 0;
         let mystDef = 0;
+        let physDefBonus = 0;
+        let mystDefBonus = 0;
         
         physDef = Math.ceil(atts.dexterity.value/2) + 1;
         mystDef = Math.ceil(atts.perception.value/2) + 1;
@@ -89,9 +151,20 @@ export class ED4EActor extends Actor {
         defs.mystic.base = mystDef;
         defs.social.base = socDef;
 
-        defs.physical.value = defs.physical.mod + defs.physical.base;
-        defs.social.value = defs.social.mod + defs.physical.base;
-        defs.mystic.value = defs.mystic.mod + defs.mystic.base;
+        //Armor calcs
+        let activeArmor = this.data.items.filter(function(item) {return item.type == "armor" && item.data.equipped});
+
+        activeArmor.forEach((i) => {
+            physDefBonus += i.data.physical_defense;
+            mystDefBonus += i.data.mystic_defense;
+        });
+
+
+        defs.physical.value = defs.physical.mod + defs.physical.base + physDefBonus + data.r_def_bonus;
+        defs.social.value = defs.social.mod + defs.social.base 
+        defs.mystic.value = defs.mystic.mod + defs.mystic.base + mystDefBonus;
+
+
 
         setProperty(this, "data.data.defenses", defs);
 
@@ -100,11 +173,24 @@ export class ED4EActor extends Actor {
     _prepareArmor(data) {
         let atts = data.attributes;
         let armor = data.armor;
+        let paBonus = 0;
+        let maBonus = 0;
 
         let mysticArmor = Math.ceil(atts.willpower.value/5);
 
+        //Armor calcs
+        let activeArmor = this.data.items.filter(function(item) {return item.type == "armor" && item.data.equipped});
+
+        console.warn("Active Armor: ", activeArmor);
+        
+        activeArmor.forEach((i) => {
+            paBonus += i.data.physical_armor;
+            maBonus += i.data.mystic_armor;
+        });
+
+        armor.physical.value = paBonus + data.r_armor_bonus;
         armor.mystic.base = mysticArmor;
-        armor.mystic.value = armor.mystic.base + armor.mystic.mod;
+        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus;
 
         setProperty(this, "data.data.armor", armor);
 
@@ -122,7 +208,7 @@ export class ED4EActor extends Actor {
         
         health.thresholds.uncon = unconTh;
         health.thresholds.death = deathTh;
-        health.thresholds.wound = woundTh;
+        health.thresholds.wound = woundTh + data.r_wound_bonus;
         health.recovery.max = recovTotal;
         health.recovery.avail = health.recovery.max - health.recovery.used;
         health.recovery.step = atts.toughness.step;
@@ -133,7 +219,18 @@ export class ED4EActor extends Actor {
 
     _prepareInit(data) {
         let init = data.initiative;
-        let initStep = data.attributes.dexterity.step + init.armor_mod;
+        let armorMod = 0;
+
+        //Armor calcs
+        let activeArmor = this.data.items.filter(function(item) {return item.type == "armor" && item.data.equipped});
+
+        activeArmor.forEach((i) => {
+            armorMod -= i.data.init_mod;
+        });
+
+        init.armor_mod = armorMod;
+
+        let initStep = Math.max(1, data.attributes.dexterity.step + init.armor_mod);
         init.step = initStep;
         init.dice = StepUtil.getDiceText(initStep);
         init.expr = StepUtil.getDiceExpr(initStep);

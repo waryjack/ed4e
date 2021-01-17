@@ -133,7 +133,6 @@ flex-direction:row;
 .effect-info {
     display:none;
     font-style:italic;
-    background:rgb(43, 43, 43);
     border-top:none !important;
     border-bottom:none !important;
 }
