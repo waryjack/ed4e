@@ -19,7 +19,7 @@
         }
       ],
     
-    "initiative":"@initiative.expr",
+    "initiative":"@initiative.expr - @miscmods.misc_init_result",
     "gridDistance": 2,
     "gridUnits": "yd",
     "primaryTokenAttribute": "@health.damage.value",

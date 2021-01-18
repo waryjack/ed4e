@@ -127,10 +127,26 @@
                 "gold":0,
                 "orichalcum":0,
                 "other":""
-            }
+            },
+            "miscmods":{
+                "miscmods":{
+                    "misc_init_step":0,
+                    "misc_init_result":0,
+                    "misc_pa_mod":0,
+                    "misc_ma_mod":0,
+                    "misc_pd_mod":0,
+                    "misc_md_mod":0,
+                    "misc_sd_mod":0,
+                    "misc_death":0,
+                    "misc_wound":0,
+                    "misc_uncon":0,
+                    "misc_move":0,
+                    "misc_carry":0  
+                }
+            }   
         },
         "character":{
-            "templates":["attributes","health","defenses","armor","initiative", "wealth"],
+            "templates":["attributes","health","defenses","armor","initiative", "wealth","miscmods"],
             "discipline":"",
             "circle":"",
             "race":"human",

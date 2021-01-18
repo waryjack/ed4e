@@ -9,7 +9,7 @@ export class StepRoll {
 
         let dialogData = {
             dlgTitle: "Roll",
-            name: "Roll",
+            name: "General",
             stepData: StepUtil.getStepTable(),
             karma: showKarma
         }

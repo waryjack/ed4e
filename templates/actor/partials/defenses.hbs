@@ -3,19 +3,19 @@
         <table class="item-table">
         <tr>
             <td><strong>{{localize "ED4E.defenses.physical"}}</strong></td>
-            <td>{{data.defenses.physical.value}}</td>
+            <td class="center">{{data.defenses.physical.value}}</td>
             <td><strong>/ {{localize "ED4E.jargon.armor"}}</strong></td>
-            <td>{{data.armor.physical.value}}</td>
+            <td class="center">{{data.armor.physical.value}}</td>
         </tr>
         <tr>
             <td><strong>{{localize "ED4E.defenses.mystic"}}</strong></td>
-            <td>{{data.defenses.mystic.value}}</td>
+            <td class="center">{{data.defenses.mystic.value}}</td>
             <td><strong>/ {{localize "ED4E.jargon.armor"}}</strong></td>
-            <td>{{data.armor.mystic.value}}</td>
+            <td class="center">{{data.armor.mystic.value}}</td>
         </tr>
         <tr>
             <td><strong>{{localize "ED4E.defenses.social"}}</strong></td>
-            <td>{{data.defenses.mystic.value}}</td>
+            <td class="center">{{data.defenses.social.value}}</td>
             <td colspan=2></td>
         </tr>
     </table>
@@ -23,12 +23,14 @@
      <table class="item-table">
          <tr>
              <th>Base</th>
-             <th>Armor Mod</th>
+             <th>Armor</th>
+             <th>Misc</th>
              <th>Final</th>
          </tr>
         <tr style="text-align:center;">
             <td>{{data.attributes.dexterity.step}}</td>
             <td>{{data.initiative.armor_mod}}</td>
+            <td><input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/></td>
             <td>{{data.initiative.step}} / {{data.initiative.dice}}</td>
         </tr>
     </table>

@@ -64,7 +64,7 @@ export class ED4EActor extends Actor {
             atts[att].expr = StepUtil.getDiceExpr(newStep);       
         }
 
-        data.carry = (atts.strength.value * 10) - 5;
+        data.carry = (atts.strength.value * 10) - 5 + data.miscmods.misc_carry;
         if (data.load > data.carry) {
            // use active effect here...in the future
         }
@@ -119,7 +119,7 @@ export class ED4EActor extends Actor {
             }
         }
 
-        setProperty(this, "data.data.movement", racialMods[data.race].move);
+        setProperty(this, "data.data.movement", racialMods[data.race].move + data.miscmods.misc_move);
         setProperty(this, "data.data.karma.mod", racialMods[data.race].km);
         setProperty(this, "data.data.r_traits", racialMods[data.race].traits);
 
@@ -160,9 +160,9 @@ export class ED4EActor extends Actor {
         });
 
 
-        defs.physical.value = defs.physical.mod + defs.physical.base + physDefBonus + data.r_def_bonus;
-        defs.social.value = defs.social.mod + defs.social.base 
-        defs.mystic.value = defs.mystic.mod + defs.mystic.base + mystDefBonus;
+        defs.physical.value = defs.physical.mod + defs.physical.base + physDefBonus + data.r_def_bonus + data.miscmods.misc_pd_mod;
+        defs.social.value = defs.social.mod + defs.social.base + data.miscmods.misc_sd_mod; 
+        defs.mystic.value = defs.mystic.mod + defs.mystic.base + mystDefBonus + data.miscmods.misc_md_mod;
 
 
 
@@ -188,9 +188,9 @@ export class ED4EActor extends Actor {
             maBonus += i.data.mystic_armor;
         });
 
-        armor.physical.value = paBonus + data.r_armor_bonus;
+        armor.physical.value = paBonus + data.r_armor_bonus + data.miscmods.misc_pa_mod;
         armor.mystic.base = mysticArmor;
-        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus;
+        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus + data.miscmods.misc_ma_bonus;
 
         setProperty(this, "data.data.armor", armor);
 
@@ -206,9 +206,9 @@ export class ED4EActor extends Actor {
         let woundTh = Math.ceil(atts.toughness.value/2) + 2;
         let recovTotal = Math.ceil(atts.toughness.value/6);
         
-        health.thresholds.uncon = unconTh;
-        health.thresholds.death = deathTh;
-        health.thresholds.wound = woundTh + data.r_wound_bonus;
+        health.thresholds.uncon = unconTh + data.miscmods.misc_uncon;
+        health.thresholds.death = deathTh + data.miscmods.misc_death;
+        health.thresholds.wound = woundTh + data.r_wound_bonus + data.miscmods.misc_wound;
         health.recovery.max = recovTotal;
         health.recovery.avail = health.recovery.max - health.recovery.used;
         health.recovery.step = atts.toughness.step;
@@ -230,7 +230,7 @@ export class ED4EActor extends Actor {
 
         init.armor_mod = armorMod;
 
-        let initStep = Math.max(1, data.attributes.dexterity.step + init.armor_mod);
+        let initStep = Math.max(1, data.attributes.dexterity.step + init.armor_mod + data.miscmods.misc_init_step - data.health.damage.wounds);
         init.step = initStep;
         init.dice = StepUtil.getDiceText(initStep);
         init.expr = StepUtil.getDiceExpr(initStep);
@@ -243,6 +243,8 @@ export class ED4EActor extends Actor {
         const items = data.items;
        //  console.warn("items before: ", items);
         let totalWeight = 0;
+        if (!Array.isArray(items) || !items.length) { return; }
+
         items.forEach((item) => {
             
             // console.warn("item: ", item);
@@ -250,12 +252,12 @@ export class ED4EActor extends Actor {
             totalWeight += itemWeight;
             
             if(item.type == "ability") {
-                let comstep = item.data.rank + data.data.attributes[item.data.attribute].step;
+                let comstep = item.data.attribute == "" ? item.data.rank : item.data.rank + data.data.attributes[item.data.attribute].step;
                 item.data.step = comstep;
                 item.data.dice = StepUtil.getDiceText(comstep);
                 item.data.expr = StepUtil.getDiceExpr(comstep);
             } else if (item.type == "weapon") {
-                let comstep = item.data.base_dmg + data.data.attributes[item.data.attribute].step;
+                let comstep = item.data.attribute == "" ? item.data.base_dmg : item.data.base_dmg + data.data.attributes[item.data.attribute].step;
                 item.data.full_dmg.step = comstep;
                 item.data.full_dmg.dice = StepUtil.getDiceText(comstep);
                 item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
@@ -272,8 +274,8 @@ export class ED4EActor extends Actor {
     attributeRoll(attr) {
         const actorData = duplicate(this.data);
         let template = "systems/ed4e/templates/roll/rolldialog.hbs";
-        let diceText = StepUtil.getDiceText(actorData.data.attributes[attr].step);
-        let diceExpr = StepUtil.getDiceExpr(actorData.data.attributes[attr].step);
+        let diceText = StepUtil.getDiceText(actorData.data.attributes[attr].step-actorData.data.health.damage.wounds);
+        let diceExpr = StepUtil.getDiceExpr(actorData.data.attributes[attr].step-actorData.data.health.damage.wounds);
         let showKarma = true;
         let dialogTitle = "Attribute Roll";
 
@@ -282,7 +284,7 @@ export class ED4EActor extends Actor {
             isItem: false,
             dlgTitle: dialogTitle,
             name: attr,
-            step: actorData.data.attributes[attr].step,
+            step: actorData.data.attributes[attr].step - actorData.data.health.damage.wounds,
             dice: diceText,
             expr: diceExpr,
             actorData: actorData,
@@ -326,9 +328,9 @@ export class ED4EActor extends Actor {
             isItem: true,
             dlgTitle: dialogTitle,
             name: item.name,
-            step: diceStep,
-            dice: diceText,
-            expr: diceExpr,
+            step: diceStep - actorData.data.health.damage.wounds,
+            dice: StepUtil.getDiceText(diceStep - actorData.data.health.damage.wounds),
+            expr: StepUtil.getDiceExpr(diceStep - actorData.data.health.damage.wounds),
             actorData: actorData,
             karma: showKarma
         }
