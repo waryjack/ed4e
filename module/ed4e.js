@@ -101,6 +101,10 @@ Hooks.once("init", () => {
     Handlebars.registerHelper("or", function(a, b){
         return (a || b);
     });
+
+    Handlebars.registerHelper("stepnum", function(a){
+        return a.substring(a.indexOf("s")+1);
+    });
 });
 
 /**

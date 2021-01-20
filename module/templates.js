@@ -27,6 +27,8 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/item/partials/action_select.hbs",
 
      "systems/ed4e/templates/actor/partials/discipline_select.hbs",
-     "systems/ed4e/templates/actor/partials/race_select.hbs"
+     "systems/ed4e/templates/actor/partials/race_select.hbs",
+
+     "systems/ed4e/templates/actor/partials/steplist.hbs"
     ]);
   };

@@ -58,7 +58,6 @@
                 <div class="ed4e flexrow">
                     {{> "systems/ed4e/templates/actor/partials/talents.hbs"}}
                     {{> "systems/ed4e/templates/actor/partials/skills.hbs"}}
-                    
                 </div>
             </div>
             <div class="tab magic" data-group="primary" data-tab="magic">
@@ -78,11 +77,16 @@
                 </div>
             </div>
             <div class="tab misc" data-group="primary" data-tab="misc">
+                <h4 class="table-title">Steps</h4>
+                <div class="ed4e flexrow" style="flex-wrap:wrap; justify-content:flex-start">
+                    {{> "systems/ed4e/templates/actor/partials/steplist.hbs"}}
+                </div>
                     <div class="ed4e flexrow">
                         {{> "systems/ed4e/templates/actor/partials/misc.hbs"}}
                     {{> "systems/ed4e/templates/actor/partials/misc2.hbs"}}
                     </div>
             </div>
+            
         </section>
     
 </form>
