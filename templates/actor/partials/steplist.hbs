@@ -1,7 +1,7 @@
 
 {{#each config.steps as |dice step|}}
     {{#unless (or (eq step "s1") (eq step "s2"))}}
-    <div class="ed4e flex-item" style="font-size:0.75em; margin-top:6px; min-width:100px; max-width:100px; text-align:center; border:1px solid black; padding:1px">
+    <div class="ed4e flex-item" style="color:white; background:black; font-size:0.75em; margin-top:6px; min-width:100px; max-width:100px; text-align:center; border:1px solid black; padding:1px">
         <span style="text:align:center;"><strong>{{stepnum step}}</strong>: {{dice}}</span>
     </div>
     {{/unless}}
