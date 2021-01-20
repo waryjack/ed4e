@@ -134,6 +134,7 @@ export class ED4EActor extends Actor {
 
     }
 
+
     _prepareDefenses(data) {
         let atts = data.attributes;
         let defs = data.defenses;
@@ -198,16 +199,45 @@ export class ED4EActor extends Actor {
     }
 
     _prepareHealth(data) {
+        const durability = {
+            none: 0,
+            air_sailor: 5,
+            archer: 5,
+            beastmaster: 7,
+            cavalryman: 7,
+            elementalist: 3,
+            gauntlet:7,
+            nethermancer: 3,
+            illusionist: 3,
+            scout: 5,
+            shaman:3,
+            sky_raider: 7,
+            swordmaster: 7,
+            thief: 5,
+            troubadour: 5,
+            warrior: 7,
+            weaponsmith: 5,
+            wizard: 3
+        }
+
         let atts = data.attributes;
         let health = data.health;
 
-        let unconTh = atts.toughness.value * 2;
+        let durabilityBonus = durability[data.discipline];
+        let durPerLevel = durabilityBonus * data.circle;
+        console.warn("Discipline: ", data.discipline);
+        console.warn("Durab Bonus: ", durabilityBonus);
+    
+        console.warn("Circle: ", data.circle);
+        console.warn("Dur * Level: ", durPerLevel);
+
+        let unconTh = (atts.toughness.value * 2);
         let deathTh = unconTh + atts.toughness.step;
         let woundTh = Math.ceil(atts.toughness.value/2) + 2;
         let recovTotal = Math.ceil(atts.toughness.value/6);
         
-        health.thresholds.uncon = unconTh + data.miscmods.misc_uncon;
-        health.thresholds.death = deathTh + data.miscmods.misc_death;
+        health.thresholds.uncon = unconTh + data.miscmods.misc_uncon + durPerLevel;
+        health.thresholds.death = deathTh + data.miscmods.misc_death + data.circle + durPerLevel;
         health.thresholds.wound = woundTh + data.r_wound_bonus + data.miscmods.misc_wound;
         health.recovery.max = recovTotal;
         health.recovery.avail = health.recovery.max - health.recovery.used;

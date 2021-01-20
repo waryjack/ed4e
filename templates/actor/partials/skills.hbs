@@ -14,9 +14,9 @@
         </tr>
             {{#each skills as |skill skillName|}}
             <tr style="text-align:center">
-                 <td><a title="Roll" class="item-roll weapon-image" data-item-id="{{skill._id}}"><img src="{{skill.img}}" height="24px" width="24px"/></td>
-                <td style="text-align:left">{{skill.name}}</td>
-                <td>{{skill.data.rank}}</td>
+                 <td><a title="Roll" class="item-roll weapon-image" data-item-id="{{skill._id}}"><i class="fas fa-dice-six"></i></td>
+                <td style="text-align:left"><a class="item-name item" data-item-id="{{skill._id}}">{{skill.name}}</a></td>
+                <td >{{skill.data.rank}}</td>
                 <td>{{localize (concat "ED4E.attributes_short." skill.data.attribute)}}</td>
                 <td>{{skill.data.step}}</td>
                 <td>{{skill.data.dice}}</td>

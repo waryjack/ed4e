@@ -124,11 +124,13 @@ Hooks.once("ready", () => {
 
 Hooks.on("updateOwnedItem", (actor, item, changed) => {
 
+    let totalStep = 0;
     if(item.type == "ability") {
-        let totalStep = actor.data.data.attributes[item.data.attribute] + item.data.rank;
+        
+        totalStep = actor.data.data.attributes[item.data.attribute].step + item.data.rank;
         item.data.step = totalStep;
-        item.data.dice = StepUtil.getDiceText(item.data.step);
-        item.data.expr = StepUtil.getDiceExpr(item.data.step);
+        item.data.dice = StepUtil.getDiceText(totalStep);
+        item.data.expr = StepUtil.getDiceExpr(totalStep);
     }
 });
 

@@ -141,14 +141,16 @@
                     "misc_wound":0,
                     "misc_uncon":0,
                     "misc_move":0,
-                    "misc_carry":0  
+                    "misc_carry":0,
+                    "misc_recov_tests":0,
+                    "misc_recov_step":0
                 }
             }   
         },
         "character":{
             "templates":["attributes","health","defenses","armor","initiative", "wealth","miscmods"],
-            "discipline":"",
-            "circle":"",
+            "discipline":"none",
+            "circle":0,
             "race":"human",
             "sex":"",
             "age":"",
@@ -228,7 +230,7 @@
             "templates":["common"],
             "subtype":"",
             "rank":0,
-            "attribute":"",
+            "attribute":"dexterity",
             "step":0,
             "dice":"",
             "expr":"",

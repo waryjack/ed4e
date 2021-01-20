@@ -20,6 +20,7 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/equipment.hbs",
      "systems/ed4e/templates/actor/partials/armor.hbs",
      "systems/ed4e/templates/actor/partials/misc.hbs",
+     "systems/ed4e/templates/actor/partials/misc2.hbs",
 
      // Item Partials
      "systems/ed4e/templates/item/partials/attribute_select.hbs",

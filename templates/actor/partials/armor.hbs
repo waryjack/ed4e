@@ -20,7 +20,7 @@
             <tr style="text-align:center">
                 <td></td>
                 <td class="item-name item" data-item-id="{{item._id}}"><input type="checkbox" class="equip-item" name="item.data.equipped" {{checked item.data.equipped}}/></td>
-                <td style="text-align:left">{{item.name}}</td>
+                <td style="text-align:left"><a class="item-name item" data-item-id="{{item._id}}">{{item.name}}</a></td>
                 <td>{{item.data.type}}</td>
                 {{#if (eq item.data.type "armor")}}
                 <td>{{item.data.physical_armor}}</td>

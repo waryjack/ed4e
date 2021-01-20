@@ -128,14 +128,17 @@ export const ED4E = {
             carry: "ED4E.misc.carry_cap"
         },
         discipline: {
+            none: "None",
             air_sailor: "ED4E.discipline.air_sailor",
             archer: "ED4E.discipline.archer",
             beastmaster: "ED4E.discipline.beastmaster",
             cavalryman: "ED4E.discipline.cavalryman",
             elementalist: "ED4E.discipline.elementalist",
+            gauntlet:"ED4E.discipline.gauntlet",
             illusionist: "ED4E.discipline.illusionist",
             nethermancer: "ED4E.discipline.nethermancer",
             scout: "ED4E.discipline.scout",
+            shaman: "ED4E.discipline.shaman",
             sky_raider: "ED4E.discipline.sky_raider",
             swordmaster: "ED4E.discipline.swordmaster",
             thief: "ED4E.discipline.thief",

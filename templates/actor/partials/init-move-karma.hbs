@@ -15,7 +15,8 @@
     <table class="item-table">
         <tr>
             <td><strong>{{localize "ED4E.karma.karma_avail"}}</strong></td>
-            <td class="center">{{data.karma.value}} / {{data.karma.max}}</td>
+            <td class="center"><input class="ed4e value-input" type="text" name="data.karma.value" value="{{data.karma.value}}" data-dtype="Number" /> /  
+            <input type="text" class="ed4e value-input" name="data.karma.max" value="{{data.karma.max}}" data-dtype="Number" /></td>
         </tr>
         <tr>
             <td ><strong>{{localize "ED4E.karma.karma_mod"}}</strong></td>

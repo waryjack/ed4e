@@ -17,7 +17,7 @@
             {{#each spells as |item itemName|}}
             <tr class="effect-toggle" style="text-align:center">
                 <td></td>
-                <td style="text-align:left">{{item.name}}</td>
+                <td style="text-align:left"><a class="item-name item" data-item-id="{{item._id}}">{{item.name}}</a></td>
                 <td>{{item.data.circle}}</td>
                 <td>{{item.data.threads}}</td>
                 <td>{{item.data.weave_prior}} / {{item.data.weave_reattune}}</td>

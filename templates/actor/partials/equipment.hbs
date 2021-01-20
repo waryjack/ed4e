@@ -13,7 +13,7 @@
             {{#each equipment as |item itemName|}}
             <tr class="effect-toggle" style="text-align:center">
                 <td></td>
-                <td style="text-align:left">{{item.name}}</td>
+                <td style="text-align:left"><a class="item-name item" data-item-id="{{item._id}}">{{item.name}}</a></td>
                 <td>{{item.data.common.value}}</td>
                 <td>{{item.data.common.weight}}</td>
                 <td>{{item.data.common.availability}}</td>

@@ -6,15 +6,15 @@
                         </a></th>
             <th style="text-align:left;">{{localize "ED4E.jargon.weapon"}}</th>
             <th>{{localize "ED4E.jargon.minstr"}}</th>
-            <th>Base {{localize "ED4E.jargon.damage"}} {{localize "ED4E.jargon.step"}}</th>
-            <th>Dmg. {{localize "ED4E.jargon.step"}}/{{localize "ED4E.jargon.dice"}}</th>
+            <th>Base Dmg Step{{!--localize "ED4E.jargon.damage"}} {{localize "ED4E.jargon.step"--}}</th>
+            <th>Total Dmg. {{!--localize "ED4E.jargon.step"}}/{{localize "ED4E.jargon.dice"--}}</th>
             <th>{{localize "ED4E.jargon.rangeshortlong"}}</th>
             <th></th>
         </tr>
             {{#each weapons as |weapon wepName|}}
             <tr style="text-align:center">
                 <td><a title="Roll Damage" class="item-roll weapon-image" data-item-id="{{weapon._id}}"><img src="{{weapon.img}}" height="24px" width="24px"/></td>
-                <td style="text-align:left">{{weapon.name}}</td>
+                <td style="text-align:left"><a class="item-name item" data-item-id="{{weapon._id}}">{{weapon.name}}</a></td>
                 <td>{{weapon.data.str_min}}</td>
                 <td>{{weapon.data.base_dmg}}</td>
                 <td>{{weapon.data.full_dmg.step}} / {{weapon.data.full_dmg.dice}}</td>
