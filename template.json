@@ -192,7 +192,18 @@
                     "availability":"",
                     "description":""
                 }
-            }
+            },
+            "circle_traits":[
+                { 
+                    "free_talent":"None",
+                    "disc_talents":"None",
+                    "karma_rule":"None",
+                    "pdb": 0,
+                    "mdb": 0,
+                    "sdb": 0,
+                    "recov_tests":0
+                }
+            ]
         },
         "weapon":{
             "templates":["common"],
@@ -258,85 +269,12 @@
             "keywords":""
         },
         "discipline":{
+            "templates":["circle_traits"],
             "durability":0,
             "circle":0,
             "novice_talent_opts":"",
             "journeyman_opts":"",
-            "master_opts":"",
-            "circle_traits":[
-                { 
-                    "free_talent":"None",
-                    "disc_talents":"None",
-                    "karma_rule":"None",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                },
-                {
-                    "free_talent":"",
-                    "disc_talents":"",
-                    "karma_rule":"",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                }
-            ]
+            "master_opts":""
         }
         
     }
