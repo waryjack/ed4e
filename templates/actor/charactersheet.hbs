@@ -50,6 +50,7 @@
             <a class="ed4e item" data-tab="gear">Equipment</a>
             <a class="ed4e item" data-tab="legend">Legend</a>
             <a class="ed4e item" data-tab="misc">Misc</a>
+            <a class="ed4e item" data-tab="inst">Instructions</a>
         </nav>
         
         {{!--Body Divs--}}
@@ -88,6 +89,11 @@
                         {{> "systems/ed4e/templates/actor/partials/misc.hbs"}}
                     {{> "systems/ed4e/templates/actor/partials/misc2.hbs"}}
                     </div>
+            </div>
+            <div class="tab inst" data-group="primary" data-tab="inst">
+                <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/instructions.hbs"}}
+                </div>
             </div>
             
         </section>
