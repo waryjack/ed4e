@@ -178,7 +178,8 @@
             "r_armor_bonus":0,
             "r_def_bonus":0,
             "r_wound_bonus":0,
-            "r_traits":""
+            "r_traits":"",
+            "npc":false
         }
     },
     "Item":{

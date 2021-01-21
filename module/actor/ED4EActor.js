@@ -304,8 +304,9 @@ export class ED4EActor extends Actor {
     attributeRoll(attr) {
         const actorData = duplicate(this.data);
         let template = "systems/ed4e/templates/roll/rolldialog.hbs";
-        let diceText = StepUtil.getDiceText(actorData.data.attributes[attr].step-actorData.data.health.damage.wounds);
-        let diceExpr = StepUtil.getDiceExpr(actorData.data.attributes[attr].step-actorData.data.health.damage.wounds);
+        let npcMod = actorData.data.npc ? actorData.data.circle : 0; 
+        let diceText = StepUtil.getDiceText(actorData.data.attributes[attr].step-actorData.data.health.damage.wounds + npcMod);
+        let diceExpr = StepUtil.getDiceExpr(actorData.data.attributes[attr].step-actorData.data.health.damage.wounds + npcMod);
         let showKarma = true;
         let dialogTitle = "Attribute Roll";
 
@@ -314,7 +315,7 @@ export class ED4EActor extends Actor {
             isItem: false,
             dlgTitle: dialogTitle,
             name: attr,
-            step: actorData.data.attributes[attr].step - actorData.data.health.damage.wounds,
+            step: actorData.data.attributes[attr].step - actorData.data.health.damage.wounds + npcMod,
             dice: diceText,
             expr: diceExpr,
             actorData: actorData,
@@ -335,6 +336,7 @@ export class ED4EActor extends Actor {
         let diceStep = 0;
         let dialogTitle = "";
         let showKarma = false;
+        let npcMod = actorData.data.npc ? actorData.data.circle : 0;
 
         console.warn(item);
         // Get item dice info
@@ -359,8 +361,8 @@ export class ED4EActor extends Actor {
             dlgTitle: dialogTitle,
             name: item.name,
             step: diceStep - actorData.data.health.damage.wounds,
-            dice: StepUtil.getDiceText(diceStep - actorData.data.health.damage.wounds),
-            expr: StepUtil.getDiceExpr(diceStep - actorData.data.health.damage.wounds),
+            dice: StepUtil.getDiceText(diceStep - actorData.data.health.damage.wounds + npcMod),
+            expr: StepUtil.getDiceExpr(diceStep - actorData.data.health.damage.wounds + npcMod),
             actorData: actorData,
             karma: showKarma
         }

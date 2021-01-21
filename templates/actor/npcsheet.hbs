@@ -1,25 +1,102 @@
 <form class="actor-sheet {{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
-        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        <div class="ed4e flexrow">
+            <div class="ed4e flex-item" style="flex:1; max-width:72px">
+                <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+            </div>
+            <div class="ed4e flex-item" style="flex:1">
+                <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+            </div>
+            <div class="ed4e flex-item form-group">
+                <table style="background:none;">
+                    <tr>
+                    <th class="table-title">Race</th>
+                    <th class="table-title">Occupation</th>
+                    <th class="table-title">Tier</th>
+                    </tr>
+                    <tr style="text-align:center">
+                        <td>{{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}</td>
+                        <td><input type="text" name="data.occupation" value="{{data.occupation}}" data-dtype="String"/></td>
+                        <td><input id="circ" style="text-align:center;" type="text" class="ed4e value-input-wide" name="data.tier" value="{{data.tier}}" data-dtype="Number"/></td>
+                    </tr>
+                </table>
+                <!--label class="table-title" for="data.race">Race</label>
+                {{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}
+                <label for="data.discipline">Discipline</label>
+                {{> "systems/ed4e/templates/actor/partials/discipline_select.hbs"}}
+                <label for="circ">Circle</label>
+                <input id="circ"type="text" class="ed4e value-input" name="data.circle" value="{{data.circle}}" data-dtype="Number"/-->
+                
+            </div>
+        </div>
     </header>
 
-    <section class="items">
-        <h3>Owned Items</h3>
-        <ol class="actor-items">
-        {{#each actor.items as |item id|}}
-            <li class="actor-item" data-item-id="{{id}}">
-                <div class="item-name">
-                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
-                    <h4>{{item.name}}</h4>
+    {{!-- Attributes / Defenses / Initiative --}}
+   
+        <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/attributes-h.hbs"}}
+        </div>
+
+        <div class="ed4e flexrow" style="max-height:210px">
+                    {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
+                         {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
+                {{!--Initiative Partial--}}
+        </div>
+        {{!-- Sheet Tab Navigation --}}
+        <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'IM Fell Double Pica SC', serif; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
+            <a class="ed4e item" data-tab="main">Essentials</a>
+            <a class="ed4e item" data-tab="magic">Magic</a>
+            <a class="ed4e item" data-tab="gear">Equipment</a>
+            <a class="ed4e item" data-tab="legend">Legend</a>
+            <a class="ed4e item" data-tab="misc">Misc</a>
+            <a class="ed4e item" data-tab="inst">Instructions</a>
+        </nav>
+        
+        {{!--Body Divs--}}
+        <section class="sheetbody">
+            <div class="tab main" data-group="primary" data-tab="main">
+                <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/talents.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/skills.hbs"}}
                 </div>
-                <div class="item-controls">
-                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+            </div>
+            <div class="tab magic" data-group="primary" data-tab="magic">
+                {{> "systems/ed4e/templates/actor/partials/spells.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/thread-items.hbs"}}
+            </div>
+            <div class="tab gear" data-group="primary" data-tab="gear">
+                {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/armor.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/equipment.hbs"}}
+            </div>
+            <div class="tab legend" data-group="primary" data-tab="legend">
+                <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/portrait.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/bio.hbs"}}
+                    <div class="ed4e flexcol">
+                        {{> "systems/ed4e/templates/actor/partials/wealth.hbs"}}
+                        {{> "systems/ed4e/templates/actor/partials/legend.hbs"}}
+                    </div>
                 </div>
-            </li>
-        {{/each}}
-        </ol>
-    </section>
+            </div>
+            <div class="tab misc" data-group="primary" data-tab="misc">
+                <h4 class="table-title">Steps</h4>
+                <div class="ed4e flexrow" style="flex-wrap:wrap; justify-content:flex-start">
+                    {{> "systems/ed4e/templates/actor/partials/steplist.hbs"}}
+                </div>
+                    <div class="ed4e flexrow">
+                        {{> "systems/ed4e/templates/actor/partials/misc.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/misc2.hbs"}}
+                    </div>
+            </div>
+            <div class="tab inst" data-group="primary" data-tab="inst">
+                <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/instructions.hbs"}}
+                </div>
+            </div>
+            
+        </section>
+    
 </form>
 
