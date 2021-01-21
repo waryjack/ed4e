@@ -149,6 +149,7 @@
         },
         "character":{
             "templates":["attributes","health","defenses","armor","initiative", "wealth","miscmods"],
+            "portrait":"icons/svg/mystery-man.svg",
             "discipline":"none",
             "circle":0,
             "race":"human",
