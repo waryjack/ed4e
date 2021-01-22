@@ -191,7 +191,7 @@ export class ED4EActor extends Actor {
 
         armor.physical.value = paBonus + data.r_armor_bonus + data.miscmods.misc_pa_mod;
         armor.mystic.base = mysticArmor;
-        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus + data.miscmods.misc_ma_bonus;
+        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus + data.miscmods.misc_ma_mod;
 
         setProperty(this, "data.data.armor", armor);
 
