@@ -391,7 +391,7 @@ export class ED4EActor extends Actor {
                             let stepMod = Number(html.find("#stepmod").val());
                             let myKarmaDie = html.find("#karmadie").val();
                             
-                            // console.warn("Adj Step pre, stepMod", adjustedStep, stepMod);
+                            
                             
                             if(dialogData.karma && myKarmaDie != "") {
                                 let karmaDieType = myKarmaDie.substring(myKarmaDie.indexOf("d")+1);
@@ -402,9 +402,10 @@ export class ED4EActor extends Actor {
                             if(stepMod != 0) {
                                 adjustedStep = Math.max(1, adjustedStep + stepMod);
                                 adjustedDice = StepUtil.getDiceText(adjustedStep);
-                                adjustedExpr = StepUtil.getDiceText(adjustedStep);
+                                adjustedExpr = StepUtil.getDiceExpr(adjustedStep);
                             }
 
+                            
                             let finalExpr = adjustedExpr + karmaDie + miscMod;
                             let finalDiceText = adjustedDice + karmaDieText + miscMod;
                             let msgTemplate = "systems/ed4e/templates/chat/rollmessage.hbs";
