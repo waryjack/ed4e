@@ -12,8 +12,10 @@
             <td>
             <select name="pickStep" id="pickStep">
                 {{#each stepData as |data index|}}
-                    <option value="{{index}}">Step {{index}} / {{data.dice}}</option>
+                {{log index}}
+                    <option value="{{index}}" {{#if (eq ../selectStep (stringify index))}}selected{{/if}}>Step {{index}} / {{data.dice}}</option>
                 {{/each}}
+            
             </select>
             </td>
         </tr>

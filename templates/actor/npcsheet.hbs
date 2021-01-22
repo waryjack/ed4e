@@ -34,21 +34,20 @@
     {{!-- Attributes / Defenses / Initiative --}}
    
         <div class="ed4e flexrow">
-                    {{> "systems/ed4e/templates/actor/partials/attributes-h.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/npc/attributes-npc.hbs"}}
         </div>
 
         <div class="ed4e flexrow" style="max-height:210px">
-                    {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
-                    {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
-                         {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/npc/defenses-npc.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/npc/health-npc.hbs"}}
+                         {{> "systems/ed4e/templates/actor/partials/npc/misc-npc.hbs"}}
                 {{!--Initiative Partial--}}
         </div>
         {{!-- Sheet Tab Navigation --}}
         <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'IM Fell Double Pica SC', serif; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
             <a class="ed4e item" data-tab="main">Essentials</a>
             <a class="ed4e item" data-tab="magic">Magic</a>
-            <a class="ed4e item" data-tab="gear">Equipment</a>
-            <a class="ed4e item" data-tab="legend">Legend</a>
+            <a class="ed4e item" data-tab="gear">Loot</a>
             <a class="ed4e item" data-tab="misc">Misc</a>
             <a class="ed4e item" data-tab="inst">Instructions</a>
         </nav>
@@ -57,28 +56,16 @@
         <section class="sheetbody">
             <div class="tab main" data-group="primary" data-tab="main">
                 <div class="ed4e flexrow">
-                    {{> "systems/ed4e/templates/actor/partials/talents.hbs"}}
-                    {{> "systems/ed4e/templates/actor/partials/skills.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/npc/abilities-npc.hbs"}}
                 </div>
             </div>
             <div class="tab magic" data-group="primary" data-tab="magic">
                 {{> "systems/ed4e/templates/actor/partials/spells.hbs"}}
-                {{> "systems/ed4e/templates/actor/partials/thread-items.hbs"}}
             </div>
             <div class="tab gear" data-group="primary" data-tab="gear">
                 {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}
                 {{> "systems/ed4e/templates/actor/partials/armor.hbs"}}
                 {{> "systems/ed4e/templates/actor/partials/equipment.hbs"}}
-            </div>
-            <div class="tab legend" data-group="primary" data-tab="legend">
-                <div class="ed4e flexrow">
-                    {{> "systems/ed4e/templates/actor/partials/portrait.hbs"}}
-                    {{> "systems/ed4e/templates/actor/partials/bio.hbs"}}
-                    <div class="ed4e flexcol">
-                        {{> "systems/ed4e/templates/actor/partials/wealth.hbs"}}
-                        {{> "systems/ed4e/templates/actor/partials/legend.hbs"}}
-                    </div>
-                </div>
             </div>
             <div class="tab misc" data-group="primary" data-tab="misc">
                 <h4 class="table-title">Steps</h4>

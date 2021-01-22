@@ -31,6 +31,13 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/discipline_select.hbs",
      "systems/ed4e/templates/actor/partials/race_select.hbs",
 
-     "systems/ed4e/templates/actor/partials/steplist.hbs"
+     "systems/ed4e/templates/actor/partials/steplist.hbs",
+
+     // NPC Partials
+     "systems/ed4e/templates/actor/partials/npc/attributes-npc.hbs",
+     "systems/ed4e/templates/actor/partials/npc/defenses-npc.hbs",
+     "systems/ed4e/templates/actor/partials/npc/health-npc.hbs",
+     "systems/ed4e/templates/actor/partials/npc/abilities-npc.hbs",
+     "systems/ed4e/templates/actor/partials/npc/misc-npc.hbs"
     ]);
   };

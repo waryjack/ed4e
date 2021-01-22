@@ -32,6 +32,7 @@ Hooks.once("init", () => {
 
     // Register System sheets
     Actors.registerSheet("ed4e", ED4EActorSheet, { types:["character", "creature", "spirit"], makeDefault:true });
+    Actors.registerSheet("ed4e", ED4EActorSheet, { types:["npc"]});
     Items.registerSheet("ed4e", ED4EItemSheet, {makeDefalt:true});
 
 
@@ -104,6 +105,11 @@ Hooks.once("init", () => {
 
     Handlebars.registerHelper("stepnum", function(a){
         return a.substring(a.indexOf("s")+1);
+    });
+
+    Handlebars.registerHelper("stringify", function(a){
+        
+            return String(a);
     });
 });
 

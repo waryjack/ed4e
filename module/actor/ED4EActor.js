@@ -16,13 +16,87 @@ export class ED4EActor extends Actor {
        // console.warn("prepareBaseData object: ", actorData);
         const data = actorData.data;
         const flags = actorData.flags;
+        console.warn("Type: ", actorData.type);
 
-        this._prepareCharacterData(actorData);
+        if(actorData.type == "character") {
+            this._prepareCharacterData(actorData);
+        }
+
+        if(actorData.type == "npc") {
+            this._prepareNpcData(actorData);
+        }
         
     }
 
     /**
-    * @param actorData {ED4Eactor} - this ED4EActor object's system-specific data
+     * @override 
+     * @param {ED4EActor} actorData
+     */
+    _prepareNpcData(actorData){
+        super.prepareDerivedData();
+        const data = actorData.data;
+
+        this._prepareNpcAttributes(data);
+        this._prepareNpcDefenses(data);
+        this._prepareNpcAttacks(actorData);
+        this._prepareInit(data);
+
+
+    }
+
+    /**
+     * 
+     * @param {Object} data 
+     */
+
+    _prepareNpcAttributes(data) {
+
+        const atts = data.attributes;
+
+        // console.warn("Atts: ", atts);
+        for (let att in atts) {
+            let newStep = atts[att].step;
+            atts[att].dice = StepUtil.getDiceText(newStep);
+            atts[att].expr = StepUtil.getDiceExpr(newStep);       
+        }
+
+       // console.log("revised atts", atts);
+    
+        setProperty(this, "data.data.attributes", atts);
+
+    }
+
+    _prepareNpcDefenses(data) {
+        
+        setProperty(this, "data.data.physical_defense", data.physical_defense + data.miscmods.misc_pd_mod);
+        setProperty(this, "data.data.mystic_defense", data.mystic_defense + data.miscmods.misc_md_mod);
+        setProperty(this, "data.data.social_defense", data.social_defense + data.miscmods.misc_sd_mod);
+        setProperty(this, "data.data.physical_armor", data.physical_armor + data.miscmods.misc_pa_mod);
+        setProperty(this, "data.data.mystic_armor", data.mystic_armor + data.miscmods.misc_ma_mod);
+    }
+
+    _prepareNpcAttacks(data) {
+        console.warn("NPC Data: ", data);
+        const items = data.items;
+        console.warn("items before: ", items);
+        
+         if (!Array.isArray(items) || !items.length) { return; }
+ 
+         items.forEach((item) => {
+        
+                 item.data.dice = StepUtil.getDiceText(item.data.step);
+                 item.data.expr = StepUtil.getDiceExpr(item.data.step);
+                 item.data.dmg_dice = StepUtil.getDiceText(item.data.dmg_step);
+                 item.data.dmg_expr = StepUtil.getDiceText(item.data.dmg_step);    
+         });
+
+         console.warn("items after:", items);
+ 
+        
+    }
+
+    /**
+    * @param {ED4EActor} actorData - this ED4EActor object's system-specific data
     */
     _prepareCharacterData(actorData) {
         super.prepareDerivedData();
@@ -345,7 +419,12 @@ export class ED4EActor extends Actor {
             diceExpr = item.data.data.full_dmg.expr;
             diceStep = item.data.data.full_dmg.step;
             dialogTitle = "Damage Roll";
-
+        } else if(item.type == "npc_attack") {
+            diceText = item.data.data.dice;
+            diceExpr = item.data.data.expr;
+            diceStep = item.data.data.step;
+            dialogTitle = "NPC Attack Roll";
+            showKarma = false;
         } else {
             diceText = item.data.data.dice;
             diceExpr = item.data.data.expr;

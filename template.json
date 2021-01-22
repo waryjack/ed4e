@@ -1,6 +1,6 @@
 {
     "Actor":{
-        "types":["character","creature","spirit"],
+        "types":["character","npc","creature","spirit"],
         "templates":{
             "attributes":{
                 "attributes":{
@@ -145,7 +145,7 @@
                     "misc_recov_tests":0,
                     "misc_recov_step":0
                 }
-            }   
+            }
         },
         "character":{
             "templates":["attributes","health","defenses","armor","initiative", "wealth","miscmods"],
@@ -180,10 +180,16 @@
             "r_wound_bonus":0,
             "r_traits":"",
             "npc":false
+        },
+        "npc":{
+            "templates":["attributes","miscmods","npc_attack","karma","health","initiative","defenses","armor"],
+            "occupation":"",
+            "tier":1,
+            "movement":""
         }
     },
     "Item":{
-        "types":["weapon","armor","equipment","thread_item","ability","spell","discipline"],
+        "types":["weapon","armor","equipment","thread_item","ability","spell","discipline","npc_attack"],
         "templates":{
             "common":{
                 "common":{
@@ -276,6 +282,14 @@
             "novice_talent_opts":"",
             "journeyman_opts":"",
             "master_opts":""
+        },
+        "npc_attack":{
+            "step":0,
+            "dice":"",
+            "expr":"",
+            "dmg_step":0,
+            "dmg_dice":"",
+            "dmg_expr":""
         }
         
     }

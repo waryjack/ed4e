@@ -1,0 +1,13 @@
+{{#each data.attributes as |att name|}}
+<div class="s7 flex-attribute center inset" style="background-color:rgba(230, 206, 72, 0.8)">
+<p>
+    <strong>
+    <a class="attr-roll" data-attr-name="{{name}}">
+    {{localize (concat "ED4E.attributes_short." name)}}
+    </a>
+    </strong>
+    <span>
+        <input type="text" class="ed4e value-input" name="data.attributes.{{name}}.step" value="{{att.step}}" data-dtype="Number" /></span> | 
+</p>
+</div>
+{{/each}}

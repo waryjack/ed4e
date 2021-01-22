@@ -1,0 +1,35 @@
+<div class="ed4e flex-item" style="margin-left:3px; margin-right:3px;">
+       <h4 class="table-title">Defenses</h4>
+        <table class="item-table">
+        <tr>
+            <td><strong>{{localize "ED4E.defenses.physical"}}</strong></td>
+            <td class="center"><input type="text" class="ed4e value-input" name="data.defenses.physical.value" value="{{data.defenses.physical.value}}" data-dtype="Number"/></td>
+            <td><strong>/ {{localize "ED4E.jargon.armor"}}</strong></td>
+            <td class="center"><input type="text" class="ed4e value-input" name="data.armor.physical.value" value="{{data.armor.physical.value}}" data-dtype="Number"/></td>
+        </tr>
+        <tr>
+            <td><strong>{{localize "ED4E.defenses.mystic"}}</strong></td>
+            <td class="center"><input type="text" class="ed4e value-input" name="data.defenses.mystic.value" value="{{data.defenses.mystic.value}}" data-dtype="Number" /></td>
+            <td><strong>/ {{localize "ED4E.jargon.armor"}}</strong></td>
+            <td class="center"><input type="text" class="ed4e value-input" name="data.armor.mystic.value" value="{{data.armor.mystic.value}}" data-dtype="Number" /></td>
+        </tr>
+        <tr>
+            <td><strong>{{localize "ED4E.defenses.social"}}</strong></td>
+            <td class="center"><input type="text" class="ed4e value-input" name="data.defenses.social.value" value="{{data.defenses.social.value}}" data-dtype="Number" /></td>
+            <td colspan=2></td>
+        </tr>
+    </table>
+     <h4 class="table-title">Initiative</h4>
+     <table class="item-table">
+         <tr>
+             <th>Base</th>
+             <th>Misc</th>
+             <th>Final</th>
+         </tr>
+        <tr style="text-align:center;">
+            <td>{{data.attributes.dexterity.step}}</td>
+            <td><input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/></td>
+            <td>{{data.initiative.step}} / {{data.initiative.dice}}</td>
+        </tr>
+    </table>
+</div>

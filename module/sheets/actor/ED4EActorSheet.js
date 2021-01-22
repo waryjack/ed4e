@@ -1,3 +1,5 @@
+import { StepRoll } from "../../utility/steproll.js" ;
+
 export default class ED4EActorSheet extends ActorSheet {
 
         get template() {
@@ -38,6 +40,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.armor = data.items.filter(function(item) {return item.type == "armor"});
             data.spells = data.items.filter(function(item) { return item.type == "spell"});
             data.threaditems = data.items.filter(function(item) { return item.type == "thread_item"});
+            data.npc_attacks = data.items.filter(function(item) { return item.type == "npc_attack"});
             
             
 
@@ -68,6 +71,7 @@ export default class ED4EActorSheet extends ActorSheet {
             html.find('.item-roll').click(this._onRollItem.bind(this));
             html.find('.attr-roll').click(this._onAttributeRoll.bind(this));
             html.find('.select-race').change(this._onSelectRace.bind(this));
+            html.find('.step-roll').click(this._onStepRoll.bind(this));
         }
 
         _onInlineEdit(e){
@@ -182,5 +186,13 @@ export default class ED4EActorSheet extends ActorSheet {
         _onSelectRace(e) {
             e.preventDefault();
             
+        }
+
+        _onStepRoll(e){
+            e.preventDefault();
+            let element=e.currentTarget;
+            let step = element.dataset.step;
+            console.warn("Step clicked: ", step);
+            StepRoll.prompt(step);
         }
 }

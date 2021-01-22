@@ -3,7 +3,9 @@ import { Messenger } from "./messenger.js";
 
 export class StepRoll {
 
-    static prompt() {
+    static prompt(step) {
+
+        console.warn("StepRoll received step: ", step);
         let template = "systems/ed4e/templates/roll/steproll.hbs";
         let showKarma = true;
 
@@ -11,10 +13,11 @@ export class StepRoll {
             dlgTitle: "Roll",
             name: "General",
             stepData: StepUtil.getStepTable(),
-            karma: showKarma
+            karma: showKarma,
+            selectStep:step
         }
 
-        console.warn("stepdata: ", dialogData.stepData);
+        console.warn("stepdata: ", dialogData);
 
         renderTemplate(template, dialogData).then((dlg) => {
             new Dialog({
