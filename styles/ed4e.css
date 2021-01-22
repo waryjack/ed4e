@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&display=swap');
 
+@font-face {
+    font-family: Willow;
+    src: url("../fonts/willow__.ttf");
+}
+
 .ed4e table, th {
     border:none;
 }
@@ -67,10 +72,11 @@ table tr:nth-child(even) {
     width:auto;
     margin-left:2px;
     margin-right:2px;
-    font-family: 'IM Fell Double Pica SC', serif;
+    font-family: 'Willow', 'IM Fell Double Pica SC', serif;
     flex:1;
     align-items:flex-start;
     text-align:center;
+    font-size:1.25em;
 }
 
 .ed4e .value-input {
@@ -167,5 +173,6 @@ flex-direction:row;
     text-transform:uppercase;
     font-weight:bold;
     text-align: center;
-    font-family: 'IM Fell Double Pica SC', serif;
+    font-family: 'Willow', serif;
+    font-size:1.25em;
 }
