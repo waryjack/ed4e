@@ -241,7 +241,7 @@
         },
         "ability":{
             "templates":["common"],
-            "subtype":"",
+            "subtype":"talent",
             "rank":0,
             "attribute":"dexterity",
             "step":0,

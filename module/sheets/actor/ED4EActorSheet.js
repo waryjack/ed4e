@@ -26,6 +26,8 @@ export default class ED4EActorSheet extends ActorSheet {
             const data = super.getData();
     
             data.config = CONFIG.ed4e; 
+
+            console.warn("Data: ", data.items);
            
       
 
@@ -37,7 +39,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.spells = data.items.filter(function(item) { return item.type == "spell"});
             data.threaditems = data.items.filter(function(item) { return item.type == "thread_item"});
             
-
+            
 
 
             return data;
@@ -91,6 +93,8 @@ export default class ED4EActorSheet extends ActorSheet {
                 name: "New Item",
                 type: element.dataset.type
             }
+
+            console.warn("actor, itemData", this.actor, itemData);
             return this.actor.createOwnedItem(itemData, {renderSheet:true});
         }
 
