@@ -22,7 +22,7 @@ Hooks.once("init", () => {
        ED4EActor
     };
 
-    CONFIG.debug.hooks = true;
+    // CONFIG.debug.hooks = true;
     CONFIG.Actor.entityClass = ED4EActor;
     // CONFIG.Item.entityClass = ED4EItem; 
     
