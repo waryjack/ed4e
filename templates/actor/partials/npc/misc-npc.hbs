@@ -1,11 +1,18 @@
 <div class="ed4e flex-item" style="margin-left:3px; margin-right:3px;">
-       <h4 class="table-title">Movement</h4>
-    <table class="item-table">
-        <tr>
-            <td><strong>{{localize "ED4E.jargon.moverate"}}</strong></td>
+       <h4 class="table-title">Initiative/Movement</h4>
+       <table class="item-table">
+         <tr>
+             <th>Base</th>
+             <th>Misc</th>
+             <th>Final</th>
+             <th>Move</th>
+         </tr>
+        <tr style="text-align:center;">
+            <td>{{data.attributes.dexterity.step}}</td>
+            <td><input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/></td>
+            <td>{{data.initiative.step}} / {{data.initiative.dice}}</td>
             <td class="center"><input type="text" class="ed4e value-input-wide" name="data.movement" value="{{data.movement}}" data-dtype="String" /></td>
         </tr>
-
     </table>
         <h4 class="table-title">Karma</h4>
     <table class="item-table">

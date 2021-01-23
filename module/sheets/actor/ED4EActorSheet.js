@@ -192,7 +192,8 @@ export default class ED4EActorSheet extends ActorSheet {
             e.preventDefault();
             let element=e.currentTarget;
             let step = element.dataset.step;
+            let rtype = element.dataset.rollType;
             console.warn("Step clicked: ", step);
-            StepRoll.prompt(step);
+            StepRoll.prompt(step, rtype);
         }
 }

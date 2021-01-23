@@ -3,7 +3,7 @@ import { Messenger } from "./messenger.js";
 
 export class StepRoll {
 
-    static prompt(step) {
+    static prompt(step, rolltype) {
 
         console.warn("StepRoll received step: ", step);
         let template = "systems/ed4e/templates/roll/steproll.hbs";
@@ -11,7 +11,7 @@ export class StepRoll {
 
         let dialogData = {
             dlgTitle: "Roll",
-            name: "General",
+            name: rolltype,
             stepData: StepUtil.getStepTable(),
             karma: showKarma,
             selectStep:step
@@ -36,6 +36,7 @@ export class StepRoll {
                             let pickedStep = html.find("#pickStep").val();
                             let useKarma = false;
                             let miscmod = "+" + html.find("#rollmod").val();
+                            let rollnote = html.find("#rollnote").val();
 
                             let pickedDice = StepUtil.getDiceText(pickedStep);
                             let pickedExpr = StepUtil.getDiceExpr(pickedStep);
@@ -60,7 +61,8 @@ export class StepRoll {
                                 mods: miscmod,
                                 karmadie: karmaDie,
                                 dice: finalDiceText,
-                                step: dialogData.step
+                                step: pickedStep,
+                                note: rollnote
                             }
 
                             roll.getTooltip().then(tt => Messenger.createChatMessage(tt, msgData, msgTemplate));

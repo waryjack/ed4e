@@ -128,7 +128,7 @@ Hooks.once("ready", () => {
     // Listen for dice icon click
     const diceIconSelector = '#chat-controls i.fas.fa-dice-d20';
     $(document).on('click', diceIconSelector, () => { 
-        StepRoll.prompt();
+        StepRoll.prompt(0, "General Step");
     });
 });
 
