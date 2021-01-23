@@ -82,12 +82,22 @@ export class ED4EActor extends Actor {
         
          if (!Array.isArray(items) || !items.length) { return; }
  
+         
          items.forEach((item) => {
         
+            if(item.type == "npc_attack"){
                  item.data.dice = StepUtil.getDiceText(item.data.step);
                  item.data.expr = StepUtil.getDiceExpr(item.data.step);
                  item.data.dmg_dice = StepUtil.getDiceText(item.data.dmg_step);
                  item.data.dmg_expr = StepUtil.getDiceText(item.data.dmg_step);    
+            }
+
+            if(item.type == "weapon") {
+                let comstep = item.data.attribute == "" ? item.data.base_dmg : item.data.base_dmg + data.data.attributes[item.data.attribute].step;
+                item.data.full_dmg.step = comstep;
+                item.data.full_dmg.dice = StepUtil.getDiceText(comstep);
+                item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
+            }
          });
 
          console.warn("items after:", items);
@@ -126,7 +136,7 @@ export class ED4EActor extends Actor {
     _prepareAttributes(data) {
         console.warn("data: ", data);   
         const atts = data.attributes;
-
+        const carry = [0,10,15,20,25,30,40,50,60,70,80,95,110,125,140,155,175,195,215,235,255,280,305,330,355,380,410,440,370,500,530];
         // console.warn("Atts: ", atts);
         for (let att in atts) {
             let newStep = 0;
@@ -138,7 +148,7 @@ export class ED4EActor extends Actor {
             atts[att].expr = StepUtil.getDiceExpr(newStep);       
         }
 
-        data.carry = (atts.strength.value * 10) - 5 + data.miscmods.misc_carry;
+        data.carry = carry[atts.strength.value] + data.miscmods.misc_carry;
         if (data.load > data.carry) {
            // use active effect here...in the future
         }

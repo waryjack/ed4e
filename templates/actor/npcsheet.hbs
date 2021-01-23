@@ -41,7 +41,6 @@
         {{!-- Sheet Tab Navigation --}}
         <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'Willow', serif; font-size:1.25em; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
             <a class="ed4e item" data-tab="main">Essentials</a>
-            <a class="ed4e item" data-tab="magic">Magic</a>
             <a class="ed4e item" data-tab="gear">Loot</a>
             <a class="ed4e item" data-tab="misc">Misc</a>
             <a class="ed4e item" data-tab="inst">Instructions</a>
@@ -60,9 +59,6 @@
                 <div class="ed4e flexrow">
                     {{> "systems/ed4e/templates/actor/partials/npc/abilities-npc.hbs"}}
                 </div>
-            </div>
-            <div class="tab magic" data-group="primary" data-tab="magic">
-                {{> "systems/ed4e/templates/actor/partials/spells.hbs"}}
             </div>
             <div class="tab gear" data-group="primary" data-tab="gear">
                 {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}

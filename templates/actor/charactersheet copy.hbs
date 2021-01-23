@@ -39,7 +39,6 @@
 {{!-- Sheet Tab Navigation --}}
         <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'Willow', 'IM Fell Double Pica SC', serif; font-size:1.25em; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
             <a class="ed4e item" data-tab="main">Essentials</a>
-            <a class="ed4e item" data-tab="abils">Abilities</a>
             <a class="ed4e item" data-tab="magic">Magic</a>
             <a class="ed4e item" data-tab="gear">Equipment</a>
             <a class="ed4e item" data-tab="legend">Legend</a>
@@ -57,10 +56,7 @@
                     {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
                          {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
                 {{!--Initiative Partial--}}
-                </div>
-                
-            </div>
-            <div class="tab abils" data-group="primary" data-tab="abils">
+        </div>
                 <div class="ed4e flexrow">
                     {{> "systems/ed4e/templates/actor/partials/talents.hbs"}}
                     {{> "systems/ed4e/templates/actor/partials/skills.hbs"}}

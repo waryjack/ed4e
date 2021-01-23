@@ -284,6 +284,7 @@
             "master_opts":""
         },
         "npc_attack":{
+            "templates":["common"],
             "step":0,
             "dice":"",
             "expr":"",
