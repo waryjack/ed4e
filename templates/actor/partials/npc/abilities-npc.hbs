@@ -14,11 +14,11 @@
         </tr>
             {{#each npc_attacks as |atk atkname|}}
             <tr class="effect-toggle" style="text-align:center">
-                 <td><a title="Roll" class="item-roll weapon-image" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i></td>
+                 <td><a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i></td>
                 <td style="text-align:left"><a class="item-name item" data-item-id="{{atk._id}}">{{atk.name}}</a></td>
                 <td>{{atk.data.step}}</td>
                 <td>{{atk.data.dice}}</td>
-                <td><a class="step-roll" data-step="{{atk.data.dmg_step}}" data-roll-type="Damage/Effect"><i class="fas fa-dice-six"></i></a>  {{atk.data.dmg_step}}</td>
+                <td><a class="step-roll ed4e-button" data-step="{{atk.data.dmg_step}}" data-roll-type="Damage/Effect"><i class="fas fa-dice-six"></i></a>  {{atk.data.dmg_step}}</td>
                 <td>{{atk.data.dmg_dice}}</td>
                 <td>{{atk.data.strain}}</td>
                 <td><a class="item-edit item" data-item-id="{{atk._id}}"><i class="fas fa-edit"></i></a> <a class="item-delete item" data-item-id="{{atk._id}}"><i class='fas fa-trash'></i></a></td>

@@ -15,7 +15,7 @@
             {{#each talents as |talent talName|}}
             {{log "TALENT: " talent}}
             <tr style="text-align:center">
-                <td style="text-align:left !important;"><a title="Roll" class="item-roll weapon-image" data-item-id="{{talent._id}}"><i class="fas fa-dice-six"></i></td>
+                <td style="text-align:left !important;"><a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{talent._id}}"><i class="fas fa-dice-six"></i></td>
                 <td style="text-align:left"><a class="item-name item" data-item-id="{{talent._id}}">{{talent.name}} {{#if talent.data.asSkill}}*{{/if}}</a></td>
                 <td>{{talent.data.rank}}</td>
                 <td>{{localize (concat "ED4E.attributes_short." talent.data.attribute)}}</td>
