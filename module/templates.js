@@ -11,7 +11,7 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/wealth.hbs",
      "systems/ed4e/templates/actor/partials/bio.hbs",
      "systems/ed4e/templates/actor/partials/legend.hbs",
-
+     "systems/ed4e/templates/actor/partials/actions.hbs",
      "systems/ed4e/templates/actor/partials/skills.hbs",
      "systems/ed4e/templates/actor/partials/talents.hbs",
      "systems/ed4e/templates/actor/partials/weapons.hbs",

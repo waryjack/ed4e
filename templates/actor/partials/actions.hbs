@@ -1,10 +1,11 @@
 <div class="ed4e flex-item">
     <table class="item-table">
         <tr>
-            <th><a class="add-item" title="Add Attack" data-type="npc_attack">
+            <th><a class="add-item" title="Add Action" data-type="pc_action">
                             <i class="fas fa-plus-square"></i>
                         </a></th>
-            <th style="text-align:left">Ability</th>
+            <th style="text-align:left">{{localize "ED4E.jargon.common_action"}}</th>
+            <th>{{localize "ED4E.jargon.target"}}</th>
             <th>{{localize "ED4E.jargon.step"}}</th>
             <th>{{localize "ED4E.jargon.dice"}}</th>
             <th>{{localize "ED4E.jargon.dmg_effect"}}</th>
@@ -12,10 +13,11 @@
             <th>{{localize "ED4E.jargon.strain"}}</th>
             <th></th>
         </tr>
-            {{#each npc_attacks as |atk atkname|}}
+            {{#each pc_actions as |atk atkname|}}
             <tr class="effect-toggle" style="text-align:center">
                  <td><a title="Roll" class="item-roll weapon-image" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i></td>
                 <td style="text-align:left"><a class="item-name item" data-item-id="{{atk._id}}">{{atk.name}}</a></td>
+                <td>{{atk.data.target}}</td>
                 <td>{{atk.data.step}}</td>
                 <td>{{atk.data.dice}}</td>
                 <td><a class="step-roll" data-step="{{atk.data.dmg_step}}" data-roll-type="Damage/Effect"><i class="fas fa-dice-six"></i></a>  {{atk.data.dmg_step}}</td>
@@ -23,7 +25,7 @@
                 <td>{{atk.data.strain}}</td>
                 <td><a class="item-edit item" data-item-id="{{atk._id}}"><i class="fas fa-edit"></i></a> <a class="item-delete item" data-item-id="{{atk._id}}"><i class='fas fa-trash'></i></a></td>
             </tr>
-            <tr class="effect-info">
+                <tr class="effect-info">
                 <td></td>
                 <td colspan=7>{{atk.data.common.description}}</td>
             </tr>

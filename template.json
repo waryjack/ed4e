@@ -189,7 +189,7 @@
         }
     },
     "Item":{
-        "types":["weapon","armor","equipment","thread_item","ability","spell","discipline","npc_attack"],
+        "types":["weapon","armor","equipment","thread_item","ability","spell","discipline","npc_attack","pc_action"],
         "templates":{
             "common":{
                 "common":{
@@ -291,6 +291,16 @@
             "dmg_step":0,
             "dmg_dice":"",
             "dmg_expr":""
+        },
+        "pc_action":{
+            "templates":["common"],
+            "target":"",
+            "step":0,
+            "dice":"",
+            "expr":"",
+            "eff_step":0,
+            "eff_dice":0,
+            "eff_expr":0
         }
         
     }

@@ -1,0 +1,44 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+    
+    <section class="sheet-body">
+        <div class="s7 flexcol">
+            <div class="s7 flexrow">
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.step"}}</th>
+                        <th>{{localize "ED4E.jargon.dmg_effect"}}</th>
+                        <th>{{localize "ED4E.jargon.target"}}/{{localize "ED4E.jargon.difficulty"}}</th>
+                        <th>{{localize "ED4E.jargon.action"}}</th>
+                        <th>{{localize "ED4E.jargon.strain"}}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.step" value="{{data.step}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.dmg_step" value="{{data.dmg_step}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.target" value="{{data.target}}" data-dtype="String"/>
+                        </td>
+                        <td>
+                            {{> "systems/ed4e/templates/item/partials/action_select.hbs"}}
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.strain" value="{{data.strain}}" data-dtype="Number" />
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+            <div class="ed4e flex-item">
+                    <h4>Description</h4>
+                    <textarea name="data.common.description">{{data.common.description}}</textarea>
+                </div>
+        </div>
+    </section>
+</form>

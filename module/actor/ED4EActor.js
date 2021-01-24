@@ -89,7 +89,7 @@ export class ED4EActor extends Actor {
                  item.data.dice = StepUtil.getDiceText(item.data.step);
                  item.data.expr = StepUtil.getDiceExpr(item.data.step);
                  item.data.dmg_dice = StepUtil.getDiceText(item.data.dmg_step);
-                 item.data.dmg_expr = StepUtil.getDiceText(item.data.dmg_step);    
+                 item.data.dmg_expr = StepUtil.getDiceExpr(item.data.dmg_step);    
             }
 
             if(item.type == "weapon") {
@@ -375,7 +375,13 @@ export class ED4EActor extends Actor {
                 item.data.full_dmg.step = comstep;
                 item.data.full_dmg.dice = StepUtil.getDiceText(comstep);
                 item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
-            }
+            } else if(item.type == "pc_action"){
+                item.data.dice = StepUtil.getDiceText(item.data.step);
+                item.data.expr = StepUtil.getDiceExpr(item.data.step);
+                item.data.dmg_dice = StepUtil.getDiceText(item.data.dmg_step);
+                item.data.dmg_expr = StepUtil.getDiceExpr(item.data.dmg_step);    
+           }
+
         });
 
         console.warn("Total Weight: ", totalWeight);

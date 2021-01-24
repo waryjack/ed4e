@@ -144,7 +144,12 @@
             "item":"Item",
             "physical": "Physical",
             "mystic": "Mystic",
-            "spell": "Spell"
+            "spell": "Spell",
+            "dmg_effect":"Damage/Effect Step",
+            "dmg_effect_dice":"Damage/Effect Dice",
+            "target":"Target",
+            "difficulty":"Difficulty",
+            "common_action":"Common Action"
         },
         "race": {
             "dwarf": "Dwarf",
