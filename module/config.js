@@ -153,5 +153,8 @@ export const ED4E = {
             sustained: "ED4E.actions.sustained",
             simple: "ED4E.actions.simple",
             free: "ED4E.actions.free"
+        },
+        dialog: {
+            actionRoll: "systems/ed4e/templates/roll/actionroll.hbs"
         }
 }
