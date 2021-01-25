@@ -295,12 +295,16 @@
         "pc_action":{
             "templates":["common"],
             "target":"",
+            "attribute":"",
+            "base_step":0,
             "step":0,
             "dice":"",
             "expr":"",
-            "eff_step":0,
-            "eff_dice":0,
-            "eff_expr":0
+            "dmg_attribute":"",
+            "dmg_base":0,
+            "dmg_step":0,
+            "dmg_dice":0,
+            "dmg_expr":0
         }
         
     }

@@ -23,16 +23,17 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/misc2.hbs",
      "systems/ed4e/templates/actor/partials/portrait.hbs",
      "systems/ed4e/templates/actor/partials/instructions.hbs",
+     "systems/ed4e/templates/actor/partials/race_select.hbs",
+     "systems/ed4e/templates/actor/partials/steplist.hbs",
+     "systems/ed4e/templates/actor/partials/discipline_select.hbs",
 
      // Item Partials
      "systems/ed4e/templates/item/partials/attribute_select.hbs",
      "systems/ed4e/templates/item/partials/action_select.hbs",
+     "systems/ed4e/templates/item/partials/action_attribute_select.hbs",
+     "systems/ed4e/templates/item/partials/action_dmg_attribute_select.hbs",
 
-     "systems/ed4e/templates/actor/partials/discipline_select.hbs",
-     "systems/ed4e/templates/actor/partials/race_select.hbs",
-
-     "systems/ed4e/templates/actor/partials/steplist.hbs",
-
+     
      // NPC Partials
      "systems/ed4e/templates/actor/partials/npc/attributes-npc.hbs",
      "systems/ed4e/templates/actor/partials/npc/defenses-npc.hbs",

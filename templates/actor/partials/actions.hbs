@@ -6,6 +6,7 @@
                             <i class="fas fa-plus-square"></i>
                         </a></th>
             <th style="text-align:left">{{localize "ED4E.jargon.action"}}</th>
+            <th>{{localize "ED4E.jargon.attribute"}} (Test/Eff)</th>
             <th>{{localize "ED4E.jargon.target"}}</th>
             <th>{{localize "ED4E.jargon.step"}}</th>
             <th>{{localize "ED4E.jargon.dice"}}</th>
@@ -18,7 +19,10 @@
             <tr class="effect-toggle" style="text-align:center">
                  <td><a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i></td>
                 <td style="text-align:left"><a class="item-name item" data-item-id="{{atk._id}}">{{atk.name}}</a></td>
-                <td>{{atk.data.target}}</td>
+                <td>{{#if (eq atk.data.attribute "")}}--{{else}}{{localize (concat "ED4E.attributes_short." atk.data.attribute)}}{{/if}}/
+                    {{#if (eq atk.data.dmg_attribute "")}}--{{else}}{{localize (concat "ED4E.attributes_short." atk.data.dmg_attribute)}}{{/if}}
+                </td>
+                 <td>{{atk.data.target}}</td>
                 <td>{{atk.data.step}}</td>
                 <td>{{atk.data.dice}}</td>
                 <td><a class="step-roll ed4e-button" data-step="{{atk.data.dmg_step}}" data-roll-type="Damage/Effect"><i class="fas fa-dice-six"></i>  {{atk.data.dmg_step}}</a></td>
@@ -28,7 +32,7 @@
             </tr>
                 <tr class="effect-info">
                 <td></td>
-                <td colspan=7>{{atk.data.common.description}}</td>
+                <td colspan=9>{{atk.data.common.description}}</td>
             </tr>
             {{/each}}
     </table>

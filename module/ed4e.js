@@ -132,9 +132,10 @@ Hooks.once("ready", () => {
     });
 });
 
-Hooks.on("updateOwnedItem", (actor, item, changed) => {
+/* Hooks.on("updateOwnedItem", (actor, item, changed) => {
 
     let totalStep = 0;
+    let effStep = 0;
     if(item.type == "ability") {
         
         totalStep = actor.data.data.attributes[item.data.attribute].step + item.data.rank;
@@ -142,9 +143,21 @@ Hooks.on("updateOwnedItem", (actor, item, changed) => {
         item.data.dice = StepUtil.getDiceText(totalStep);
         item.data.expr = StepUtil.getDiceExpr(totalStep);
     }
+    if(item.type == "pc_action") {
+        totalStep = (item.data.attribute == "") ? item.data.step : item.data.step + actor.data.data.attributes[item.data.attribute].step;
+        effStep = (item.data.dmg_attribute == "") ? item.data.dmg_step : item.data.dmg_step + actor.data.data.attributes[item.data.dmg_attribute].step;
+        item.data.step = totalStep;
+        item.data.dice = StepUtil.getDiceText(totalStep);
+        item.data.expr = StepUtil.getDiceExpr(totalStep);
+
+        item.data.dmg_step = effStep;
+        item.data.dmg_dice = StepUtil.getDiceText(effStep);
+        item.data.dmg_expr = StepUtil.getDiceExpr(effStep);
+    }
 });
 
- 
+*/
+
 Hooks.on('renderChatMessage', (app, html) => {
 
     html.on('click', '.taskroll-msg', event => {

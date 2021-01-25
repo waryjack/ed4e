@@ -93,7 +93,7 @@ export class ED4EActor extends Actor {
             }
 
             if(item.type == "weapon") {
-                let comstep = item.data.attribute == "" ? item.data.base_dmg : item.data.base_dmg + data.data.attributes[item.data.attribute].step;
+                let comstep = (item.data.attribute == "") ? item.data.base_dmg : item.data.base_dmg + data.data.attributes[item.data.attribute].step;
                 item.data.full_dmg.step = comstep;
                 item.data.full_dmg.dice = StepUtil.getDiceText(comstep);
                 item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
@@ -366,20 +366,25 @@ export class ED4EActor extends Actor {
             totalWeight += itemWeight;
             
             if(item.type == "ability") {
-                let comstep = item.data.attribute == "" ? item.data.rank : item.data.rank + data.data.attributes[item.data.attribute].step;
+                let comstep = (item.data.attribute == "") ? item.data.rank : item.data.rank + data.data.attributes[item.data.attribute].step;
                 item.data.step = comstep;
                 item.data.dice = StepUtil.getDiceText(comstep);
                 item.data.expr = StepUtil.getDiceExpr(comstep);
             } else if (item.type == "weapon") {
-                let comstep = item.data.attribute == "" ? item.data.base_dmg : item.data.base_dmg + data.data.attributes[item.data.attribute].step;
+                let comstep = (item.data.attribute == "") ? item.data.base_dmg : item.data.base_dmg + data.data.attributes[item.data.attribute].step;
                 item.data.full_dmg.step = comstep;
                 item.data.full_dmg.dice = StepUtil.getDiceText(comstep);
                 item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
             } else if(item.type == "pc_action"){
-                item.data.dice = StepUtil.getDiceText(item.data.step);
-                item.data.expr = StepUtil.getDiceExpr(item.data.step);
-                item.data.dmg_dice = StepUtil.getDiceText(item.data.dmg_step);
-                item.data.dmg_expr = StepUtil.getDiceExpr(item.data.dmg_step);    
+                let comstep = (item.data.attribute == "") ? item.data.base_step : item.data.base_step + data.data.attributes[item.data.attribute].step;
+                let dmgstep = (item.data.dmg_attribute == "") ? item.data.dmg_base : item.data.dmg_base + data.data.attributes[item.data.dmg_attribute].step;
+                item.data.step = comstep;
+                console.warn("comstep, item step: ", comstep, item.data.step);
+                item.data.dice = StepUtil.getDiceText(comstep);
+                item.data.expr = StepUtil.getDiceExpr(comstep);
+                item.data.dmg_step = dmgstep;
+                item.data.dmg_dice = StepUtil.getDiceText(dmgstep);
+                item.data.dmg_expr = StepUtil.getDiceExpr(dmgstep);    
            }
 
         });
