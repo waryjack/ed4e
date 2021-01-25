@@ -450,11 +450,12 @@ export class ED4EActor extends Actor {
             diceExpr = item.data.data.expr;
             diceStep = item.data.data.step;
             dialogTitle = item.data.data.subtype + " Roll";
-            showKarma = true;
+            if (item.type == "ability") {
+                showKarma = (item.data.data.subtype=="skill") ? false : true;
+            } 
         }
 
-        // console.warn("dice info: ", diceText, diceExpr, diceStep);
-
+       
         let dialogData = {
             isItem: true,
             dlgTitle: dialogTitle,
