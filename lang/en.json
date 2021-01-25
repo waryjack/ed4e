@@ -113,6 +113,8 @@
             "major_pattern_item": "Major Pattern Item",
             "minor_pattern": "Minor Pattern",
             "major_pattern": "Major Pattern",
+            "thread_items":"Thread Items",
+            "spells":"Spells",
             "true_pattern": "True Pattern",
             "horror": "Horror",
             "horror_mark": "Horror Mark",
@@ -126,6 +128,8 @@
             "encumbrance": "Encumbrance",
             "armor":"Armor",
             "weapon":"Weapon",
+            "weapons":"Weapons",
+            "equipment":"Equipment",
             "minstr":"Min Str",
             "range": "Range",
             "rangeshortlong": "Range (S/L)",
@@ -149,7 +153,8 @@
             "dmg_effect_dice":"Damage/Effect Dice",
             "target":"Target",
             "difficulty":"Difficulty",
-            "common_action":"Common Action"
+            "common_action":"Common Action",
+            "npc_abilities":"NPC Abilities"
         },
         "race": {
             "dwarf": "Dwarf",
