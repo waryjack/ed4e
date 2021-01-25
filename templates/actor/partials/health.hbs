@@ -3,28 +3,28 @@
     <table class="item-table">
         <tr>
             <td><strong>{{localize "ED4E.health.current_damage_brief"}}</strong></td>
-            <td><input type="text" class="ed4e value-input" name="data.health.damage.value" value="{{data.health.damage.value}}" data-dtype="Number" /></td>
+            <td><a class="tick" data-stat-name="damage" data-direction="down"><i class="fas fa-minus-square"></a></i> <input type="text" class="ed4e value-input" name="data.health.damage.value" value="{{data.health.damage.value}}" data-dtype="Number" /> <a class="tick" data-stat-name="damage" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
             <td align="right"><strong>{{localize "ED4E.health.uncon"}}</strong></td>
             <td align="center">{{data.health.thresholds.uncon}}</td>
             
         </tr>
         <tr>
             <td><strong>{{localize "ED4E.health.blood_magic_brief"}}</strong></td>
-            <td><input type="text" class="ed4e value-input" name="data.health.damage.blood" value="{{data.health.damage.blood}}" data-dtype="Number" /></td>
+            <td><a class="tick" data-stat-name="blood" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.health.damage.blood" value="{{data.health.damage.blood}}" data-dtype="Number" /> <a class="tick" data-stat-name="blood" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
             <td align="right"><strong>{{localize "ED4E.health.death"}}</strong></td>
             <td align="center">{{data.health.thresholds.death}}</td>
         </tr>
         <tr>
             
             <td><strong>{{localize "ED4E.health.wounds"}}</strong></td>
-            <td><input type="text" class="ed4e value-input" name="data.health.damage.wounds" value="{{data.health.damage.wounds}}" data-dtype="Number" /></td>
+            <td><a class="tick" data-stat-name="wounds" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.health.damage.wounds" value="{{data.health.damage.wounds}}" data-dtype="Number" /> <a class="tick" data-stat-name="wounds" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
             <td align="right"><strong>{{localize "ED4E.health.wound"}}</strong></td>
             <td align="center">{{data.health.thresholds.wound}}</td>
         </tr>
         <tr>
-            <td><strong>Recov. Tests</strong></td>
-            <td><input type="text" class="ed4e value-input" name="data.health.recovery.avail" value="{{data.health.recovery.avail}}" data-dtype="Number"/> / {{data.health.recovery.max}}</td>
-            <td align="right"><strong>Recov. {{localize "ED4E.jargon.dice"}}</strong></td>
+            <td><strong>Rec. Tests ({{data.health.recovery.max}})</strong></td>
+            <td><a class="tick" data-stat-name="recov" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.health.recovery.avail" value="{{data.health.recovery.avail}}" data-dtype="Number"/> <a class="tick" data-stat-name="recov" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
+            <td align="right"><strong>Rec. {{localize "ED4E.jargon.dice"}}</strong></td>
             <td align="center">{{data.attributes.toughness.dice}}</td>
         </tr>
     </table>

@@ -324,7 +324,6 @@ export class ED4EActor extends Actor {
         health.thresholds.death = deathTh + data.miscmods.misc_death + data.circle + durPerLevel;
         health.thresholds.wound = woundTh + data.r_wound_bonus + data.miscmods.misc_wound;
         health.recovery.max = recovTotal;
-        health.recovery.avail = health.recovery.max - health.recovery.used;
         health.recovery.step = atts.toughness.step;
         health.damage.max = deathTh;
 
@@ -537,5 +536,103 @@ export class ED4EActor extends Actor {
             },{width:300}).render(true);
         });
 
+    }
+
+    increaseOrDecreaseStat(stat, direction) {
+
+        console.warn("actor method: ", stat, direction);
+
+        const actorData = duplicate(this.data);
+        let currDmg = 0;
+        let currWounds = 0;
+        let currBlood = 0;
+        let currKarma = 0;
+        let currReco = 0;
+        let currMiscInit = 0;
+
+        if (stat == "damage") {
+
+            if (direction == "up") {
+                currDmg = actorData.data.health.damage.value;
+                currDmg = Math.min(currDmg + 1, actorData.data.health.thresholds.death);
+            } else {
+                currDmg = actorData.data.health.damage.value;
+                currDmg = Math.max(currDmg - 1, 0);
+            }
+            actorData.data.health.damage.value = currDmg;
+
+            console.warn("currDmg: ", currDmg);
+
+            this.update(actorData);
+
+            // setProperty(this, "data.data.health.damage.value", currDmg);
+
+        } else if (stat == "wounds") {
+
+            if (direction == "up") {
+                currWounds = actorData.data.health.damage.wounds;
+                currWounds += 1;
+            } else {
+                currWounds = actorData.data.health.damage.wounds;
+                currWounds = Math.max(currWounds - 1, 0);
+            }
+
+            actorData.data.health.damage.wounds = currWounds;
+            this.update(actorData);
+
+        } else if (stat == "blood") {
+
+            if (direction == "up") {
+                currBlood = actorData.data.health.damage.blood;
+                currBlood = Math.min(currBlood + 1, actorData.data.health.thresholds.death);
+            } else {
+                currBlood = actorData.data.health.damage.blood;
+                currBlood = Math.max(currBlood - 1, 0);
+            }
+            
+            actorData.data.health.damage.blood = currBlood;
+            this.update(actorData);
+
+        } else if (stat == "karma") {
+
+            if (direction == "up") {
+                currKarma = actorData.data.karma.value;
+                currKarma = Math.min(currKarma + 1, actorData.data.karma.max);
+            } else {
+                currKarma = actorData.data.karma.value;
+                currKarma = Math.max(currKarma - 1, 0);
+            }
+            
+            actorData.data.karma.value = currKarma;
+            this.update(actorData);
+
+        } else if (stat == "recov") {
+                currReco = actorData.data.health.recovery.avail;
+            if (direction == "up") {
+                currReco = Math.min(currReco + 1, actorData.data.health.recovery.max);
+            } else {
+                currReco = Math.max(currReco - 1, 0);
+            }
+            
+            actorData.data.health.recovery.avail = currReco;
+            this.update(actorData);
+
+        } else if (stat == "initmod") {
+
+            currMiscInit = actorData.data.miscmods.misc_init_step;
+
+            if (direction == "up") {
+                currMiscInit += 1;
+            } else {
+                currMiscInit -= 1;
+            }
+            
+            actorData.data.miscmods.misc_init_step = currMiscInit;
+            this.update(actorData);
+
+        }
+        
+
+     
     }
 }

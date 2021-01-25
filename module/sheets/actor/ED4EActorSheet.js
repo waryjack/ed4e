@@ -42,6 +42,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.threaditems = data.items.filter(function(item) { return item.type == "thread_item"});
             data.npc_attacks = data.items.filter(function(item) { return item.type == "npc_attack"});
             data.pc_actions = data.items.filter(function(item) { return item.type == "pc_action"});
+        
             
             
 
@@ -73,6 +74,7 @@ export default class ED4EActorSheet extends ActorSheet {
             html.find('.attr-roll').click(this._onAttributeRoll.bind(this));
             html.find('.select-race').change(this._onSelectRace.bind(this));
             html.find('.step-roll').click(this._onStepRoll.bind(this));
+            html.find('.tick').click(this._onIncreaseOrDecreaseStat.bind(this));
         }
 
         _onInlineEdit(e){
@@ -197,4 +199,16 @@ export default class ED4EActorSheet extends ActorSheet {
             console.warn("Step clicked: ", step);
             StepRoll.prompt(step, rtype);
         }
+
+        _onIncreaseOrDecreaseStat(e) {
+            console.warn("here we are!");
+            e.preventDefault();
+            let element = e.currentTarget;
+            let stat = element.dataset.statName;
+            let delta = element.dataset.direction;
+
+            console.warn(stat, delta);
+            return this.actor.increaseOrDecreaseStat(stat, delta);
+        }
+
 }
