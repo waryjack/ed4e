@@ -5,7 +5,14 @@ export class Messenger {
         console.warn("Requested Message Template: ", template);
         console.warn("Data: ", data);
 
-        data.tooltip = new Handlebars.SafeString(tooltip);
+        if(typeof tooltip == "string") {
+            data.tooltip = new Handlebars.SafeString(tooltip);
+        }
+
+        if(typeof tooltip == "object") {
+
+        }
+        
 
         renderTemplate(template, data).then((msg)=>{
             ChatMessage.create({

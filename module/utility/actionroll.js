@@ -38,7 +38,7 @@ export class ActionRoll {
                         icon: "<i class='fa fa-check'></i>",
                         label: "Roll",
                         callback: (html) => {
-                            
+                            let tooltips = new Array();
                             let karmaDie = "";
                             let karmaDieText = "";
                             let adjustedExpr = dialogData.testExpr;
@@ -100,6 +100,10 @@ export class ActionRoll {
                                 effStep: finalEffStep
                             }
 
+                            testRoll.getTooltip().then(tt => tooltips.push(tt));
+                            effRoll.getTooltip().then(ett => tooltips.push(ett));
+
+                            Messenger.createChatMessage(tooltips, msgData, msgTemplate);
                             testRoll.getTooltip().then(tt => Messenger.createChatMessage(tt, msgData, msgTemplate));
 
                         }
