@@ -1,33 +1,27 @@
-import StepUtil from "./steps.js";
+import { StepUtil } from "./steps.js";
+import { Messenger } from "./messenger.js";
 
 export class ActionRoll {
 
     static roll(actor, actionId) {
 
         let action = actor.getOwnedItem(actionId);
-      //  let dialog = CONFIG.dialog.actionRoll;
+        let template = "systems/ed4e/templates/roll/actionrolldialog.hbs";
 
         let dialogData = {
             dlgTitle: "Action Roll",
             name: action.name,
-            testStep: action.data.step,
-            testDice: action.data.dice,
-            testExpr: action.data.expr,
-            effStep: action.data.dmg_step,
-            effDice: action.data.dmg_dice,
-            effExpr: action.data.dmg_expr,
-            desc: action.data.description,
+            testStep: action.data.data.step,
+            testDice: action.data.data.dice,
+            testExpr: action.data.data.expr,
+            effStep: action.data.data.dmg_step,
+            effDice: action.data.data.dmg_dice,
+            effExpr: action.data.data.dmg_expr,
+            desc: action.data.data.common.description,
             karma: true,
         }
 
-
-       // this._processRoll(template, dialogData);
-
-
-    }
-
-
-    _processRoll(template, dialogData) {
+        console.warn("dialogData actionroll: ",dialogData);
 
         renderTemplate(template, dialogData).then((dlg) => {
             new Dialog({
@@ -36,9 +30,9 @@ export class ActionRoll {
                 buttons:{
                     roll: {
                         icon: "<i class='fa fa-check'></i>",
-                        label: "Roll",
+                        label: "Action Roll",
                         callback: (html) => {
-                            let tooltips = new Array();
+                      
                             let karmaDie = "";
                             let karmaDieText = "";
                             let adjustedExpr = dialogData.testExpr;
@@ -55,6 +49,9 @@ export class ActionRoll {
                             let effResultMod = "+" + html.find("#effresultmod").val();
                             let myKarmaDie = html.find("#karmadie").val();
                             
+                            console.warn("Action-step,eff: ", adjustedStep, effectStep);
+                            console.warn("Action-stepMod, effMod: ", stepMod, effMod);
+                            console.warn("Action-rollmod, effresultmod: ", miscMod, effResultMod);
                             
                             
                             if(dialogData.karma && myKarmaDie != "") {
@@ -78,9 +75,9 @@ export class ActionRoll {
                             
                             let finalExpr = adjustedExpr + karmaDie + miscMod;
                             let finalDiceText = adjustedDice + karmaDieText + miscMod;
-                            let finalEffExpr = effectExpr + effMod;
-                            let finalEffDice = effectDice + effMod;
-                            let msgTemplate = "systems/ed4e/templates/chat/rollmessage.hbs";
+                            let finalEffExpr = effectExpr + effResultMod;
+                            let finalEffDice = effectDice + effResultMod;
+                            let msgTemplate = "systems/ed4e/templates/chat/actionrollmessage.hbs";
                             let testRoll = new Roll(finalExpr).evaluate();
                             let testResult = testRoll.total;
                             let effRoll = new Roll(finalEffExpr).evaluate();
@@ -97,14 +94,17 @@ export class ActionRoll {
                                 dice: finalDiceText,
                                 step: adjustedStep,
                                 effDice: finalEffDice,
-                                effStep: finalEffStep
+                                effStep: effectStep
                             }
 
-                            testRoll.getTooltip().then(tt => tooltips.push(tt));
-                            effRoll.getTooltip().then(ett => tooltips.push(ett));
-
-                            Messenger.createChatMessage(tooltips, msgData, msgTemplate);
-                            testRoll.getTooltip().then(tt => Messenger.createChatMessage(tt, msgData, msgTemplate));
+                            testRoll.getTooltip().then((tt) =>
+                                {   
+                                    effRoll.getTooltip().then((ett) =>
+                                    {
+                                        Messenger.createChatMessage(tt, msgData, msgTemplate, ett);
+                                    });
+                                });
+    
 
                         }
                     },
@@ -119,4 +119,5 @@ export class ActionRoll {
             },{width:300}).render(true);
         });
     }
+    
 }

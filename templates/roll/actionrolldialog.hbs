@@ -1,0 +1,50 @@
+<form class="s7 roll-dialog norm-color">
+ <header class="roll-header">
+        <h1>{{dialogName}}</h1>
+    </header>
+
+<div class="ed4e roll-dialog">
+    <h3><strong>{{proper name}} Roll</strong></h3>
+    <div class="ed4e flexcol">
+        <div class="ed4e flex-item">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Test</th>
+                    <th>Effect/Dmg</th>
+                </tr>
+                <tr>
+                    <td>Step Modifiers</td>
+                    <td><input type="text" id="stepmod" name="stepmod" value="0" data-dtype="Number"/></td>
+                    <td><input type="text" id="effmod" name="effmod" value="0" data-dtype="Number"/></td>
+                </tr>
+                <tr>
+                    <td>Result Modifiers</td>
+                    <td><input type="text" id="rollmod" name="rollmod" value="0" data-dtype="Number" /> </td>
+                    <td><input type="text" id="effresultmod" name="effresultmod" value="0" data-dtype="Number" /> </td>
+                </tr>
+                {{#if karma}}
+                <tr>
+                    <td>Add Karma Die</td>
+                    <td colspan=2>
+                        <select name="karmadie" id="karmadie">
+                            {{#select karmadie}}
+                            <option value=""></option>
+                            <option value="1d4">1d4</option>
+                            <option value="1d6">1d6</option>
+                            <option value="1d8">1d8</option>
+                            <option value="1d10">1d10</option>
+                            <option value="1d12">1d12</option>
+                            <option value="1d20">1d20</option>
+                            {{/select}}
+                        </select>
+
+                    </td>
+                </tr>
+                {{/if}}
+            </table>
+        </div>
+    </div>
+    <p></p>
+    <p></p>
+</div>

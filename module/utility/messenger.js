@@ -1,18 +1,12 @@
 export class Messenger {
 
-    static createChatMessage(tooltip, data, template) {
+    static createChatMessage(tooltip, data, template, tooltip2) {
 
-        console.warn("Requested Message Template: ", template);
-        console.warn("Data: ", data);
-
-        if(typeof tooltip == "string") {
-            data.tooltip = new Handlebars.SafeString(tooltip);
+      
+        data.tooltip = new Handlebars.SafeString(tooltip);
+        if(tooltip2 !== undefined) {
+            data.tooltip2 = new Handlebars.SafeString(tooltip2);
         }
-
-        if(typeof tooltip == "object") {
-
-        }
-        
 
         renderTemplate(template, data).then((msg)=>{
             ChatMessage.create({

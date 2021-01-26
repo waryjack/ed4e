@@ -1,4 +1,5 @@
 import { StepRoll } from "../../utility/steproll.js" ;
+import { ActionRoll } from "../../utility/actionroll.js";
 
 export default class ED4EActorSheet extends ActorSheet {
 
@@ -75,6 +76,7 @@ export default class ED4EActorSheet extends ActorSheet {
             html.find('.select-race').change(this._onSelectRace.bind(this));
             html.find('.step-roll').click(this._onStepRoll.bind(this));
             html.find('.tick').click(this._onIncreaseOrDecreaseStat.bind(this));
+            html.find('.action-roll').click(this._onActionRoll.bind(this));
         }
 
         _onInlineEdit(e){
@@ -198,6 +200,13 @@ export default class ED4EActorSheet extends ActorSheet {
             let rtype = element.dataset.rollType;
             console.warn("Step clicked: ", step);
             StepRoll.prompt(step, rtype);
+        }
+
+        _onActionRoll(e){
+            e.preventDefault();
+            let element = e.currentTarget;
+            let id = element.dataset.itemId;
+            ActionRoll.roll(this.actor, id);
         }
 
         _onIncreaseOrDecreaseStat(e) {
