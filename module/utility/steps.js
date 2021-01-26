@@ -31,7 +31,27 @@ export class StepUtil {
         {dice:"1d20+1d12+1d8+1d6", expr:"1d20x20+1d12x12+1d8x8+1d6x6"},
         {dice:"1d20+1d12+2d8", expr:"1d20x20+1d12x12+2d8x8"},
         {dice:"1d20+1d12+1d10+1d8", expr:"1d20x20+1d12x12+1d10x10+1d8x8"},
-        {dice:"2d20+2d6", expr:"2d20x20+2d6x6"}
+        {dice:"2d20+2d6", expr:"2d20x20+2d6x6"},
+        {dice:"2d20+1d8+1d6", expr:"2d20x20+1d8x8+1d6x6"},
+		{dice:"2d20+2d8", expr:"2d20x20+2d8x8"},
+		{dice:"2d20+1d10+1d8", expr:"2d20x20+1d10x10+1d8x8"},
+		{dice:"2d20+2d10", expr:"2d20x20+2d10x10"},
+		{dice:"2d20+1d12+1d10",expr:"2d20x20+1d12x12+1d10x10"},
+		{dice:"2d20+2d12", expr:"2d20x20+2d12x12"},
+		{dice:"2d20+1d12+2d6", expr:"2d20x20+1d12x12+2d6x6"},
+		{dice:"2d20+1d12+1d8+1d6", expr:"2d20x20+1d12x12+1d8x8+1d6x6"},
+		{dice:"2d20+1d12+2d8", expr:"2d20x20+1d12x12+2d8x8"},
+        {dice:"2d20+1d12+1d10+1d8", expr:"2d20x20+1d12x12+1d10x10+1d8x8"},
+        {dice:"3d20+2d6", expr:"3d20x20+2d6x6"},
+		{dice:"3d20+1d8+1d6", expr:"3d20x20+1d8x8+1d6x6"},
+		{dice:"3d20+2d8", expr:"3d20x20+2d8x8"},
+		{dice:"3d20+1d10+1d8", expr:"3d20x20+1d10x10+1d8x8"},
+		{dice:"3d20+2d10", expr:"3d20x20+2d10x10"},
+		{dice:"3d20+1d12+1d10", expr:"3d20x20+1d12x12+1d10x10"},
+		{dice:"3d20+2d12", expr:"3d20x20+2d12x12"},
+		{dice:"3d20+1d12+2d6", expr:"3d20x20+1d12x12+2d6x6"},
+		{dice:"3d20+1d12+1d8+1d6", expr:"3d20x20+1d12x12+1d8x8+1d6x6"},
+		{dice:"3d20+1d12+2d8", expr:"3d20x20+1d12x12+2d8x8"}
     ]   
 
     static getStepTable() {
