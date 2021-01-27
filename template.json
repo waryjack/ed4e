@@ -189,7 +189,7 @@
         }
     },
     "Item":{
-        "types":["weapon","armor","equipment","thread_item","ability","spell","discipline","npc_attack","pc_action"],
+        "types":["weapon","armor","equipment","thread_item","ability","spell","discipline","npc_attack","pc_action","matrix"],
         "templates":{
             "common":{
                 "common":{
@@ -305,6 +305,17 @@
             "dmg_step":0,
             "dmg_dice":0,
             "dmg_expr":0
+        },
+        "matrix":{
+            "templates":["common"],
+            "type":"standard",
+            "object":"",
+            "death":10,
+            "mystic_armor":0,
+            "holds_threads":false,
+            "linked_spells":"",
+            "max_threads":1,
+            "current_threads":0
         }
         
     }

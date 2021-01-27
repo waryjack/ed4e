@@ -1,0 +1,68 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+
+
+     <section class="sheet-body">
+        <div class="s7 flexcol">
+            
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.spell_matrix"}} {{localize "ED4E.jargon.type"}}</th>
+                        <th>{{localize "ED4E.jargon.matrix_object"}}</th>
+                        <th>{{localize "ED4E.health.death"}}</th>
+                        <th>{{localize "ED4E.armor.mystic"}}</th>
+                        <th>Holds {{localize "ED4E.jargon.threads"}}?</th>
+                        <th>Max {{localize "ED4E.jargon.threads"}}</th>
+                        <th>Current {{localize "ED4E.jargon.threads"}}</th>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="data.type" id="data.type">
+                                {{#select data.type}}
+                                <option value="standard">Standard</option>
+                                <option value="enhanced">Enhanced</option>
+                                <option value="armored">Armored</option>
+                                <option value="shared">Shared</option>
+                                {{/select}}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.object" value="{{data.object}}" data-dtype="String" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.death" value="{{data.death}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.mystic_armor" value="{{data.mystic_armor}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="data.holds_threads" {{checked data.holds_threads}}/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.max_threads" value="{{data.max_threads}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.current_threads" value="{{data.current_threads}}" data-dtype="Number"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan=7>{{localize "ED4E.jargon.spell"}}(s)</th>
+                    </tr>
+                    <tr>
+                        <td colspan=7>
+                            <input type="text" name="data.linked_spells" value="{{data.linked_spells}}" data-dtype="String"/>
+                        </td>                        
+                    </tr>
+                </table>
+                 <div class="ed4e flex-item">
+                    <h4>Description</h4>
+                    <textarea name="data.common.description">{{data.common.description}}</textarea>
+                </div>
+            
+        </div>
+    </section>
+</form>

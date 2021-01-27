@@ -43,6 +43,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.threaditems = data.items.filter(function(item) { return item.type == "thread_item"});
             data.npc_attacks = data.items.filter(function(item) { return item.type == "npc_attack"});
             data.pc_actions = data.items.filter(function(item) { return item.type == "pc_action"});
+            data.matrices = data.items.filter(function(item) {return item.type == "matrix"});
         
             
             

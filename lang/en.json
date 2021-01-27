@@ -104,6 +104,7 @@
             "strain": "Strain",
             "thread": "Thread",
             "threads": "Threads",
+            "holds_threads":"Holds Threads",
             "weaving": "Weaving",
             "casting": "Casting",
             "artisan": "Artisan",
@@ -115,6 +116,10 @@
             "major_pattern": "Major Pattern",
             "thread_items":"Thread Items",
             "spells":"Spells",
+            "spell_matrix":"Spell Matrix",
+            "spell_matrix_plural":"Spell Matrices",
+            "matrix_object":"Matrix Object",
+            "object":"Object",
             "true_pattern": "True Pattern",
             "horror": "Horror",
             "horror_mark": "Horror Mark",
@@ -188,6 +193,12 @@
             "unusual": "Unusual",
             "rare": "Rare",
             "exotic": "Very Rare"
+        },
+        "matrix":{
+            "armored": "Armored",
+            "standard": "Standard",
+            "enhanced": "Enhanced",
+            "shared":"Shared"
         }
     }
 }
