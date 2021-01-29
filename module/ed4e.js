@@ -7,6 +7,7 @@ import { ED4EActor } from "./actor/ED4EActor.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { StepUtil } from "./utility/steps.js";
 import { StepRoll } from "./utility/steproll.js";
+import * as macros from "./macros.js";
 
 
 Hooks.once("init", () => {
@@ -19,7 +20,8 @@ Hooks.once("init", () => {
     game.ED4E = {
        ED4EActorSheet,
        ED4EItemSheet,
-       ED4EActor
+       ED4EActor,
+       macros: macros
     };
 
     // CONFIG.debug.hooks = true;
@@ -130,6 +132,11 @@ Hooks.once("ready", () => {
     $(document).on('click', diceIconSelector, () => { 
         StepRoll.prompt(0, "General Step");
     });
+
+    // Catch macro drop
+    Hooks.on("hotbarDrop", (bar, data, slot) => macros.createEd4eMacro(data, slot));
+
+
 });
 
 /* Hooks.on("updateOwnedItem", (actor, item, changed) => {
