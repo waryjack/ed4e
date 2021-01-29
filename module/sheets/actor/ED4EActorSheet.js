@@ -77,7 +77,9 @@ export default class ED4EActorSheet extends ActorSheet {
             html.find('.select-race').change(this._onSelectRace.bind(this));
             html.find('.step-roll').click(this._onStepRoll.bind(this));
             html.find('.tick').click(this._onIncreaseOrDecreaseStat.bind(this));
-            html.find('.action-roll').click(this._onActionRoll.bind(this));
+
+            // disabling for testing; number of game-flow and immersion problems incurred
+           /*  html.find('.action-roll').click(this._onActionRoll.bind(this)); */
         }
 
         _onInlineEdit(e){

@@ -33,11 +33,14 @@ export class StepRoll {
                             let finalExpr = "";
                             let finalDiceText = "";
                             
-                            let pickedStep = html.find("#pickStep").val();
+                            let pickedStep = Number(html.find("#pickStep").val());
                             let useKarma = false;
+                            let stepmod = Number(html.find("#stepmod").val());
                             let miscmod = "+" + html.find("#rollmod").val();
                             let rollnote = html.find("#rollnote").val();
 
+                            pickedStep += stepmod;
+                            
                             let pickedDice = StepUtil.getDiceText(pickedStep);
                             let pickedExpr = StepUtil.getDiceExpr(pickedStep);
 

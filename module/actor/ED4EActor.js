@@ -439,6 +439,12 @@ export class ED4EActor extends Actor {
             diceExpr = item.data.data.full_dmg.expr;
             diceStep = item.data.data.full_dmg.step;
             dialogTitle = "Damage Roll";
+        } else if(item.type == "pc_action") {
+            diceText = item.data.data.dice;
+            diceExpr = item.data.data.expr;
+            diceStep = item.data.data.step;
+            dialogTitle = "Custom Action";
+            showKarma = true;
         } else if(item.type == "npc_attack") {
             diceText = item.data.data.dice;
             diceExpr = item.data.data.expr;

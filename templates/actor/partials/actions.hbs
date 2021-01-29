@@ -17,16 +17,22 @@
         </tr>
             {{#each pc_actions as |atk atkname|}}
             <tr class="effect-toggle" style="text-align:center">
-                 <td><a title="Roll" class="action-roll weapon-image ed4e-button" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i></td>
-                <td style="text-align:left"><a class="item-name item" data-item-id="{{atk._id}}">{{atk.name}}</a></td>
+                 <td><a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i></td>
+                <td style="text-align:left"><a class="item-name item" data-item-id="{{atk._id}}"><em>{{atk.name}}</em></a></td>
                 <td>{{#if (eq atk.data.attribute "")}}--{{else}}{{localize (concat "ED4E.attributes_short." atk.data.attribute)}}{{/if}}/
                     {{#if (eq atk.data.dmg_attribute "")}}--{{else}}{{localize (concat "ED4E.attributes_short." atk.data.dmg_attribute)}}{{/if}}
                 </td>
                  <td>{{atk.data.target}}</td>
                 <td>{{atk.data.step}}</td>
                 <td>{{atk.data.dice}}</td>
-                <td>{{atk.data.dmg_step}}</td>
-                <td>{{atk.data.dmg_dice}}</td>
+                <td>{{#if (eq atk.data.dmg_step 0)}}--
+                    {{else}}
+                    <a title="Roll Effect" class="step-roll ed4e-button" data-item-id="{{atk._id}}" data-step="{{atk.data.dmg_step}}" data-roll-type="{{atk.name}} Effect"><i class="fas fa-dice-six"> {{atk.data.dmg_step}}</i></td>
+                    {{/if}}
+                <td>{{#if (eq atk.data.dmg_step 0)}}--
+                    {{else}}
+                    {{atk.data.dmg_dice}}
+                    {{/if}}</td>
                 <td>{{atk.data.strain}}</td>
                 <td><a class="item-edit item" data-item-id="{{atk._id}}"><i class="fas fa-edit"></i></a> <a class="item-delete item" data-item-id="{{atk._id}}"><i class='fas fa-trash'></i></a></td>
             </tr>
