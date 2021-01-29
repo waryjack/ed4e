@@ -495,14 +495,16 @@ export class ED4EActor extends Actor {
                             let adjustedStep = dialogData.step;
                             let miscMod = "+" + html.find("#rollmod").val();
                             let stepMod = Number(html.find("#stepmod").val());
-                            let myKarmaDie = html.find("#karmadie").val();
+                            let karmaSpend = Number(html.find("#karmaspend").val());
+                            let myKarmaDie = dialogData.actorData.data.karma.die;
+                            if (myKarmaDie == undefined) { myKarmaDie = "d6" }
                             
                             
                             
-                            if(dialogData.karma && myKarmaDie != "") {
+                            if(dialogData.karma && karmaSpend != 0) {
                                 let karmaDieType = myKarmaDie.substring(myKarmaDie.indexOf("d")+1);
-                                karmaDie = "+"+myKarmaDie+"x"+karmaDieType;
-                                karmaDieText = "+"+myKarmaDie;
+                                karmaDie = "+" + karmaSpend + myKarmaDie + "x" + karmaDieType;
+                                karmaDieText = "+" + karmaSpend + myKarmaDie;
                             }
 
                             if(stepMod != 0) {
@@ -511,9 +513,10 @@ export class ED4EActor extends Actor {
                                 adjustedExpr = StepUtil.getDiceExpr(adjustedStep);
                             }
 
+                            let karmaNote = (karmaSpend != 0) ? " (Karma Spent: "+karmaSpend + ")" : "";
                             
                             let finalExpr = adjustedExpr + karmaDie + miscMod;
-                            let finalDiceText = adjustedDice + karmaDieText + miscMod;
+                            let finalDiceText = adjustedDice + karmaDieText + miscMod + karmaNote;
                             let msgTemplate = "systems/ed4e/templates/chat/rollmessage.hbs";
                             let roll = new Roll(finalExpr).evaluate();
                             let result = roll.total;

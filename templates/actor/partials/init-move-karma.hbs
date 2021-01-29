@@ -22,6 +22,23 @@
             <td ><strong>{{localize "ED4E.karma.karma_mod"}}</strong></td>
             <td class="center">{{data.karma.mod}}</td>
         </tr>
+        <tr>
+            <td>
+                <strong>{{localize "ED4E.karma.karma_die"}}</strong>
+            </td>
+            <td>
+                        <select name="data.karma.die" id="karmadie" style="font-size:0.75em;">
+                            {{#select data.karma.die}}
+                            <option value="d4">D4</option>
+                            <option value="d6" selected>D6</option>
+                            <option value="d8">D8</option>
+                            <option value="d10">D10</option>
+                            <option value="d12">D12</option>
+                            <option value="d20">D20</option>
+                            {{/select}}
+                        </select>
+            </td>
+        </tr>
         
     </table>
 </div>

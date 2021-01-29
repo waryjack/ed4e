@@ -205,12 +205,18 @@ export default class ED4EActorSheet extends ActorSheet {
             StepRoll.prompt(step, rtype);
         }
 
+        /**
+         * DEPRECATED 
+         * @param {} e 
+         */
+        /*
         _onActionRoll(e){
             e.preventDefault();
             let element = e.currentTarget;
             let id = element.dataset.itemId;
             ActionRoll.roll(this.actor, id);
         }
+        */
 
         _onIncreaseOrDecreaseStat(e) {
             console.warn("here we are!");

@@ -1,3 +1,8 @@
+// Deprecated - integrated rolls didn't allow for modification based on results. Seeing hit and damage together were sometimes either too
+// meta-informative, or too disheartening to players (for example, rolling poorly to hit and getting a huge damage
+// result, or vice versa)
+
+
 import { StepUtil } from "./steps.js";
 import { Messenger } from "./messenger.js";
 

@@ -51,7 +51,8 @@
         "karma":{
             "karma_avail": "Available Karma",
             "karma_mod": "Karma Modifier",
-            "karma_max": "Max Karma"
+            "karma_max": "Max Karma",
+            "karma_die": "Karma Die"
         },
         "legend":{
             "legend_curernt": "Current Legend Points",

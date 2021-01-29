@@ -163,7 +163,8 @@
             "karma":{
                 "value":0,
                 "max":0,
-                "mod":0
+                "mod":0,
+                "die":"d6"
             },
             "legend":{
                 "current":0,
