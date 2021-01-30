@@ -9,18 +9,16 @@
             <th>{{localize "ED4E.jargon.rank"}}</th>
             <th>{{localize "ED4E.jargon.attr"}}</th>
             <th>{{localize "ED4E.jargon.step"}}</th>
-            <th>{{localize "ED4E.jargon.dice"}}</th>
             <th>{{localize "ED4E.jargon.strain"}}</th>
             <th></th>
         </tr>
             {{#each skills as |skill skillName|}}
             <tr style="text-align:center">
-                 <td><a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{skill._id}}"><i class="fas fa-dice-six"></i></a></td>
+                 <td><!--a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{skill._id}}"><i class="fas fa-dice-six"></i></a--></td>
                 <td style="text-align:left;"><a class="item-name item" data-item-id="{{skill._id}}">{{skill.name}}</a></td>
                 <td >{{skill.data.rank}}</td>
                 <td>{{localize (concat "ED4E.attributes_short." skill.data.attribute)}}</td>
-                <td>{{skill.data.step}}</td>
-                <td>{{skill.data.dice}}</td>
+                <td><a title="Roll" class="item-roll weapon-image ed4e-button" data-item-id="{{skill._id}}"><i class="fas fa-dice-six"></i> {{skill.data.step}}/{{skill.data.dice}}</td>
                 <td>{{skill.data.strain}}</td>
                 <td><a class="item-edit item" data-item-id="{{skill._id}}"><i class="fas fa-edit"></i></a> <a class="item-delete item" data-item-id="{{skill._id}}"><i class='fas fa-trash'></i></a></td>
             </tr>

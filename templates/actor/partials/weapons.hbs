@@ -14,11 +14,11 @@
         </tr>
             {{#each weapons as |weapon wepName|}}
             <tr style="text-align:center">
-                <td><a title="Roll Damage" class="item-roll weapon-image" data-item-id="{{weapon._id}}"><img class="ed4e-button" style="height:32px; width:32px;"src="{{weapon.img}}" height="24px" width="24px"/></a></td>
+                <td><img class="weapon-image" src="{{weapon.img}}" height="24px" width="24px"/></td>
                 <td style="text-align:left"><a class="item-name item" data-item-id="{{weapon._id}}">{{weapon.name}}</a></td>
                 <td>{{weapon.data.str_min}}</td>
                 <td>{{weapon.data.base_dmg}}</td>
-                <td>{{weapon.data.full_dmg.step}} / {{weapon.data.full_dmg.dice}}</td>
+                <td><a title="Roll Damage" class="item-roll ed4e-button" data-item-id="{{weapon._id}}"><i class="fas fa-dice-six"></i> {{weapon.data.full_dmg.step}}/{{weapon.data.full_dmg.dice}}</a></td>
                 <td>{{#if (lt weapon.data.range.short 1)}}
                      -- 
                     {{else}}

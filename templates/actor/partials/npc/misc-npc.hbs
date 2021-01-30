@@ -9,8 +9,8 @@
          </tr>
         <tr style="text-align:center;">
             <td>{{data.attributes.dexterity.step}}</td>
-            <td><input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/></td>
-            <td>{{data.initiative.step}} / {{data.initiative.dice}}</td>
+            <td><a class="tick" data-stat-name="initmod" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/> <a class="tick" data-stat-name="initmod" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
+            <td><a class="step-roll ed4e-button" data-step="{{data.initiative.step}}" data-roll-type="Initiative"><i class="fas fa-dice-six"></i> {{data.initiative.step}}/{{data.initiative.dice}}</a></td>
             <td class="center"><input type="text" class="ed4e value-input-wide" name="data.movement" value="{{data.movement}}" data-dtype="String" /></td>
         </tr>
     </table>
@@ -18,7 +18,7 @@
     <table class="item-table">
         <tr>
             <td><strong>{{localize "ED4E.karma.karma_avail"}}</strong></td>
-            <td class="center"><input class="ed4e value-input" type="text" name="data.karma.value" value="{{data.karma.value}}" data-dtype="Number" /> /  
+            <td class="center"><td class="center"><a class="tick" data-stat-name="karma" data-direction="down"><i class="fas fa-minus-square"></i></a> <input class="ed4e value-input" type="text" name="data.karma.value" value="{{data.karma.value}}" data-dtype="Number" /> <a class="tick" data-stat-name="karma" data-direction="up"><i class="fas fa-plus-square"></i></a> /  
             <input type="text" class="ed4e value-input" name="data.karma.max" value="{{data.karma.max}}" data-dtype="Number" /></td>
         </tr>
     </table>

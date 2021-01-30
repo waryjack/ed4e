@@ -98,6 +98,7 @@
             "threshold": "Threshold",
             "karma": "Karma",
             "step": "Step",
+            "test": "Test",
             "recov_test": "Recovery Test",
             "dice": "Dice",
             "value": "Value",
@@ -160,7 +161,8 @@
             "target":"Target",
             "difficulty":"Difficulty",
             "common_action":"Common Action",
-            "npc_abilities":"NPC Abilities"
+            "npc_abilities":"NPC Abilities",
+            "name":"Name"
         },
         "race": {
             "dwarf": "Dwarf",

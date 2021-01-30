@@ -291,7 +291,8 @@
             "expr":"",
             "dmg_step":0,
             "dmg_dice":"",
-            "dmg_expr":""
+            "dmg_expr":"",
+            "action":""
         },
         "pc_action":{
             "templates":["common"],
@@ -305,7 +306,8 @@
             "dmg_base":0,
             "dmg_step":0,
             "dmg_dice":0,
-            "dmg_expr":0
+            "dmg_expr":0,
+            "action":""
         },
         "matrix":{
             "templates":["common"],
