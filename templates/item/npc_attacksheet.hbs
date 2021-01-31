@@ -11,6 +11,7 @@
                     <tr>
                         <th>Ability Roll {{localize "ED4E.jargon.step"}}</th>
                         <th>Damage/Effect {{localize "ED4E.jargon.step"}}</th>
+                        <th>{{localize "ED4E.jargon.target"}}</th>
                         <th>{{localize "ED4E.jargon.action"}}</th>
                         <th>{{localize "ED4E.jargon.strain"}}</th>
                     </tr>
@@ -20,6 +21,9 @@
                         </td>
                         <td>
                             <input type="text" class="ed4e value-input" name="data.dmg_step" value="{{data.dmg_step}}" data-dtype="Number"/>
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.target" value="{{data.target}}" data-dtype="String" />
                         </td>
                         <td>
                             {{> "systems/ed4e/templates/item/partials/action_select.hbs"}}

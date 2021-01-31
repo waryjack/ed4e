@@ -59,7 +59,8 @@
                     "thresholds":{
                         "death":0,
                         "uncon":0,
-                        "wound":0
+                        "wound":0,
+                        "knockdown":0
                     },
                     "damage":{
                         "value":0,
@@ -295,7 +296,8 @@
             "dmg_step":0,
             "dmg_dice":"",
             "dmg_expr":"",
-            "action":""
+            "action":"standard",
+            "target":""
         },
         "pc_action":{
             "templates":["common"],
@@ -310,7 +312,7 @@
             "dmg_step":0,
             "dmg_dice":0,
             "dmg_expr":0,
-            "action":""
+            "action":"standard"
         },
         "matrix":{
             "templates":["common"],

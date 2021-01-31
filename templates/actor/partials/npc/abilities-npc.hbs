@@ -7,6 +7,7 @@
                         </a></th>
             <th style="text-align:left">Ability</th>
             <th>{{localize "ED4E.jargon.action"}} {{localize "ED4E.jargon.type"}}</th>
+            <th>{{localize "ED4E.jargon.target"}}</th>
             <th>{{localize "ED4E.jargon.step"}}</th>
             
             <th>{{localize "ED4E.jargon.effect"}}</th>
@@ -17,7 +18,8 @@
             <tr class="effect-toggle" style="text-align:center">
                  <td><!--a title="Roll" class="step-roll weapon-image ed4e-button" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i--></td>
                 <td style="text-align:left"><a class="item-name item" data-item-id="{{atk._id}}"><em>{{atk.name}}</em></a></td>
-                <td>{{proper atk.data.action}}</td>
+                <td>{{atk.data.action}}</td>
+                <td>{{atk.data.target}}</td>
                 <td><a title="Roll Action" class="item-roll ed4e-button" data-item-id="{{atk._id}}" data-step="{{atk.data.step}}" data-roll-type="{{atk.name}}"><i class="fas fa-dice-six"> {{atk.data.step}}/{{atk.data.dice}}</i></td>
                 <td>{{#if (eq atk.data.dmg_step 0)}}--
                     {{else}}
