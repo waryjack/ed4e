@@ -8,13 +8,19 @@
      <section class="sheet-body">
         <div class="s7 flexcol">
             
-                <table class="item-table">
+                <div class="ed4e flex-item">
+                    <h3>Description</h3>
+                    <textarea name="data.common.description">{{data.common.description}}</textarea>
+                </div>
+                 <table class="item-table" width="50%">
                     <tr>
-                        <td>{{localize "ED4E.jargon.durability"}}</td>
+                        <td>{{localize "ED4E.jargon.circle"}}</td>
+                        <td><input type="text" class="ed4e value-input" name="data.circle" value="{{data.circle}}" data-dtype="Number"/></td>
+                        <td>{{localize "ED4E.jargon.discipline"}} {{localize "ED4E.jargon.durability"}}</td>
                         <td><input type="text" class="ed4e value-input" name="data.durability" value="{{data.durability}}" data-dtype="Number"/></td>
                     </tr>
                 </table>
-                <h4>Circle Bonuses</h4>
+                <h3>Circle Bonuses</h3>
                 <table class="item-table">
                     <tr>
                         <th>Circle</th>
@@ -31,23 +37,20 @@
                         {{#each data.bonuses as |bonus key|}}
                     <tr>        
                         <td>{{key}}</td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.pd" value="{{bonus.pd}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.md" value="{{bonus.md}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.sd" value="{{bonus.sd}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.pa" value="{{bonus.pa}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.ma" value="{{bonus.ma}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.init" value="{{bonus.init}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.rc_tests" value="{{bonus.rc_tests}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.rc_step" value="{{bonus.rc_step}}" data-dtype="Number"/></td>
-                        <td><input type="text" class="ed4e value-input" name="data.bonuses.{{key}}.karma_die" value="{{bonus.karma_die}}" data-dtype="String"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.pd" value="{{bonus.pd}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.md" value="{{bonus.md}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.sd" value="{{bonus.sd}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.pa" value="{{bonus.pa}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.ma" value="{{bonus.ma}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.init" value="{{bonus.init}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.rc_tests" value="{{bonus.rc_tests}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.rc_step" value="{{bonus.rc_step}}" data-dtype="Number"/></td>
+                        <td><input type="text" class="ed4e value-input" style="text-align:center" name="data.bonuses.{{key}}.karma_die" value="{{bonus.karma_die}}" data-dtype="String"/></td>
                         
                         {{/each}}
                     </tr>
                 </table>
-                 <div class="ed4e flex-item">
-                    <h4>Description</h4>
-                    <textarea name="data.common.description">{{data.common.description}}</textarea>
-                </div>
+                 
             
         </div>
     </section>

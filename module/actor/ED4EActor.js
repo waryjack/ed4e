@@ -223,6 +223,7 @@ export class ED4EActor extends Actor {
     _prepareDefenses(data) {
         let atts = data.attributes;
         let defs = data.defenses;
+        
         let socDef = 0;
         let physDef = 0;
         let mystDef = 0;
@@ -245,6 +246,28 @@ export class ED4EActor extends Actor {
             mystDefBonus += i.data.mystic_defense;
         });
 
+        // Discipline Calcs
+
+        let disciplines = this.data.items.filter(function(item) {return item.type == "discipline"});
+
+        console.warn("Discipline List: ", disciplines);
+        let totalDiscPd = 0;
+        let totalDiscMd = 0;
+        let totalDiscSd = 0;
+
+        if(Array.isArray(disciplines) || disciplines.length) {
+        
+            disciplines.forEach((d) => {
+                let dc = String(d.data.circle);
+                totalDiscPd += d.data.bonuses[dc].pd;
+                totalDiscMd += d.data.bonuses[dc].md;
+                totalDiscSd += d.data.bonuses[dc].sd;
+
+            });
+            console.warn("Discipline test calcs: ", totalDiscPd, totalDiscMd, totalDiscSd);
+        }
+
+        
 
         defs.physical.value = defs.physical.mod + defs.physical.base + physDefBonus + data.r_def_bonus + data.miscmods.misc_pd_mod;
         defs.social.value = defs.social.mod + defs.social.base + data.miscmods.misc_sd_mod; 
