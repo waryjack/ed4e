@@ -162,7 +162,8 @@
             "difficulty":"Difficulty",
             "common_action":"Common Action",
             "npc_abilities":"NPC Abilities",
-            "name":"Name"
+            "name":"Name",
+            "durability":"Durability"
         },
         "race": {
             "dwarf": "Dwarf",

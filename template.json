@@ -200,18 +200,7 @@
                     "availability":"",
                     "description":""
                 }
-            },
-            "circle_traits":[
-                { 
-                    "free_talent":"None",
-                    "disc_talents":"None",
-                    "karma_rule":"None",
-                    "pdb": 0,
-                    "mdb": 0,
-                    "sdb": 0,
-                    "recov_tests":0
-                }
-            ]
+            }
         },
         "weapon":{
             "templates":["common"],
@@ -277,12 +266,25 @@
             "keywords":""
         },
         "discipline":{
-            "templates":["circle_traits"],
             "durability":0,
             "circle":0,
-            "novice_talent_opts":"",
-            "journeyman_opts":"",
-            "master_opts":""
+            "bonuses":{
+                "1":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "2":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "3":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "4":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "5":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "6":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "7":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "8":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "9":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "10":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "11":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "12":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "13":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "14":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"},
+                "15":{"pd":0,"md":0,"sd":0,"pa":0,"ma":0,"init":0,"rc_tests":0, "rc_step":0, "karma_die":"1d6"}
+            }
         },
         "npc_attack":{
             "templates":["common"],

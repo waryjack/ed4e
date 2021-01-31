@@ -119,6 +119,7 @@ export class ED4EActor extends Actor {
         this._prepareHealth(data);
         this._prepareInit(data);
         this._prepareItems(actorData);
+        this._prepareDisciplines(actorData);
         
         
     }
@@ -393,6 +394,10 @@ export class ED4EActor extends Actor {
 
         // console.warn("items after: ", items);
         // setProperty(this, "data.items", items);
+    }
+
+    _prepareDisciplines(data) {
+        
     }
 
     attributeRoll(attr) {
