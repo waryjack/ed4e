@@ -30,10 +30,6 @@ export default class ED4EActorSheet extends ActorSheet {
     
             data.config = CONFIG.ed4e; 
 
-            console.warn("Data: ", data.items);
-           
-      
-
             data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
             data.skills = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "skill"});
             data.talents = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "talent"});
@@ -45,9 +41,22 @@ export default class ED4EActorSheet extends ActorSheet {
             data.pc_actions = data.items.filter(function(item) { return item.type == "pc_action"});
             data.matrices = data.items.filter(function(item) {return item.type == "matrix"});
             data.disciplines = data.items.filter(function(item) {return item.type == "discipline"});
-        
-            
-        
+
+            let combCircle = 0;
+            let discString = "";
+            data.disciplines.forEach(function(d,index) {
+                combCircle += d.data.circle;
+                discString += d.name + " " + d.data.circle;
+                if (index === data.disciplines.length-1) {
+                    discString += "";
+                } else {
+                    discString += " / ";
+                }
+            });
+
+            data.totalCircles = combCircle;
+            data.discString = discString;
+                
 
             return data;
 
@@ -106,7 +115,6 @@ export default class ED4EActorSheet extends ActorSheet {
                 type: element.dataset.type
             }
 
-            console.warn("actor, itemData", this.actor, itemData);
             return this.actor.createOwnedItem(itemData, {renderSheet:true});
         }
 
@@ -163,8 +171,6 @@ export default class ED4EActorSheet extends ActorSheet {
             
             let subType = item.data.data.type;
 
-            console.warn("Subtype: ", subType);
-
             let itemList = this.actor.items.filter((item) => {return item.data.data.type == subType});
 
             itemList.forEach((i) => {
@@ -201,7 +207,6 @@ export default class ED4EActorSheet extends ActorSheet {
             let element=e.currentTarget;
             let step = element.dataset.step;
             let rtype = element.dataset.rollType;
-            console.warn("Step clicked: ", step);
             StepRoll.prompt(step, rtype);
         }
 
@@ -219,13 +224,11 @@ export default class ED4EActorSheet extends ActorSheet {
         */
 
         _onIncreaseOrDecreaseStat(e) {
-            console.warn("here we are!");
             e.preventDefault();
             let element = e.currentTarget;
             let stat = element.dataset.statName;
             let delta = element.dataset.direction;
 
-            console.warn(stat, delta);
             return this.actor.increaseOrDecreaseStat(stat, delta);
         }
 

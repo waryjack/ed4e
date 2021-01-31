@@ -7,17 +7,15 @@
             <div class="ed4e flex-item" style="flex:1">
                 <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
             </div>
-            <div class="ed4e flex-item form-group">
+            <div class="ed4e flex-item form-group inset">
                 <table style="background:none;">
                     <tr>
-                    <th class="table-title">Race</th>
-                    <th class="table-title">Discipline</th>
-                    <th class="table-title">Circle</th>
+                    <th class="table-title">Discipline(s)</th>
+                    <th class="table-title">Total Circles</th>
                     </tr>
                     <tr style="text-align:center">
-                        <td>{{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}</td>
-                        <td> {{> "systems/ed4e/templates/actor/partials/discipline_select.hbs"}}</td>
-                        <td><input id="circ" style="text-align:center;" type="text" class="ed4e value-input-wide" name="data.circle" value="{{data.circle}}" data-dtype="Number"/></td>
+                        <td style="font-size:1.15em; font-weight:bold;">{{discString}}</td>
+                        <td style="font-size:1.15em; font-weight:bold;">{{totalCircles}}</td>
                     </tr>
                 </table>
                 <!--label class="table-title" for="data.race">Race</label>
@@ -59,7 +57,6 @@
                 {{!--Initiative Partial--}}
                 </div>
                 <div class="ed4e flexrow">
-                    {{> "systems/ed4e/templates/actor/partials/disciplines.hbs"}}
                     {{> "systems/ed4e/templates/actor/partials/actions.hbs"}}
                 </div>
                 
@@ -73,9 +70,12 @@
                 </div>
             </div>
             <div class="tab magic" data-group="primary" data-tab="magic">
+                
                 {{> "systems/ed4e/templates/actor/partials/spells.hbs"}}
                 {{> "systems/ed4e/templates/actor/partials/matrix.hbs"}}
+                <div class="ed4e flexrow">{{> "systems/ed4e/templates/actor/partials/disciplines.hbs"}}
                 {{> "systems/ed4e/templates/actor/partials/thread-items.hbs"}}
+                </div>
             </div>
             <div class="tab gear" data-group="primary" data-tab="gear">
                 {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}

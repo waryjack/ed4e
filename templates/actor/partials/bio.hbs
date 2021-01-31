@@ -2,6 +2,17 @@
     <h4 class="table-title">Bio</h4>
     <table class="item-table">
         <tr>
+            <td>Race</td>
+            <td>
+        <select name="data.race" id="data.race">
+    {{#select data.race}}
+    {{#each config.race as |locstring race|}}
+    <option value="{{race}}" {{#if (eq data.race race)}}selected{{/if}}>{{localize locstring}}</option>
+    {{/each}}
+    {{/select}}
+    </td>
+</select>
+        <tr>
             <td><strong>Sex</strong></td>
             <td><input class="ed4e value-input-wide" type="text" name="data.sex" value="{{data.sex}}" data-dtype="String"/></td>
         </tr>

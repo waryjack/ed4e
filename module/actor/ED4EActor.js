@@ -13,11 +13,9 @@ export class ED4EActor extends Actor {
    
         const actorData = this.data; // actorData is "actor.data.data"
 
-       // console.warn("prepareBaseData object: ", actorData);
         const data = actorData.data;
         const flags = actorData.flags;
-        console.warn("Type: ", actorData.type);
-
+      
         if(actorData.type == "character") {
             this._prepareCharacterData(actorData);
         }
@@ -76,9 +74,7 @@ export class ED4EActor extends Actor {
     }
 
     _prepareNpcAttacks(data) {
-        console.warn("NPC Data: ", data);
         const items = data.items;
-        console.warn("items before: ", items);
         
          if (!Array.isArray(items) || !items.length) { return; }
  
@@ -99,8 +95,6 @@ export class ED4EActor extends Actor {
                 item.data.full_dmg.expr = StepUtil.getDiceExpr(comstep);
             }
          });
-
-         console.warn("items after:", items);
  
         
     }
@@ -143,7 +137,6 @@ export class ED4EActor extends Actor {
             let newStep = 0;
             let rating = atts[att].value;
             newStep = Math.ceil(rating/3) + 1;
-            console.warn("att, value, new step: ", att, rating, newStep);
             atts[att].step = newStep;
             atts[att].dice = StepUtil.getDiceText(newStep);
             atts[att].expr = StepUtil.getDiceExpr(newStep);       
@@ -249,31 +242,11 @@ export class ED4EActor extends Actor {
         // Discipline Calcs
 
         let disciplines = this.data.items.filter(function(item) {return item.type == "discipline"});
+        let discDefenseMods = this._getDisciplineDefenseMods(disciplines);
 
-        console.warn("Discipline List: ", disciplines);
-        let totalDiscPd = 0;
-        let totalDiscMd = 0;
-        let totalDiscSd = 0;
-
-        if(Array.isArray(disciplines) || disciplines.length) {
-        
-            disciplines.forEach((d) => {
-                let dc = String(d.data.circle);
-                totalDiscPd += d.data.bonuses[dc].pd;
-                totalDiscMd += d.data.bonuses[dc].md;
-                totalDiscSd += d.data.bonuses[dc].sd;
-
-            });
-            console.warn("Discipline test calcs: ", totalDiscPd, totalDiscMd, totalDiscSd);
-        }
-
-        
-
-        defs.physical.value = defs.physical.mod + defs.physical.base + physDefBonus + data.r_def_bonus + data.miscmods.misc_pd_mod;
-        defs.social.value = defs.social.mod + defs.social.base + data.miscmods.misc_sd_mod; 
-        defs.mystic.value = defs.mystic.mod + defs.mystic.base + mystDefBonus + data.miscmods.misc_md_mod;
-
-
+        defs.physical.value = defs.physical.mod + defs.physical.base + physDefBonus + data.r_def_bonus + data.miscmods.misc_pd_mod + discDefenseMods[0];
+        defs.social.value = defs.social.mod + defs.social.base + data.miscmods.misc_sd_mod + discDefenseMods[1];
+        defs.mystic.value = defs.mystic.mod + defs.mystic.base + mystDefBonus + data.miscmods.misc_md_mod + discDefenseMods[2];
 
         setProperty(this, "data.data.defenses", defs);
 
@@ -290,16 +263,18 @@ export class ED4EActor extends Actor {
         //Armor calcs
         let activeArmor = this.data.items.filter(function(item) {return item.type == "armor" && item.data.equipped});
 
-        // console.warn("Active Armor: ", activeArmor);
-        
         activeArmor.forEach((i) => {
             paBonus += i.data.physical_armor;
             maBonus += i.data.mystic_armor;
         });
 
-        armor.physical.value = paBonus + data.r_armor_bonus + data.miscmods.misc_pa_mod;
+        let disciplines = this.data.items.filter(i => { return i.type == "discipline"});
+
+        let discBonuses = this._getDisciplineArmorBonus(disciplines);
+
+        armor.physical.value = paBonus + data.r_armor_bonus + data.miscmods.misc_pa_mod + discBonuses[0];
         armor.mystic.base = mysticArmor;
-        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus + data.miscmods.misc_ma_mod;
+        armor.mystic.value = armor.mystic.base + armor.mystic.mod + maBonus + data.miscmods.misc_ma_mod + discBonuses[1];
 
         setProperty(this, "data.data.armor", armor);
 
@@ -330,13 +305,16 @@ export class ED4EActor extends Actor {
 
         let atts = data.attributes;
         let health = data.health;
+        let disciplines = this.data.items.filter(i => { return i.type == "discipline"});
 
-        let durabilityBonus = durability[data.discipline];
-        let durPerLevel = durabilityBonus * data.circle;
-        console.warn("Discipline: ", data.discipline);
-        console.warn("Durab Bonus: ", durabilityBonus);
-    
-        console.warn("Circle: ", data.circle);
+        // let durabilityBonus = durability[data.discipline];
+        let durabilityBonus = this._getDisciplineDurability(disciplines);
+
+        
+        let durPerLevel = durabilityBonus * this._getCombinedCircle(disciplines);
+        
+        console.warn("Combined Circles: ", this._getCombinedCircle(disciplines));
+        console.warn("Durability Bonus: ", durabilityBonus);
         console.warn("Dur * Level: ", durPerLevel);
 
         let unconTh = (atts.toughness.value * 2);
@@ -345,10 +323,16 @@ export class ED4EActor extends Actor {
         let recovTotal = Math.ceil(atts.toughness.value/6);
         
         health.thresholds.uncon = unconTh + data.miscmods.misc_uncon + durPerLevel;
-        health.thresholds.death = deathTh + data.miscmods.misc_death + data.circle + durPerLevel;
+        health.thresholds.death = deathTh + data.miscmods.misc_death + this._getCombinedCircle(disciplines) + durPerLevel;
         health.thresholds.wound = woundTh + data.r_wound_bonus + data.miscmods.misc_wound;
-        health.recovery.max = recovTotal;
-        health.recovery.step = atts.toughness.step;
+
+        // Recovery Tests
+        let discRecovInfo = this._getDisciplineRecovery(disciplines);
+        let discRecovTests = discRecovInfo[0];
+        let discRecovBonus = discRecovInfo[1];
+
+        health.recovery.max = recovTotal + discRecovTests;
+        health.recovery.step = atts.toughness.step + discRecovBonus;
         health.damage.max = deathTh;
 
         setProperty(this, "data.data.health", health);
@@ -367,7 +351,10 @@ export class ED4EActor extends Actor {
 
         init.armor_mod = armorMod;
 
-        let initStep = Math.max(1, data.attributes.dexterity.step + init.armor_mod + data.miscmods.misc_init_step - data.health.damage.wounds);
+        let disciplines = this.data.items.filter(i => { return i.type == "discipline"});
+        let discInit = this._getDisciplineInitiativeBonus(disciplines);
+
+        let initStep = Math.max(1, data.attributes.dexterity.step + discInit + init.armor_mod + data.miscmods.misc_init_step - data.health.damage.wounds);
         init.step = initStep;
         init.dice = StepUtil.getDiceText(initStep);
         init.expr = StepUtil.getDiceExpr(initStep);
@@ -378,7 +365,6 @@ export class ED4EActor extends Actor {
     // Iterate through items and calculate full step for items what need it
     _prepareItems(data) {
         const items = data.items;
-       //  console.warn("items before: ", items);
         let totalWeight = 0;
         if (!Array.isArray(items) || !items.length) { return; }
 
@@ -402,7 +388,6 @@ export class ED4EActor extends Actor {
                 let comstep = (item.data.attribute == "") ? item.data.base_step : item.data.base_step + data.data.attributes[item.data.attribute].step;
                 let dmgstep = (item.data.dmg_attribute == "") ? item.data.dmg_base : item.data.dmg_base + data.data.attributes[item.data.dmg_attribute].step;
                 item.data.step = comstep;
-                console.warn("comstep, item step: ", comstep, item.data.step);
                 item.data.dice = StepUtil.getDiceText(comstep);
                 item.data.expr = StepUtil.getDiceExpr(comstep);
                 item.data.dmg_step = dmgstep;
@@ -412,11 +397,8 @@ export class ED4EActor extends Actor {
 
         });
 
-        console.warn("Total Weight: ", totalWeight);
         setProperty(this, "data.data.load", totalWeight);
 
-        // console.warn("items after: ", items);
-        // setProperty(this, "data.items", items);
     }
 
     _prepareDisciplines(data) {
@@ -443,8 +425,6 @@ export class ED4EActor extends Actor {
             actorData: actorData,
             karma: showKarma
         }
-
-        console.warn("Dialog Data pre-processing: ", dialogData);
       
         this.processRoll(template, dialogData);
     }
@@ -460,7 +440,6 @@ export class ED4EActor extends Actor {
         let showKarma = false;
         let npcMod = actorData.data.npc ? actorData.data.circle : 0;
 
-        console.warn(item);
         // Get item dice info
         if(item.type == "weapon") {
             diceText = item.data.data.full_dmg.dice;
@@ -672,5 +651,121 @@ export class ED4EActor extends Actor {
         
 
      
+    }
+
+    _getCombinedCircle(disciplines) {
+        if(!Array.isArray(disciplines || !disciplines.length)) { return 0;}
+
+        let combinedCircle = 0;
+        
+        disciplines.forEach(d => combinedCircle += d.data.circle);
+
+        return combinedCircle;
+    }
+
+    _getDisciplineDurability(disciplines){
+
+        if(!Array.isArray(disciplines || !disciplines.length)) { return 0;}
+
+        let durabs = [];
+        
+        disciplines.forEach(d => durabs.push(d.data.durability));
+
+        let maxDur = durabs.reduce((a,b) => { return Math.max(a,b)}, 0);
+
+        return maxDur;
+
+    }
+
+    _getDisciplineDefenseMods(disciplines) {
+        console.warn("Discipline List: ", disciplines);
+        let pdMods = [];
+        let mdMods = [];
+        let sdMods = [];
+        let discDefMods = [];
+
+        if(!Array.isArray(disciplines) || !disciplines.length) { return [0,0,0]; }
+            
+        disciplines.forEach((d) => {
+            let dc = String(d.data.circle);
+            
+            pdMods.push(d.data.bonuses[dc].pd);
+            mdMods.push(d.data.bonuses[dc].md);
+            sdMods.push(d.data.bonuses[dc].sd);
+
+        });
+        
+        let maxPd = pdMods.reduce(function(a, b) {
+            return Math.max(a, b);
+        }, 0);
+
+        let maxMd = mdMods.reduce(function(a,b) {
+            return Math.max(a, b);
+        }, 0);
+
+        let maxSd = sdMods.reduce(function(a,b) {
+            return Math.max(a,b);
+        }, 0);
+
+        discDefMods.push(maxPd, maxMd, maxSd);
+
+        return discDefMods;
+        
+    }
+
+    _getDisciplineRecovery(disciplines) {
+        if(!Array.isArray(disciplines) || !disciplines.length) { return [0,0]; }
+
+        let rcCounts = [];
+        let rcBonuses = [];
+        let rcInfo = [];
+
+        disciplines.forEach(d => {
+            let dc = String(d.data.circle);
+            rcCounts.push(d.data.bonuses[dc].rc_tests);
+            rcBonuses.push(d.data.bonuses[dc].rc_step);
+        });
+
+        rcInfo.push(
+            rcCounts.reduce((a,b) => { return Math.max(a,b); }, 0), 
+            rcBonuses.reduce((a,b) => { return Math.max(a,b); }, 0)
+        );
+
+        return rcInfo;
+    }
+
+    _getDisciplineArmorBonus(disciplines) {
+        if(!Array.isArray(disciplines) || !disciplines.length) { return [0,0]; }
+
+        let maMods = [];
+        let paMods = [];
+        let discArmor = [];
+
+        disciplines.forEach(d => {
+            let dc = String(d.data.circle);
+            maMods.push(d.data.bonuses[dc].ma);
+            paMods.push(d.data.bonuses[dc].pa);
+        });
+
+        discArmor.push(
+            paMods.reduce((a,b) => { return Math.max(a,b); }, 0), 
+            maMods.reduce((a,b) => { return Math.max(a,b); }, 0)
+        );
+
+        return discArmor;
+    }
+
+    _getDisciplineInitiativeBonus(disciplines){
+
+            if(!Array.isArray(disciplines || !disciplines.length)) { return 0;}
+    
+            let initMods = [];
+            
+            disciplines.forEach(d => initMods.push(d.data.durability));
+    
+            let maxInit = initMods.reduce((a,b) => { return Math.max(a,b);}, 0);
+    
+            return maxInit;
+    
     }
 }
