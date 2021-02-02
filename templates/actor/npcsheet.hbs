@@ -10,12 +10,10 @@
             <div class="ed4e flex-item form-group">
                 <table style="background:none;">
                     <tr>
-                    <th class="table-title">Race</th>
-                    <th class="table-title">Occupation</th>
+                    <th class="table-title">Occupation/Type</th>
                     <th class="table-title">Tier</th>
                     </tr>
                     <tr style="text-align:center">
-                        <td>{{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}</td>
                         <td><input type="text" name="data.occupation" value="{{data.occupation}}" data-dtype="String"/></td>
                         <td><input id="circ" style="text-align:center;" type="text" class="ed4e value-input-wide" name="data.tier" value="{{data.tier}}" data-dtype="Number"/></td>
                     </tr>
