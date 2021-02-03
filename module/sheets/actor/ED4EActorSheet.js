@@ -29,6 +29,7 @@ export default class ED4EActorSheet extends ActorSheet {
             const data = super.getData();
     
             data.config = CONFIG.ed4e; 
+            data.hideTraits = false;
 
             data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
             data.skills = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "skill"});
@@ -42,6 +43,11 @@ export default class ED4EActorSheet extends ActorSheet {
             data.matrices = data.items.filter(function(item) {return item.type == "matrix"});
             data.disciplines = data.items.filter(function(item) {return item.type == "discipline"});
             data.traits = data.items.filter(function(item) {return item.type=="trait"});
+
+            if(!Array.isArray(data.traits) || !data.traits.length) {
+                data.hideTraits = true;
+            }
+            
 
             let combCircle = 0;
             let discString = "";
