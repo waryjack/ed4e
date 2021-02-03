@@ -162,10 +162,15 @@
             "target":"Target",
             "difficulty":"Difficulty",
             "common_action":"Common Action",
-            "npc_abilities":"NPC Abilities",
+            "npc_abilities":"NPC Attacks/Skills",
             "name":"Name",
             "durability":"Durability",
-            "knockdown":"Knockdown"
+            "knockdown":"Knockdown",
+            "trait":"Trait",
+            "ability":"Ability",
+            "rating":"Rating",
+            "source":"Source",
+            "description":"Description"
         },
         "race": {
             "dwarf": "Dwarf",

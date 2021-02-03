@@ -1,0 +1,47 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+
+
+     <section class="sheet-body">
+        <div class="s7 flexcol">
+            
+                <table class="item-table">
+                    <tr>
+                        <th>{{localize "ED4E.jargon.rating"}}/{{localize "ED4E.jargon.rank"}}</th>
+                        <th>{{localize "ED4E.jargon.attribute"}}<br/>(if any)</th>
+                        <th>{{localize "ED4E.jargon.action"}}</th>
+                        <th>Source</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="ed4e value-input-wide" name="data.rating" value="{{data.rating}}" data-dtype="Number" />
+                        </td>
+                        <td>
+                            <select name="data.attribute" id="att-select">
+                            {{#select data.attribute}}
+                                    <option value="none">None</option>
+                                {{#each config.attributes as |locstring attr|}}
+                                    <option value="{{attr}}">{{localize locstring}}</option>
+                                {{/each}}
+                            {{/select}}
+                            </select>
+                        </td>
+                        <td>
+                            {{> "systems/ed4e/templates/item/partials/action_select.hbs"}}
+                        </td>
+                        <td>
+                            <input type="text" class="ed4e value-input" name="data.source_ref" value="{{data.source_ref}}" data-dtype="String" />
+                        </td>
+                    </tr>
+                </table>
+                 <div class="ed4e flex-item">
+                    <h4>Description</h4>
+                    <textarea name="data.common.description">{{data.common.description}}</textarea>
+                </div>
+            
+        </div>
+    </section>
+</form>

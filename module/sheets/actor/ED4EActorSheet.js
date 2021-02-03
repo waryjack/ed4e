@@ -41,6 +41,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.pc_actions = data.items.filter(function(item) { return item.type == "pc_action"});
             data.matrices = data.items.filter(function(item) {return item.type == "matrix"});
             data.disciplines = data.items.filter(function(item) {return item.type == "discipline"});
+            data.traits = data.items.filter(function(item) {return item.type=="trait"});
 
             let combCircle = 0;
             let discString = "";
