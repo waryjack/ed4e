@@ -214,7 +214,9 @@ export default class ED4EActorSheet extends ActorSheet {
             let element=e.currentTarget;
             let step = element.dataset.step;
             let rtype = element.dataset.rollType;
-            StepRoll.prompt(step, rtype);
+            let wounds = element.dataset.wounds;
+            console.warn("Wounds reported: ", wounds);
+            StepRoll.prompt(step, rtype, wounds);
         }
 
         /**

@@ -146,10 +146,24 @@
                     "misc_recov_tests":0,
                     "misc_recov_step":0
                 }
+            },
+            "discipline_mods":{
+                "discipline_mods":{
+                "circle_total":0,
+                "pd":0,
+                "md":0,
+                "sd":0,
+                "pa":0,
+                "ma":0,
+                "init":0,
+                "rc_tests":0,
+                "rc_step":0,
+                "karma_die":"1d6"
+                }
             }
         },
         "character":{
-            "templates":["attributes","health","defenses","armor","initiative", "wealth","miscmods"],
+            "templates":["attributes","health","defenses","armor","initiative", "wealth","miscmods","discipline_mods"],
             "portrait":"icons/svg/mystery-man.svg",
             "discipline":"none",
             "circle":0,

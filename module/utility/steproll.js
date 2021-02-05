@@ -3,7 +3,11 @@ import { Messenger } from "./messenger.js";
 
 export class StepRoll {
 
-    static prompt(step, rolltype) {
+    static prompt(step, rolltype, wounds) {
+
+        if (wounds == undefined) {
+            wounds = 0;
+        }
 
         console.warn("StepRoll received step: ", step);
         let template = "systems/ed4e/templates/roll/steproll.hbs";
@@ -14,7 +18,8 @@ export class StepRoll {
             name: rolltype,
             stepData: StepUtil.getStepTable(),
             karma: showKarma,
-            selectStep:step
+            selectStep:step,
+            wounds: wounds
         }
 
         console.warn("stepdata: ", dialogData);
@@ -39,18 +44,18 @@ export class StepRoll {
                             let miscmod = "+" + html.find("#rollmod").val();
                             let rollnote = html.find("#rollnote").val();
 
-                            pickedStep += stepmod;
+                            pickedStep += stepmod - dialogData.wounds;
                             
                             let pickedDice = StepUtil.getDiceText(pickedStep);
                             let pickedExpr = StepUtil.getDiceExpr(pickedStep);
 
                             if(useKarma) {
                                 karmaDie = "+1d6x6";
-                                karmaDieText = "+1d6";
+                                karmaDieText = "+1d6 (Karma)";
                             }
 
                             finalExpr = pickedExpr + karmaDie + miscmod;
-                            finalDiceText = pickedDice + karmaDieText + miscmod;
+                            finalDiceText = pickedDice + karmaDieText + ((miscmod != "+0") ? miscmod + " (misc)" : "");
                             let msgTemplate = "systems/ed4e/templates/chat/rollmessage.hbs";
                             let roll = new Roll(finalExpr).evaluate();
                             let result = roll.total;
@@ -64,7 +69,7 @@ export class StepRoll {
                                 mods: miscmod,
                                 karmadie: karmaDie,
                                 dice: finalDiceText,
-                                step: pickedStep,
+                                step: pickedStep +  ((wounds != 0) ? " (-Wounds)" : ""),
                                 note: rollnote
                             }
 

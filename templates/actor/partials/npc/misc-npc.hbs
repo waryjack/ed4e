@@ -8,7 +8,7 @@
              <th>Move</th>
          </tr>
         <tr style="text-align:center;">
-            <td>{{data.attributes.dexterity.step}}</td>
+            <td><input type="text" class="ed4e value-input" name="data.initiative.base" value="{{data.initiative.base}}" data-dtype="Number" /></td>
             <td><a class="tick" data-stat-name="initmod" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/> <a class="tick" data-stat-name="initmod" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
             <td><a class="step-roll ed4e-button" data-step="{{data.initiative.step}}" data-roll-type="Initiative"><i class="fas fa-dice-six"></i> {{data.initiative.step}}/{{data.initiative.dice}}</a></td>
             <td class="center"><input type="text" class="ed4e value-input-wide" name="data.movement" value="{{data.movement}}" data-dtype="String" /></td>
