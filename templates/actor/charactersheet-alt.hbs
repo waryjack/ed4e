@@ -1,5 +1,5 @@
 <form class="actor-sheet {{cssClass}}" autocomplete="off">
-    <header class="sheet-header">
+     <header class="sheet-header">
         <div class="ed4e flexrow">
             <div class="ed4e flex-item" style="flex:1; max-width:72px">
                 <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
@@ -7,17 +7,15 @@
             <div class="ed4e flex-item" style="flex:1">
                 <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
             </div>
-            <div class="ed4e flex-item form-group">
+            <div class="ed4e flex-item form-group inset">
                 <table style="background:none;">
                     <tr>
-                    <th class="table-title">Race</th>
-                    <th class="table-title">Discipline</th>
-                    <th class="table-title">Circle</th>
+                    <th class="table-title">Discipline(s)</th>
+                    <th class="table-title">Total Circles</th>
                     </tr>
                     <tr style="text-align:center">
-                        <td>{{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}</td>
-                        <td> {{> "systems/ed4e/templates/actor/partials/discipline_select.hbs"}}</td>
-                        <td><input id="circ" style="text-align:center;" type="text" class="ed4e value-input-wide" name="data.circle" value="{{data.circle}}" data-dtype="Number"/></td>
+                        <td style="font-size:1.15em; font-weight:bold;">{{discString}}</td>
+                        <td style="font-size:1.15em; font-weight:bold;">{{totalCircles}}</td>
                     </tr>
                 </table>
                 <!--label class="table-title" for="data.race">Race</label>
@@ -31,40 +29,52 @@
         </div>
     </header>
 
-    {{!-- Attributes / Defenses / Initiative --}}
-   
-        <div class="ed4e flexrow">
-                    {{> "systems/ed4e/templates/actor/partials/attributes-h.hbs"}}
-        </div>
-{{!-- Sheet Tab Navigation --}}
-        <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'Willow', 'IM Fell Double Pica SC', serif; font-size:1.25em; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
-            <a class="ed4e item" data-tab="main">Essentials</a>
+    {{!--Outer Flex Row (holds sidebar, main info area)--}}
+
+    <div class="ed4e flexrow" style="margin-right:12px !important;">
+
+        {{!-- sidebar column--}}
+        <div class="ed4e flexcol" style="max-width:160px; min-width:160px; border-right:2px solid black">
+             {{> "systems/ed4e/templates/actor/partials/attributes-h.hbs"}}
+               {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
+                    {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
+                         {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
+        </div> 
+        
+        {{!-- main info column --}}
+        <div class="ed4e flexcol">
+
+            <nav class="sheet-tabs tabs" data-group="primary" style="font-family: 'Willow', 'IM Fell Double Pica SC', serif; font-size:1.25em; text-transform:uppercase; font-weight:bold; background:rgb(230, 206, 72); border-top:1px solid black; border-bottom: 1px solid black">
+            <a class="ed4e item" data-tab="abils">Abilities</a>
             <a class="ed4e item" data-tab="magic">Magic</a>
             <a class="ed4e item" data-tab="gear">Equipment</a>
             <a class="ed4e item" data-tab="legend">Legend</a>
             <a class="ed4e item" data-tab="misc">Misc</a>
             <a class="ed4e item" data-tab="inst">Instructions</a>
-        </nav>
+            </nav>
         
         
         
         {{!--Body Divs--}}
         <section class="sheetbody">
-            <div class="tab main" data-group="primary" data-tab="main">
-                <div class="ed4e flexrow" style="max-height:210px">
-                    {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
-                    {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
-                         {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
-                {{!--Initiative Partial--}}
-        </div>
+            <div class="tab abils" data-group="primary" data-tab="abils">
+                <div class="ed4e flexrow">
+                    {{> "systems/ed4e/templates/actor/partials/actions.hbs"}}
+                </div>
                 <div class="ed4e flexrow">
                     {{> "systems/ed4e/templates/actor/partials/talents.hbs"}}
+                </div>
+                <div class="ed4e flexrow">
                     {{> "systems/ed4e/templates/actor/partials/skills.hbs"}}
                 </div>
             </div>
             <div class="tab magic" data-group="primary" data-tab="magic">
+                
                 {{> "systems/ed4e/templates/actor/partials/spells.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/matrix.hbs"}}
+                <div class="ed4e flexrow">{{> "systems/ed4e/templates/actor/partials/disciplines.hbs"}}
                 {{> "systems/ed4e/templates/actor/partials/thread-items.hbs"}}
+                </div>
             </div>
             <div class="tab gear" data-group="primary" data-tab="gear">
                 {{> "systems/ed4e/templates/actor/partials/weapons.hbs"}}
@@ -99,6 +109,9 @@
             </div>
             
         </section>
+        </div>
+
+    </div>
     
 </form>
 

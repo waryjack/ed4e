@@ -558,7 +558,7 @@ export class ED4EActor extends Actor {
                             let myKarmaDie = dialogData.actorData.data.karma.die;
                             if (myKarmaDie == undefined) { myKarmaDie = "d6" }
                             
-                            console.warn("Karma spend: ", karmaspend);
+                        
                             
                             if(dialogData.karma && karmaSpend != 0) {
                                 let karmaDieType = myKarmaDie.substring(myKarmaDie.indexOf("d")+1);
