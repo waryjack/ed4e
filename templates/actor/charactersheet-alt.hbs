@@ -7,6 +7,10 @@
             <div class="ed4e flex-item" style="flex:1">
                 <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
             </div>
+        </div>
+        
+    </header>
+    <div class="ed4e flexrow">
             <div class="ed4e flex-item form-group inset">
                 <table style="background:none;">
                     <tr>
@@ -26,18 +30,18 @@
                 <input id="circ"type="text" class="ed4e value-input" name="data.circle" value="{{data.circle}}" data-dtype="Number"/-->
                 
             </div>
+            <div class="ed4e flex-item">
+                {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
+            </div>
         </div>
-    </header>
-
     {{!--Outer Flex Row (holds sidebar, main info area)--}}
 
     <div class="ed4e flexrow" style="margin-right:12px !important;">
 
         {{!-- sidebar column--}}
         <div class="ed4e flexcol" style="max-width:160px; min-width:160px; border-right:2px solid black">
-             {{> "systems/ed4e/templates/actor/partials/attributes-h.hbs"}}
-               {{> "systems/ed4e/templates/actor/partials/defenses.hbs"}}
-                    {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
+             {{> "systems/ed4e/templates/actor/partials/attributes-sidebar.hbs"}}
+               {{> "systems/ed4e/templates/actor/partials/defenses-sidebar.hbs"}}
                          {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
         </div> 
         

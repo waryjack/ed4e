@@ -5,7 +5,12 @@ export default class ED4EActorSheet extends ActorSheet {
 
         get template() {
             const path = 'systems/ed4e/templates/actor/';
-            return `${path}${this.actor.data.type}sheet.hbs`;
+            // the if block is for future alternative character sheet layouts;
+            /* if (this.actor.data.type == "character") {
+                return `${path}${this.actor.data.type}sheet-alt.hbs`;
+            } else { */
+                return `${path}${this.actor.data.type}sheet.hbs`;
+            // }
         }
     
         /**

@@ -1,0 +1,22 @@
+<div class="s7 flex-attribute" style="text-align:left;">
+<table>
+{{#each data.attributes as |att name|}}
+<tr>
+<td>
+    <strong>
+    <a class="attr-roll ed4e-button" style="margin-right:2px;" data-attr-name="{{name}}">
+    {{localize (concat "ED4E.attributes." name)}}
+    </a>
+    </strong>
+</td>
+<td>
+    <span>
+        <input type="text" class="ed4e value-input" style="background:gold;" name="data.attributes.{{name}}.value" value="{{att.value}}" data-dtype="Number" /></span> 
+</td>
+<td>
+        <span title="{{dice}}"><strong>({{step}})</strong></span> 
+</td>
+</tr>
+{{/each}}
+</table>
+</div>

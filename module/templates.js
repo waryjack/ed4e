@@ -30,6 +30,10 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/disciplines.hbs",
      "systems/ed4e/templates/actor/partials/traits.hbs",
 
+     //Alt charsheet partials
+     "systems/ed4e/templates/actor/partials/attributes-sidebar.hbs",
+     "systems/ed4e/templates/actor/partials/defenses-sidebar.hbs",
+
      // Item Partials
      "systems/ed4e/templates/item/partials/attribute_select.hbs",
      "systems/ed4e/templates/item/partials/action_select.hbs",
