@@ -8,19 +8,36 @@
                 <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
             </div>
         </div>
-        
-    </header>
-    <div class="ed4e flexrow">
-            <div class="ed4e flex-item form-group inset">
-                <table style="background:none;">
+        <div class="ed4e flexrow">
+            <div class="ed4e flex-item form-group inset" style="padding:0px !important;">
+                <table style="background:none; margin:0px !important;">
                     <tr>
                     <th class="table-title">Discipline(s)</th>
                     <th class="table-title">Total Circles</th>
+                    <th colspan=3 class="table-title">Karma (Mod: {{data.karma.mod}})</th>
                     </tr>
                     <tr style="text-align:center">
                         <td style="font-size:1.15em; font-weight:bold;">{{discString}}</td>
                         <td style="font-size:1.15em; font-weight:bold;">{{totalCircles}}</td>
+                        <td class="center"><a class="tick" data-stat-name="karma" data-direction="down"><i class="fas fa-minus-square"></i></a> <input class="ed4e value-input" type="text" name="data.karma.value" value="{{data.karma.value}}" data-dtype="Number" /> <a class="tick" data-stat-name="karma" data-direction="up"><i class="fas fa-plus-square"></i></a> /  
+            <input type="text" class="ed4e value-input" name="data.karma.max" value="{{data.karma.max}}" data-dtype="Number" /></td>
+            <td>
+                <strong>Die</strong>
+            </td>
+            <td>
+                        <select name="data.karma.die" id="karmadie" style="font-size:0.75em;">
+                            {{#select data.karma.die}}
+                            <option value="d4">D4</option>
+                            <option value="d6" selected>D6</option>
+                            <option value="d8">D8</option>
+                            <option value="d10">D10</option>
+                            <option value="d12">D12</option>
+                            <option value="d20">D20</option>
+                            {{/select}}
+                        </select>
+            </td>
                     </tr>
+                    
                 </table>
                 <!--label class="table-title" for="data.race">Race</label>
                 {{> "systems/ed4e/templates/actor/partials/race_select.hbs"}}
@@ -30,8 +47,12 @@
                 <input id="circ"type="text" class="ed4e value-input" name="data.circle" value="{{data.circle}}" data-dtype="Number"/-->
                 
             </div>
+    </div>
+    </header>
+    
+    <div class="ed4e flexrow">
             <div class="ed4e flex-item">
-                {{> "systems/ed4e/templates/actor/partials/health.hbs"}}
+                {{> "systems/ed4e/templates/actor/partials/health-alt.hbs"}}
             </div>
         </div>
     {{!--Outer Flex Row (holds sidebar, main info area)--}}
@@ -39,10 +60,10 @@
     <div class="ed4e flexrow" style="margin-right:12px !important;">
 
         {{!-- sidebar column--}}
-        <div class="ed4e flexcol" style="max-width:160px; min-width:160px; border-right:2px solid black">
+        <div class="ed4e flexcol" style="max-width:160px; min-width:160px; border-right:2px solid black; justify-content:flex-start">
              {{> "systems/ed4e/templates/actor/partials/attributes-sidebar.hbs"}}
-               {{> "systems/ed4e/templates/actor/partials/defenses-sidebar.hbs"}}
-                         {{> "systems/ed4e/templates/actor/partials/init-move-karma.hbs"}}
+               
+                   
         </div> 
         
         {{!-- main info column --}}

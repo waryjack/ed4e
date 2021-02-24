@@ -1,42 +1,32 @@
 <div class="ed4e flex-item" style="margin-left:3px; margin-right:3px;">
-       <h4 class="table-title">Defenses</h4>
-        <table class="item-table">
-        <tr>
-            <td><strong>{{localize "ED4E.defenses.phys_brief"}}</strong></td>
-            <td class="center">{{data.defenses.physical.value}}</td>
-            <td><strong>/ <i class="fas fa-shield-alt"></i> </strong></td>
-            <td class="center">{{data.armor.physical.value}}</td>
-        </tr>
-        <tr>
-            <td><strong>{{localize "ED4E.defenses.myst_brief"}}</strong></td>
-            <td class="center">{{data.defenses.mystic.value}}</td>
-            <td><strong>/ <i class="fas fa-shield-alt"></i> </strong></td>
-            <td class="center">{{data.armor.mystic.value}}</td>
-        </tr>
-        <tr>
-            <td><strong>{{localize "ED4E.defenses.soc_brief"}}</strong></td>
-            <td class="center">{{data.defenses.social.value}}</td>
-            <td colspan=2></td>
-        </tr>
-    </table>
-     <h4 class="table-title">Initiative</h4>
      <table class="item-table">
          <tr>
-             <th>Base</th>
-             <th>Armor</th>
+             <th>Base Init</th>
+             <th>Armor Pen</th>
         </tr>
          <tr style="text-align:center;">
             <td>{{data.attributes.dexterity.step}}</td>
             <td>{{data.initiative.armor_mod}}</td>
         </tr>
         <tr>
-             <th>Misc</th>
-             <th>Final</th>
+             <th>Misc Mod</th>
+             <th>Final Init</th>
          </tr>
        
         <tr>
             <td><a class="tick" data-stat-name="initmod" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.miscmods.misc_init_step" value="{{data.miscmods.misc_init_step}}" data-dtype="Number"/> <a class="tick" data-stat-name="initmod" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
             <td><a class="step-roll ed4e-button" data-step="{{data.initiative.step}}" data-roll-type="Initiative"><i class="fas fa-dice-six"></i> {{data.initiative.step}}/{{data.initiative.dice}}</a></td>
         </tr>
+    
+        <tr>
+            <td><strong>{{localize "ED4E.jargon.moverate"}}</strong></td>
+            <td class="center">{{data.movement}}</td>
+        </tr>
+        <tr>
+            <td><strong>{{localize "ED4E.jargon.carry"}}</strong></td>
+            <td class="center">{{data.load}} / {{data.carry}} {{#if (lt data.encumb_penalty 0)}}({{data.encumb_penalty}}){{/if}}</td>
+        </tr>
+
     </table>
+       
 </div>

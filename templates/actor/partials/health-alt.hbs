@@ -1,0 +1,25 @@
+<div class="ed4e flex-item" style="margin-left:3px; margin-right:3px;">
+       
+    <table class="item-table">
+        <tr style="text-align:center;">
+            <td><strong>Defenses</strong></td>
+            <td><strong>Thresholds (W|U|D)</strong></td>
+            <td><strong>{{localize "ED4E.health.current_damage_brief"}}</strong></td>
+            <td><strong>{{localize "ED4E.health.blood_magic_brief"}}</strong></td>
+            <td><strong>{{localize "ED4E.health.wounds"}}</strong></td>
+            
+            <td><strong>Rec. Tests ({{data.health.recovery.max}})</strong></td>
+            <td><strong>Rec. {{localize "ED4E.jargon.dice"}}</strong></td>
+        </tr>
+        <tr style="text-align:center">
+            <td class="center"><strong>Phys</strong> {{data.defenses.physical.value}} (<i class="fas fa-shield-alt"></i> {{data.armor.physical.value}}) | <strong>Myst</strong> {{data.defenses.mystic.value}} (<i class="fas fa-shield-alt"></i> {{data.armor.mystic.value}}) | <strong>Soc</strong> {{data.defenses.social.value}}</td>
+            <td align="center">{{data.health.thresholds.wound}} | {{data.health.thresholds.uncon}} | {{data.health.thresholds.death}}</td>
+            <td><a class="tick" data-stat-name="damage" data-direction="down"><i class="fas fa-minus-square"></a></i> <input type="text" class="ed4e value-input" name="data.health.damage.value" value="{{data.health.damage.value}}" data-dtype="Number" /> <a class="tick" data-stat-name="damage" data-direction="up"><i class="fas fa-plus-square"></i> </a></td>
+            <td><a class="tick" data-stat-name="blood" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.health.damage.blood" value="{{data.health.damage.blood}}" data-dtype="Number" /> <a class="tick" data-stat-name="blood" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
+            <td><a class="tick" data-stat-name="wounds" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.health.damage.wounds" value="{{data.health.damage.wounds}}" data-dtype="Number" /> <a class="tick" data-stat-name="wounds" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
+            
+            <td><a class="tick" data-stat-name="recov" data-direction="down"><i class="fas fa-minus-square"></i></a> <input type="text" class="ed4e value-input" name="data.health.recovery.avail" value="{{data.health.recovery.avail}}" data-dtype="Number"/> <a class="tick" data-stat-name="recov" data-direction="up"><i class="fas fa-plus-square"></i></a></td>
+            <td align="center"><a class="step-roll ed4e-button" data-step="{{data.attributes.toughness.step}}" data-roll-type="Recovery"><i class="fas fa-dice-six"></i>&nbsp;{{data.attributes.toughness.dice}}</a></td>
+        </tr>
+    </table>
+</div>

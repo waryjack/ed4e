@@ -7,6 +7,7 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/defenses.hbs",
      "systems/ed4e/templates/actor/partials/initiative.hbs",
      "systems/ed4e/templates/actor/partials/health.hbs",
+     "systems/ed4e/templates/actor/partials/health-alt.hbs",
      "systems/ed4e/templates/actor/partials/init-move-karma.hbs",
      "systems/ed4e/templates/actor/partials/wealth.hbs",
      "systems/ed4e/templates/actor/partials/bio.hbs",
