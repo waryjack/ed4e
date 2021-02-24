@@ -19,7 +19,7 @@ export default class ED4EActorSheet extends ActorSheet {
         static get defaultOptions() {
             return mergeObject(super.defaultOptions, {
             classes: ['ed4e', 'sheet', 'actor', 'actor-sheet'],
-            width: 775,
+            width: 824,
             height: 685,
             left:120,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheetbody", initial: "main"}],

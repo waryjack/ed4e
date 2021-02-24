@@ -69,7 +69,7 @@ export class StepRoll {
                                 mods: miscmod,
                                 karmadie: karmaDie,
                                 dice: finalDiceText,
-                                step: pickedStep +  ((wounds != 0) ? " (-Wounds)" : ""),
+                                step: pickedStep +  ((wounds != 0) ? " (<i>wounds</i>)" : ""),
                                 note: rollnote
                             }
 
