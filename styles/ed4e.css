@@ -47,6 +47,13 @@ table tr:nth-child(even) {
     flex-flow:column nowrap;
     justify-content:stretch;
 }
+
+.ed4e .flexcol .start {
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:flex-start !important;
+}
+
 .ed4e .flex-item {
     margin-left:2px;
     margin-right:2px;
