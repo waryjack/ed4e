@@ -9,7 +9,7 @@ export default class ED4EActorSheet extends ActorSheet {
             /* if (this.actor.data.type == "character") {
                 return `${path}${this.actor.data.type}sheet-alt.hbs`;
             } else { */
-                return `${path}${this.actor.data.type}sheet.hbs`;
+                return `${path}${this.actor.data.type}sheet-alt.hbs`;
             // }
         }
     
