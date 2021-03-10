@@ -5,13 +5,9 @@ export default class ED4EActorSheet extends ActorSheet {
 
         get template() {
             const path = 'systems/ed4e/templates/actor/';
-            // the if block is for future alternative character sheet layouts;
-            /* if (this.actor.data.type == "character") {
-                return `${path}${this.actor.data.type}sheet-alt.hbs`;
-            } else { */
-                return `${path}${this.actor.data.type}sheet-alt.hbs`;
-            // }
-        }
+            
+            return `${path}${this.actor.data.type}sheet.hbs`;
+            }
     
         /**
          * @override
@@ -48,6 +44,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.matrices = data.items.filter(function(item) {return item.type == "matrix"});
             data.disciplines = data.items.filter(function(item) {return item.type == "discipline"});
             data.traits = data.items.filter(function(item) {return item.type=="trait"});
+            data.journeys = this.buildJourneyData(data);
 
             if(!Array.isArray(data.traits) || !data.traits.length) {
                 data.hideTraits = true;
@@ -244,6 +241,72 @@ export default class ED4EActorSheet extends ActorSheet {
             let delta = element.dataset.direction;
 
             return this.actor.increaseOrDecreaseStat(stat, delta);
+        }
+
+        buildJourneyData(data) {
+            const abils = data.items.filter(function(item) { return item.type == "ability"});
+            let baseStep = this.actor.data.data.attributes.perception.step;
+            let baseDice = this.actor.data.data.attributes.perception.dice;
+
+            let journeyData = {
+                lead: {
+                    step: baseStep,
+                    dice: baseDice
+                },
+                watch: {
+                    step: baseStep,
+                    dice: baseDice
+                },
+                forage: {
+                    step: baseStep,
+                    dice: baseDice
+                },
+                hunt: {
+                    step: baseStep,
+                    dice: baseDice
+                },
+                fish: {
+                    step: baseStep,
+                    dice: baseDice
+                },
+                camp: {
+                    step: baseStep,
+                    dice: baseDice
+                }
+            }
+
+            
+
+            let wildSurv = abils.filter(function(item) { return item.name == "Wilderness Survival"})[0];
+            let aware = abils.filter(function(item) { return item.name == "Awareness"})[0];
+            let nav = abils.filter(function(item) { return item.name == "Navigation"})[0];
+
+            console.warn("Wild Survival: ", wildSurv);
+
+            if (wildSurv != undefined) {
+                journeyData.forage.step = wildSurv.data.step;
+                journeyData.forage.dice = wildSurv.data.dice;
+                journeyData.hunt.step = wildSurv.data.step;
+                journeyData.hunt.dice = wildSurv.data.dice;
+                journeyData.fish.step = wildSurv.data.step;
+                journeyData.fish.dice = wildSurv.data.dice;
+                journeyData.camp.step = wildSurv.data.step;
+                journeyData.camp.dice = wildSurv.data.dice;
+            }
+
+            if (aware != undefined) {
+                journeyData.watch.step = aware.data.step;
+                journeyData.watch.dice = aware.data.dice;
+            }
+
+            if (nav != undefined) {
+                journeyData.lead.step = nav.data.step;
+                journeyData.lead.dice = nav.data.dice;
+            }
+
+            
+            return journeyData;
+
         }
 
 }

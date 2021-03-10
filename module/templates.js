@@ -30,6 +30,7 @@ export const preloadHandlebarsTemplates = async function() {
      "systems/ed4e/templates/actor/partials/matrix.hbs",
      "systems/ed4e/templates/actor/partials/disciplines.hbs",
      "systems/ed4e/templates/actor/partials/traits.hbs",
+     "systems/ed4e/templates/actor/partials/journeys.hbs",
 
      //Alt charsheet partials
      "systems/ed4e/templates/actor/partials/attributes-sidebar.hbs",

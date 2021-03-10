@@ -26,7 +26,7 @@
                 <td><a title="Roll Test" class="item-roll weapon-image ed4e-button" data-item-id="{{atk._id}}"><i class="fas fa-dice-six"></i> {{atk.data.step}}/{{atk.data.dice}}</a></td>
                 <td>{{#if (eq atk.data.dmg_step 0)}}--
                     {{else}}
-                    <a title="Roll Effect" class="step-roll ed4e-button" data-item-id="{{atk._id}}" data-step="{{atk.data.dmg_step}}" data-wounds="{{../data.health.damage.wounds}}" data-roll-type="{{atk.name}} Effect"><i class="fas fa-dice-six"></i> {{atk.data.dmg_step}}/{{atk.data.dmg_dice}}
+                    <a title="Roll Effect" class="step-roll ed4e-button" data-item-id="{{atk._id}}" data-step="{{atk.data.dmg_step}}" data-wounds="{{../data.health.damage.wounds}}" data-roll-type="{{atk.name}} Effect"><i class="fas fa-dice-six"></i> {{atk.data.dmg_step}}/{{atk.data.dmg_dice}}</a>
                     {{/if}}
                 </td>
                 <td>{{atk.data.strain}}</td>

@@ -1,0 +1,130 @@
+{{log "Data object in journeys: " journeys}}
+<div class="ed4e flex-item" style="flex-grow:1">
+    <table class="item-table">
+        <tr>
+            <td>
+            <a title="Lead the Way" 
+               class="step-roll ed4e-button" 
+               data-step="{{journeys.lead.step}}" 
+               data-wounds="{{data.health.damage.wounds}}" 
+               data-roll-type="Lead the Way">
+               <i class="fas fa-dice-six"></i> 
+               Lead the Way {{journeys.lead.step}}/{{journeys.lead.dice}}
+            </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a title="Keep Watch" 
+               class="step-roll ed4e-button" 
+               data-step="{{journeys.watch.step}}" 
+               data-wounds="{{data.health.damage.wounds}}" 
+               data-roll-type="Keep Watch">
+               <i class="fas fa-dice-six"></i> 
+               Keep Watch {{journeys.watch.step}}/{{journeys.watch.dice}}
+            </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a title="Forage" 
+               class="step-roll ed4e-button" 
+               data-step="{{journeys.forage.step}}" 
+               data-wounds="{{data.health.damage.wounds}}" 
+               data-roll-type="Forage">
+               <i class="fas fa-dice-six"></i> 
+               Forage {{journeys.forage.step}}/{{journeys.forage.dice}}
+            </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a title="Hunt" 
+               class="step-roll ed4e-button" 
+               data-step="{{journeys.hunt.step}}" 
+               data-wounds="{{data.health.damage.wounds}}" 
+               data-roll-type="Hunt">
+               <i class="fas fa-dice-six"></i> 
+               Hunt {{journeys.hunt.step}}/{{journeys.hunt.dice}}
+            </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a title="Fish" 
+               class="step-roll ed4e-button" 
+               data-step="{{journeys.fish.step}}" 
+               data-wounds="{{data.health.damage.wounds}}" 
+               data-roll-type="Fish">
+               <i class="fas fa-dice-six"></i> 
+               Lead the Way {{journeys.fish.step}}/{{journeys.fish.dice}}
+            </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <a title="Make Camp" 
+               class="step-roll ed4e-button" 
+               data-step="{{journeys.camp.step}}" 
+               data-wounds="{{data.health.damage.wounds}}" 
+               data-roll-type="Make Camp">
+               <i class="fas fa-dice-six"></i> 
+               Make Camp {{journeys.camp.step}}/{{journeys.camp.dice}}
+            </a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="ed4e flex-item" style="flex-grow:2">
+    <table class="item-table" style="text-align:center">
+        <tr>
+            <th>Action</th>
+            <th>Use while Hiking?</th>
+            <th>One Person Rolls</th>
+            <th>Help Allowed</th>
+            <th>Test With</th>
+        </tr>
+        <tr>
+            <td>Lead the Way</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Perception, Navigation</td>
+        </tr>
+        <tr>
+            <td>Keep Watch</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Perception, Awareness</td>
+        </tr>
+        <tr>
+            <td>Forage</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Perception, Wilderness Survival</td>
+        </tr>
+        <tr>
+            <td>Hunt</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Perception, Wilderness Survival</td>
+        </tr>
+        <tr>
+            <td>Fish</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Perception, Wilderness Survival</td>
+        </tr>
+        <tr>
+            <td>Make Camp</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Perception, Wilderness Survival</td>
+        </tr>
+    </table>
+</div>
