@@ -3,5 +3,6 @@
         {{#each config.attributes as |locstring attr|}}
             <option value="{{attr}}">{{localize locstring}}</option>
         {{/each}}
+            <option value="">None</option>
     {{/select}}
 </select>
