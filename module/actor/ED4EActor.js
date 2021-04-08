@@ -270,7 +270,7 @@ export class ED4EActor extends Actor {
         let paBonus = 0;
         let maBonus = 0;
 
-        let mysticArmor = Math.ceil(atts.willpower.value/5);
+        let mysticArmor = Math.floor(atts.willpower.value/5);
 
         //Armor calcs
         let activeArmor = this.data.items.filter(function(item) {return item.type == "armor" && item.data.equipped});
