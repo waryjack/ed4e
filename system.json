@@ -2,7 +2,7 @@
     "name": "ed4e",
     "title": "Earthdawn 4E (Unofficial)",
     "description": "Earthdawn 4E RPG System (Unofficial)",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Cannyjack (Chris Clouser)",
     "esmodules": [
         "module/ed4e.js"
@@ -25,6 +25,7 @@
     "primaryTokenAttribute": "@health.damage.value",
     "secondaryTokenAttribute": null,
     "minimumCoreVersion": "0.7.7",
-    "compatibleCoreVersion": "0.7.8"
-
+    "compatibleCoreVersion": "0.7.9",
+    "manifest": "https://github.com/waryjack/ed4e/releases/latest/download/system.json",
+    "download": "https://github.com/waryjack/ed4e/releases/latest/download/ewhen-master.zip"
 }
