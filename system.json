@@ -24,7 +24,7 @@
     "gridUnits": "yd",
     "primaryTokenAttribute": "@health.damage.value",
     "secondaryTokenAttribute": null,
-    "minimumCoreVersion": "0.8.6",
+    "minimumCoreVersion": "0.8.3",
     "compatibleCoreVersion": "0.8.6",
     "manifest": "https://github.com/waryjack/ed4e/releases/latest/download/system.json",
     "download": "https://github.com/waryjack/ed4e/releases/latest/download/ed4e-master.zip"

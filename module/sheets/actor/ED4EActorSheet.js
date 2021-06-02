@@ -30,21 +30,23 @@ export default class ED4EActorSheet extends ActorSheet {
             const data = deepClone(this.actor.data); // super.getData();
     
             data.config = CONFIG.ed4e; 
-            data.items = this.actor.items;
+            let actorItems = this.actor.items;
             data.hideTraits = false;
 
-            data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
-            data.skills = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "skill"});
-            data.talents = data.items.filter(function(item) {return item.type == "ability" && item.data.subtype == "talent"});
-            data.equipment = data.items.filter(function(item) {return item.type == "equipment"});
-            data.armor = data.items.filter(function(item) {return item.type == "armor"});
-            data.spells = data.items.filter(function(item) { return item.type == "spell"});
-            data.threaditems = data.items.filter(function(item) { return item.type == "thread_item"});
-            data.npc_attacks = data.items.filter(function(item) { return item.type == "npc_attack"});
-            data.pc_actions = data.items.filter(function(item) { return item.type == "pc_action"});
-            data.matrices = data.items.filter(function(item) {return item.type == "matrix"});
-            data.disciplines = data.items.filter(function(item) {return item.type == "discipline"});
-            data.traits = data.items.filter(function(item) {return item.type=="trait"});
+
+            console.log("Data.items: ", actorItems);
+            data.weapons = actorItems.filter(function(item) {return item.type == "weapon"});
+            data.skills = actorItems.filter(function(item) {return item.type == "ability" && item.data.data.subtype == "skill"});
+            data.talents = actorItems.filter(function(item) {return item.type == "ability" && item.data.data.subtype == "talent"});
+            data.equipment = actorItems.filter(function(item) {return item.type == "equipment"});
+            data.armor = actorItems.filter(function(item) {return item.type == "armor"});
+            data.spells = actorItems.filter(function(item) { return item.type == "spell"});
+            data.threaditems = actorItems.filter(function(item) { return item.type == "thread_item"});
+            data.npc_attacks = actorItems.filter(function(item) { return item.type == "npc_attack"});
+            data.pc_actions = actorItems.filter(function(item) { return item.type == "pc_action"});
+            data.matrices = actorItems.filter(function(item) {return item.type == "matrix"});
+            data.disciplines = actorItems.filter(function(item) {return item.type == "discipline"});
+            data.traits = actorItems.filter(function(item) {return item.type=="trait"});
             data.journeys = this.buildJourneyData(data);
 
             if(!Array.isArray(data.traits) || !data.traits.length) {
@@ -67,7 +69,7 @@ export default class ED4EActorSheet extends ActorSheet {
             data.totalCircles = combCircle;
             data.discString = discString;
                 
-
+            console.warn("Data Object for Actor: ", data);
             return data;
 
         }

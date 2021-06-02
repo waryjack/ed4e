@@ -5,7 +5,7 @@
                 <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
             </div>
             <div class="ed4e flex-item" style="flex:1">
-                <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+                <h1 class="charname"><input style="font-family: 'IM Fell Double Pica SC', serif; background:rgba(230, 206, 72, 0.5);" name="name" type="text" value="{{name}}" placeholder="Name"/></h1>
             </div>
             <div class="ed4e flex-item form-group inset" style="padding:0px !important;">
                 <table style="background:none; margin:0px">
@@ -28,7 +28,7 @@
             </div>
         </div>
     </header>
-
+{{log "Data Object seen by handlebars: " data}}
     {{!-- Attributes / Defenses / Initiative --}}
    
         <div class="ed4e flexrow">
