@@ -27,9 +27,10 @@ export default class ED4EActorSheet extends ActorSheet {
          * @override
          */
         getData () {
-            const data = super.getData();
+            const data = deepClone(this.actor.data); // super.getData();
     
             data.config = CONFIG.ed4e; 
+            data.items = this.actor.items;
             data.hideTraits = false;
 
             data.weapons = data.items.filter(function(item) {return item.type == "weapon"});
