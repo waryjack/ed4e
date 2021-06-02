@@ -6,8 +6,11 @@ export default class ED4EItemSheet extends ItemSheet {
     }
 
     getData () {
-        const data = super.getData();
+        const data = this.item.data;
+        data.item = this.item;
+        data.myName = data.name;
 
+        
         data.config = CONFIG.ed4e; 
         
         return data;
